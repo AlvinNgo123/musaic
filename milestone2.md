@@ -1,6 +1,5 @@
 StoryBoard #1
-![Hunter Lai](hunter-l.jpg)
-
+![Image of Yaktocat](https://github.com/AlvinNgo123/musaic/blob/master/images/hunter-l.jpg)
 
 
 
