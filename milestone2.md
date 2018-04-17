@@ -6,7 +6,7 @@ User is trying to figure out how to find out what music artist their friend like
 
 
 StoryBoard #2:
-User hears a song that they really like while at the gym. After finding out the name of the song, the user wants to share this song as their new favorite song to their friends. By using Musaic, users can list this ew song as their top featured song and their friends can see the update and listen to it as well. 
+User hears a song that they really like while at the gym. After finding out the name of the song, the user wants to share this song as their new favorite song to their friends. By using Musaic, users can list this new song as their top featured song and their friends can see the update and listen to it as well. 
 ![Image of Storyboard #2](https://github.com/AlvinNgo123/musaic/blob/master/images/Storyboard2.jpg)
 
 
