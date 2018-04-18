@@ -10,18 +10,50 @@ User hears a song that they really like while at the gym. After finding out the 
 ![Image of Storyboard #2](https://github.com/AlvinNgo123/musaic/blob/master/images/Storyboard2.jpg)
 
 
+Prototype #1:
+
+Login Screen
+![Login Screen](https://github.com/AlvinNgo123/musaic/blob/master/images/V1Login%20Screen.jpg)
+
+HomeScreen
+![HomeScreen Page](https://github.com/AlvinNgo123/musaic/blob/master/images/V1Home%20Screen.jpg)
+
+Add Current Favorite Song
+![Add Fav Song](https://github.com/AlvinNgo123/musaic/blob/master/images/V1Home%20ScreenAdd%20Song%20Status.jpg)
+
+Pick Viewing Options for HomeScreen
+![Viewing Options](https://github.com/AlvinNgo123/musaic/blob/master/images/V1Home%20ScreenCategory%20Options.jpg)
+
+One of the Different Options
+![Different View](https://github.com/AlvinNgo123/musaic/blob/master/images/V1Home%20ScreenDifferent%20Category.jpg)
+
+Menu Pullout
+![Menu Pullout w/ settings](https://github.com/AlvinNgo123/musaic/blob/master/images/V1Home%20ScreenMenu%20Pullout.jpg)
+
+Your Profile Page
+![Profile Page](https://github.com/AlvinNgo123/musaic/blob/master/images/V1Profile%20Page.jpg)
+
+Friends Page
+![Friends Page](https://github.com/AlvinNgo123/musaic/blob/master/images/V1Friends.jpg)
+
+Comments Page
+![Comments Page](https://github.com/AlvinNgo123/musaic/blob/master/images/V1Comments.jpg) 
+
+When Someone Updates Their Status/Song
+![Song/Status Update](https://github.com/AlvinNgo123/musaic/blob/master/images/V1Home%20ScreenNew%20Status.jpg)
 
 
+Prototype #2:
+Login Page
+![Login Page](https://github.com/AlvinNgo123/musaic/blob/master/images/V2%20-%20Login.jpg)
+
+Home Feed (HomeScreen V2)
+![HomeFeed](https://github.com/AlvinNgo123/musaic/blob/master/images/V2%20-%20Feed.jpg)
+
+"Showcase"/Update Favorite Song Status
+![Showcase Feature Page](https://github.com/AlvinNgo123/musaic/blob/master/images/V2%20-%20Add%20Page.jpg)
+
+Profile Page
+![Profile Page](https://github.com/AlvinNgo123/musaic/blob/master/images/V2%20-%20Profile.jpg)
 
 
-
-
-Prototype #1
-![Home Screen](https://github.com/AlvinNgo123/musaic/blob/master/images/Comments.jpg)
-
-
-
-
-
-
-Prototype #2
