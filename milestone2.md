@@ -5,12 +5,12 @@ User is trying to figure out how to find out what music artist their friend like
 
 
 
-StoryBoard #2:<br />
+<h1>StoryBoard #2:</h1><br />
 User hears a song that they really like while at the gym. After finding out the name of the song, the user wants to share this song as their new favorite song to their friends. By using Musaic, users can list this new song as their top featured song and their friends can see the update and listen to it as well. <br />
 ![Image of Storyboard #2](https://github.com/AlvinNgo123/musaic/blob/master/images/Storyboard2.jpg)<br />
 
 
-Prototype #1:<br />
+<h1>Prototype #1:</h1><br />
 Login Screen<br />
 ![Login Screen](https://github.com/AlvinNgo123/musaic/blob/master/images/V1Login%20Screen.jpg)<br />
 
@@ -42,7 +42,7 @@ When Someone Updates Their Status/Song<br />
 ![Song/Status Update](https://github.com/AlvinNgo123/musaic/blob/master/images/V1Home%20ScreenNew%20Status.jpg)<br />
 
 
-Prototype #2:<br />
+<h1>Prototype #2:</h1><br />
 Login Page<br />
 ![Login Page](https://github.com/AlvinNgo123/musaic/blob/master/images/V2%20-%20Login.jpg)<br />
 
