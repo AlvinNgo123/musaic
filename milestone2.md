@@ -17,7 +17,7 @@ User hears a song that they really like while at the gym. After finding out the 
 
 
 Prototype #1
-![Image of Storyboard #1](https://github.com/AlvinNgo123/musaic/blob/master/images/V1 - HomeScreen.jpg)
+![Home Screen](https://github.com/AlvinNgo123/musaic/blob/master/images/V1 - Home Screen.jpg)
 
 
 
