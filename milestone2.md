@@ -1,18 +1,18 @@
 <h1>StoryBoard #1:</h1><br />
-User is trying to figure out how to find out what music artist their friend likes so that they can buy a concert ticket for them. By using Musaic, user is able to search for their friend's profile/status and can see what song/artist their friend is currently featuring as their favorite.<br />
+User is trying to figure out how to find out what music artist their friend likes so that they can buy a concert ticket for them. By using Musaic, user is able to search for their friend's profile/status and can see what song/artist their friend is currently featuring as their favorite.
 ![Image of Storyboard #1](https://github.com/AlvinNgo123/musaic/blob/master/images/Storyboard1.jpg)<br />
 
 
 
 
 <h1>StoryBoard #2:</h1><br />
-User hears a song that they really like while at the gym. After finding out the name of the song, the user wants to share this song as their new favorite song to their friends. By using Musaic, users can list this new song as their top featured song and their friends can see the update and listen to it as well. <br />
+User hears a song that they really like while at the gym. After finding out the name of the song, the user wants to share this song as their new favorite song to their friends. By using Musaic, users can list this new song as their top featured song and their friends can see the update and listen to it as well. 
 ![Image of Storyboard #2](https://github.com/AlvinNgo123/musaic/blob/master/images/Storyboard2.jpg)<br />
 
 
 <h1>Prototype #1:</h1><br />
 Login Screen<br />
-User inputs their username and password in order to access their feed. By entering correct account information and pressing 'sign in' they can access the Feed. <br />
+User inputs their username and password in order to access their feed. By entering correct account information and pressing 'sign in' they can access the Feed. 
 ![Login Screen](https://github.com/AlvinNgo123/musaic/blob/master/images/V1Login%20Screen.jpg)<br />
 
 HomeScreen<br />
