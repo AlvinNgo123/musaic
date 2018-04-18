@@ -1,4 +1,4 @@
-#StoryBoard #1:<br />
+#StoryBoard #1:<h1><br />
 User is trying to figure out how to find out what music artist their friend likes so that they can buy a concert ticket for them. By using Musaic, user is able to search for their friend's profile/status and can see what song/artist their friend is currently featuring as their favorite.<br />
 ![Image of Storyboard #1](https://github.com/AlvinNgo123/musaic/blob/master/images/Storyboard1.jpg)<br />
 
