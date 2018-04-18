@@ -17,8 +17,7 @@ User hears a song that they really like while at the gym. After finding out the 
 
 
 Prototype #1
-![Home Screen](https://github.com/AlvinNgo123/musaic/images/V1Comments.jpg)
-
+![Home Screen](https://github.com/AlvinNgo123/musaic/blob/master/images/Comments.jpg)
 
 
 
