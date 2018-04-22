@@ -16,6 +16,7 @@ var myProfile = require('./routes/myProfile');
 // var user = require('./routes/user');
 
 var app = express();
+var data = require("./data.json");
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -41,9 +42,9 @@ app.get('/', login.view);
 app.get('/mainPage', mainPage.view);
 
 app.get('/data/:name', (req, res) => {
-	console.log("running get request");
+  console.log("running get request");
   const nameToLookup = req.params.name; // matches ':userid' above
-  const val = fakeDatabase[nameToLookup];
+  const val = data[nameToLookup];
   console.log(nameToLookup, '->', val); // for debugging
   if (val) {
     res.send(val);
