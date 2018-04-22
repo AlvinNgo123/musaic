@@ -7,16 +7,15 @@
 	<link href="css/bootstrap-theme.css" rel="stylesheet">
 
 	<link href="css/navbar.css" rel="stylesheet">
-  <link href="css/main.css" rel="stylesheet">
+  	<link href="css/friends.css" rel="stylesheet">
 
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <script src="/js/bootstrap.js"></script>
+ 	<script src="https://code.jquery.com/jquery.js"></script>
+  	<script src="/js/bootstrap.js"></script>
 </head>
 
 <body>
-
-
-  <!-- Hamburger Menu -->
+ 
+ <!-- Hamburger Menu -->
 	<nav role="navigation">
 		<div id="menuToggle">
    	 		<!-- A fake / hidden checkbox is used as click reciever, so you can use the :checked selector on it.-->
@@ -32,26 +31,32 @@
    	   			<a href="friends"><li>Friends</li></a>
   	    		<a href="#"><li>Profile</li></a>
   	    		<a href="#"><li>Settings</li></a>
-            <a href="/"><li>Sign Out</li></a>
+            	<a href="/"><li>Sign Out</li></a>
    			</ul>
   		</div>
 	</nav>
 
-    <h1 class="text-center">musaic</h1>
+	<h1 class="text-center">Friends</h1>
 
-    <h2 class="text-center">Music Tastes</h2>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="friends col-sm-4">
+				<img class="profilePic img-responsive" src="css/ProfilePics/Alvin.jpg">
+				<h3>Alvin Ngo</h3>
+			</div>
+			
+			<div class="friends col-sm-4">
+				<img class="profilePic img-responsive" src="css/ProfilePics/Hunter.jpg">
+				<h3>Hunter Lai</h3>
+			</div>
 
-    <h4 class="text-center">Favorite Songs</h3>
-
-    <div class="musicStat">
-      <div class="box">
-        <img class="profilePic " src="css/ProfilePics/hunter.jpg">
-        <h3>User Name</h3>
-        <h4>Artist Name</h4>
-        <h4>Song Name</h4>
-      </div>
-    </div>
-
+			<div class="friends col-sm-4">
+				<img class="profilePic img-responsive" src="css/ProfilePics/Jason.jpg">
+				<h3>Jason Liu</h3>
+			</div>
+		</div>
+</div>
 
 </body>
+
 </html>
