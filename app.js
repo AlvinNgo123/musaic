@@ -11,6 +11,7 @@ var login = require('./routes/login');
 var mainPage = require('./routes/mainPage');
 var profile = require('./routes/profile');
 var friends = require('./routes/friends');
+var myProfile = require('./routes/myProfile');
 // Example route
 // var user = require('./routes/user');
 
@@ -53,6 +54,7 @@ app.get('/data/:name', (req, res) => {
 
 app.get('/profile', profile.view);
 app.get('/friends', friends.view);
+app.get('/myProfile', myProfile.view);
 
 // Example route
 // app.get('/users', user.list);
