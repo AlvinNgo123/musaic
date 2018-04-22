@@ -38,6 +38,19 @@ if ('development' == app.get('env')) {
 
 app.get('/', login.view);
 app.get('/mainPage', mainPage.view);
+
+app.get('/mainPage/:name', (req, res) => {
+	console.log("running get request");
+  const nameToLookup = req.params.name; // matches ':userid' above
+  const val = fakeDatabase[nameToLookup];
+  console.log(nameToLookup, '->', val); // for debugging
+  if (val) {
+    res.send(val);
+  } else {
+    res.send({}); // failed, so return an empty object instead of undefined
+  }
+});
+
 app.get('/profile', profile.view);
 app.get('/friends', friends.view);
 

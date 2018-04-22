@@ -12,6 +12,38 @@
 
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="/js/bootstrap.js"></script>
+
+
+  <script type="text/javascript">
+  $(document).ready(()=>{
+      $('#searchButton').click(() => {
+            console.log("button clicked");
+            const requestURL = 'mainPage/' + $('#searchBar').val();
+             console.log('making ajax request to:', requestURL);
+
+            $.ajax({
+                 url: requestURL,
+                 type: 'GET',
+                 dataType : 'json', // this URL returns data in JSON format
+                 success: (data) => {
+                 console.log('You received some data!', data);
+
+                 if (data.favSong && data.img) {
+                   $('#searchResult').html("<a href='/profile'><img class='profilePic col-sm-2' src="+data['img']);
+
+                  
+                 
+                } else {
+                  $('#searchResult').html('Error: could not find user at URL: ' + requestURL);
+                  // clear the display
+               
+                }
+              },
+
+            });
+  });
+    });
+  </script>
 </head>
 
 <body>
@@ -44,14 +76,16 @@
 
     <h4 class="text-center">Favorite Songs</h3>
 
-    <!-- Search form -->
+    <!-- form -->
     <form class="form-inline md-form form-sm active-pink active-pink-2">
       <i class="fa fa-search" aria-hidden="true"></i>
-      <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search">
-      <button type="button" class="btn btn-info">
+      <input class="form-control form-control-sm ml-3 w-75" id="searchBar" type="text" placeholder="Search" aria-label="Search">
+      <button type="button" class="btn btn-info" id="searchButton">
         <span class="glyphicon glyphicon-search"></span> Search
       </button>
     </form>
+
+    <div id="searchResult">SUCKERRR</div>
 
       <!--User profiles -->
       <div class="container-fluid text-center">
