@@ -1,13 +1,16 @@
 
 .active-pink-2 input[type=text]:focus:not([readonly]) {
     border-bottom: 1px solid #f48fb1;
-    box-shadow: 0 1px 0 0 #f48fb1;
-    background-color: rgba(214, 224, 226, 0.2);
+    background-color: #232323;
 }
 .active-pink input[type=text] {
     border-bottom: 1px solid #f48fb1;
-    box-shadow: 0 1px 0 0 #f48fb1;
-    background-color: rgba(214, 224, 226, 0.2);
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    background-color: #232323;
+    margin-top: 15px;
+    margin-bottom: 30px;
 }
 .active-purple-2 input[type=text]:focus:not([readonly]) {
     border-bottom: 1px solid #ce93d8;
