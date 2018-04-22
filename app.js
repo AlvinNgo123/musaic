@@ -39,7 +39,7 @@ if ('development' == app.get('env')) {
 app.get('/', login.view);
 app.get('/mainPage', mainPage.view);
 
-app.get('/mainPage/:name', (req, res) => {
+app.get('/data/:name', (req, res) => {
 	console.log("running get request");
   const nameToLookup = req.params.name; // matches ':userid' above
   const val = fakeDatabase[nameToLookup];
