@@ -7,15 +7,15 @@ Home Page</br>
 ![HomePage Screenshot](https://github.com/AlvinNgo123/musaic/blob/master/images/Homepage.jpg)
 
 Profile Page</br>
-![Profile Page Screenshot](https://github.com/AlvinNgo123/musaic/blob/master/images/Homepage.jpg)
+![Profile Page Screenshot](https://github.com/AlvinNgo123/musaic/blob/master/images/ProfilePage.jpg)
 
 Hamburger Menu</br>
-![Hamburger Menu Screenshot](https://github.com/AlvinNgo123/musaic/blob/master/images/Homepage.jpg)
+![Hamburger Menu Screenshot](https://github.com/AlvinNgo123/musaic/blob/master/images/HamburgerMenu.jpg)
 
 Friends Page</br>
-![Friends Page Screenshot](https://github.com/AlvinNgo123/musaic/blob/master/images/Homepage.jpg)
+![Friends Page Screenshot](https://github.com/AlvinNgo123/musaic/blob/master/images/FriendsPage.jpg)
 
 Search Functionality w/ Backend Interaction</br>
-![Search Functionality Screenshot](https://github.com/AlvinNgo123/musaic/blob/master/images/Homepage.jpg)
+![Search Functionality Screenshot](https://github.com/AlvinNgo123/musaic/blob/master/images/Searching.jpg)
 
 
