@@ -1,19 +1,19 @@
-<h1>Login Page</h1>
+Login Page
 ![Login Screenshot](https://github.com/AlvinNgo123/musaic/blob/master/images/LoginScreen.jpg)
 
-<h1>Home Page</h1>
+Home Page
 ![HomePage Screenshot](https://github.com/AlvinNgo123/musaic/blob/master/images/Homepage.jpg)
 
-<h1>Profile Page</h1>
+Profile Page
 ![Profile Page Screenshot](https://github.com/AlvinNgo123/musaic/blob/master/images/Homepage.jpg)
 
-<h1>Hamburger Menu</h1>
+Hamburger Menu
 ![Hamburger Menu Screenshot](https://github.com/AlvinNgo123/musaic/blob/master/images/Homepage.jpg)
 
-<h1>Friends Page</h1>
+Friends Page
 ![Friends Page Screenshot](https://github.com/AlvinNgo123/musaic/blob/master/images/Homepage.jpg)
 
-<h1>Search Functionality w/ Backend Interaction</h1>
+Search Functionality w/ Backend Interaction
 ![Search Functionality Screenshot](https://github.com/AlvinNgo123/musaic/blob/master/images/Homepage.jpg)
 
 
