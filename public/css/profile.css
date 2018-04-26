@@ -1,3 +1,5 @@
+
+
 h4 {
 	font-size: 16px;
 }
@@ -37,6 +39,7 @@ h4 {
 	width: 100%;
 	left: 0px;
 	bottom: 25px;
+	font-size: 20px;
 }
 
 .bottomThirdLeft {
@@ -61,7 +64,17 @@ h4 {
 	z-index: -1;
 }
 
-.holder {
-	width: 100%;
+.bottomFirstLeftTwoLine {
 	position: absolute;
+	width: 100%;
+	left: 0px;
+	bottom: 50px;
+}
+
+.bottomSecondLeftTwoLine {
+	position: absolute;
+	width: 100%;
+	left: 0px;
+	bottom: 15px;
+	font-size: 20px;
 }
