@@ -1,87 +1,85 @@
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/profile.css" rel="stylesheet">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/bootstrap-theme.css" rel="stylesheet">
 
-    <link href="css/navbar.css" rel="stylesheet">
+	<link href="css/navbar.css" rel="stylesheet">
+  <link href="css/Profile.css" rel="stylesheet">
+  <link href="css/searchbar.css" rel="stylesheet">
+
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="/js/bootstrap.js"></script>
+
+</head>
+
+<body>
 
 
+  <!-- Hamburger Menu -->
+	<nav role="navigation">
+		<div id="menuToggle">
+   	 		<!-- A fake / hidden checkbox is used as click reciever, so you can use the :checked selector on it.-->
+ 	   		
+ 	   		<input type="checkbox" />
     
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    
+ 	   		<!--Some spans to act as a hamburger.-->
+  	  		<span></span>
+  	  		<span></span>
+  	  		<span></span>
+   	  		<ul id="menu">
+   	   			<a href="#"><li>Home</li></a>
+   	   			<a href="friends"><li>Friends</li></a>
+  	    		<!-- <a href="myProfile"><li>My Profile</li></a> -->
+  	    		<!-- <a href="#"><li>Settings</li></a> -->
+            <a href="/"><li>Sign Out</li></a>
+   			</ul>
+  		</div>
+	</nav>
 
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<head>
-
-<!-- Hamburger Menu -->
-    <nav role="navigation">
-        <div id="menuToggle">
-            <!-- A fake / hidden checkbox is used as click reciever, so you can use the :checked selector on it.-->
-            
-            <input type="checkbox" />
-    
-            <!--Some spans to act as a hamburger.-->
-            <span></span>
-            <span></span>
-            <span></span>
-            <ul id="menu">
-                <a href="mainPage"><li>Home</li></a>
-                <a href="friends"><li>Friends</li></a>
-                <!-- <a href="#"><li>My Profile</li></a> -->
-                <a href="/"><li>Sign Out</li></a>
-            </ul>
-        </div>
-    </nav>
-
-<div class="container">
-    <div class="row">
-        <div class="col-lg-3 col-sm-6">
-
-            <div class="card hovercard">
-                <div class="cardheader">
-
-                </div>
-                <div class="avatar">
-                    <img alt="" src="css/ProfilePics/hunter.jpg">
-                </div>
-                <div class="info">
-                    <div class="title">
-                        <a target="_blank" href="https://www.facebook.com/hunter.lai.50?ref=br_rs">Hunter Lai</a>
-                    </div>
-                    <div class="desc">Loves Ian</div>
-                    <div class="desc">Loves Philip</div>
-                    <div class="desc">Loves Cogs more than CS</div>
-                    <div class="desc">FAVORITE SONG: Starboy</div>
-                    <div class="desc">FAVORITE ARTIST: The Weeknd</div>
-                    <div class="desc">MOST PLAYED SONG: Pompeii(250x)</div>
-                    <div class="desc">NEWEST ARTIST: Cash Cash</div>
-                    <div class="desc">NEWEST SONG: Chun Li</div>
-                </div>
-                <!---
-                <div class="bottom">
-                    <a class="btn btn-primary btn-twitter btn-sm" href="https://twitter.com/webmaniac">
-                        <i class="fa fa-twitter"></i>
-                    </a>
-                    <a class="btn btn-danger btn-sm" rel="publisher"
-                       href="https://plus.google.com/+ahmshahnuralam">
-                        <i class="fa fa-google-plus"></i>
-                    </a>
-                    <a class="btn btn-primary btn-sm" rel="publisher"
-                       href="https://plus.google.com/shahnuralam">
-                        <i class="fa fa-facebook"></i>
-                    </a>
-                    <a class="btn btn-warning btn-sm" rel="publisher" href="https://plus.google.com/shahnuralam">
-                        <i class="fa fa-behance"></i>
-                    </a>
-                </div>
-            -->
-            </div>
-
+    <h1 class="text-center">Hunter Lai</h1>
+    <div class="container-fluid">
+        <div class="row">
+          <img class="profilePic center-block" src="css/ProfilePics/hunter.jpg"></a>
         </div>
 
+        <div class="row">
+          <div class="col-sm-3">
+            <h3 class="bottomFirstLeft text-center">Favorite Song</h3>
+            <h4 class="bottomSecondLeft text-center">Starboy</h4>
+            <h4 class="bottomThirdLeft text-center">The Weeknd</h4>
+            <div class="transparentBox text-center
+            "></div>
+            <img class="albumCover center-block" src="css/AlbumCovers/Starboy.jpg">
+          </div>
+
+          <div class="col-sm-3">
+            <img class="albumCover center-block" src="css/AlbumCovers/Pompeii.jpg">
+            <h3 class="bottomFirstLeft text-center">Most Played</h3>
+            <h4 class="bottomSecondLeft text-center">Pompeii</h4>
+            <h4 class="bottomThirdLeft text-center">Bastille</h4>
+            <div class="transparentBox text-center
+            "></div>
+          </div>
+
+          <div class="col-sm-3">
+            <img class="albumCover center-block" src="css/AlbumCovers/ChunLi.jpg">
+            <h3 class="bottomFirstLeft text-center">Newest Song</h3>
+            <h4 class="bottomSecondLeft text-center">Chun Li</h4>
+            <h4 class="bottomThirdLeft text-center">Nicki Minaj</h4>
+            <div class="transparentBox text-center
+            "></div>
+
+          </div>
+          <div class="col-sm-3">
+            <img class="albumCover center-block" src="css/Artists/TheWeeknd.jpg">
+          </div>
+          <h3 class="bottomFirstLeft text-center">Favorite Artist</h3>
+          <h4 class="bottomSecondLeft text-center">The Weeknd</h4>
+          <div class="transparentBox text-center
+          "></div>
     </div>
-</div>
+</body>
 </html>
