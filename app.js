@@ -10,6 +10,12 @@ var request = require('request'); // "Request" library
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 
+const sqlite3 = require('sqlite3');
+const db = new sqlite3.Database('pets.db');
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: true})); /
+
 var login = require('./routes/login');
 var mainPage = require('./routes/mainPage');
 var profile = require('./routes/profile');
@@ -140,7 +146,7 @@ app.get('/callback', function(req, res) {
         var access_token = body.access_token,
             refresh_token = body.refresh_token;
 
-            console.log("EMAIL = "+body.email);
+
 
         var options = {
           url: 'https://api.spotify.com/v1/me',
@@ -151,6 +157,7 @@ app.get('/callback', function(req, res) {
         // use the access token to access the Spotify Web API
         request.get(options, function(error, response, body) {
           console.log(body);
+          console.log("EMAIL = "+body.email);
         });
 
         // we can also pass the token to the browser to make requests from there
