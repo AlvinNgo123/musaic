@@ -90,6 +90,14 @@ app.get('/data/:name', (req, res) => {
   }
 });
 
+// Gets all the users
+app.get('/users', (req, res) => {
+  db.all('SELECT name FROM users', (err, rows) => {
+    console.log(rows);
+    const allUsernames = rows.map(e => e.name);
+  });
+});
+
 app.get('/profile', profile.view);
 app.get('/friends', friends.view);
 app.get('/myProfile', myProfile.view);
