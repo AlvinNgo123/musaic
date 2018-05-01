@@ -11,7 +11,7 @@ var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 
 const sqlite3 = require('sqlite3');
-const db = new sqlite3.Database('pets.db');
+const db = new sqlite3.Database('musaic.db');
 
 const bodyParser = require('body-parser');
 
