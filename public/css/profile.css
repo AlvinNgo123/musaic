@@ -78,3 +78,11 @@ h4 {
 	bottom: 15px;
 	font-size: 20px;
 }
+
+.grow { 
+	transition: all .2s ease-in-out; 
+}
+
+.grow:hover { 
+	transform: scale(1.1); 
+}
