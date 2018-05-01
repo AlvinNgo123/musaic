@@ -14,7 +14,8 @@ const sqlite3 = require('sqlite3');
 const db = new sqlite3.Database('pets.db');
 
 const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({extended: true})); /
+
+
 
 var login = require('./routes/login');
 var mainPage = require('./routes/mainPage');
@@ -69,6 +70,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
+
+
+app.use(bodyParser.urlencoded({extended: true})); 
+
 
 app.get('/', login.view);
 app.get('/mainPage', mainPage.view);
