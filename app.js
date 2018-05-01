@@ -95,7 +95,28 @@ app.get('/users', (req, res) => {
   db.all('SELECT name FROM users', (err, rows) => {
     console.log(rows);
     const allUsernames = rows.map(e => e.name);
+    res.send(allUsernames);
   });
+});
+
+// GET Profile data for a user
+app.get('/users/:userid', (req, res) => {
+  const nameToLookup = req.params.userid; // matches ':userid' above
+
+  db.all(
+    'SELECT * FROM users WHERE name=$name',
+    {
+      $name: nameToLookup,
+    }, 
+    (err, rows) => {
+      console.log(rows);
+      if (rows.length > 0) {
+        res.send(rows);
+      }
+      else {
+        res.send({});
+      }
+    });
 });
 
 app.get('/profile', profile.view);
