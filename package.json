@@ -20,7 +20,7 @@
     "querystring": "~0.2.0",
     "request": "~2.83.0",
     "sqlite3": "^4.0.0",
-    "body-parser": "^1.18.2"
+    "body-parser": "^1.18.2"  
   },
   "engines": {
     "node": "8.9.x"

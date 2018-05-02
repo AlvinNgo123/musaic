@@ -2,6 +2,8 @@
  * Module dependencies.
  */
 
+
+
 var express = require('express');
 var http = require('http');
 var path = require('path');
@@ -143,6 +145,10 @@ app.get('/login', function(req, res) {
     }));
 });
 
+
+let body_global = {};
+
+
 app.get('/callback', function(req, res) {
 
   // your application requests refresh and access tokens
@@ -192,6 +198,69 @@ app.get('/callback', function(req, res) {
         request.get(options, function(error, response, body) {
           console.log(body);
           console.log("EMAIL = "+body.email);
+          console.log("DEBUG:  body.id ="+body.id);
+
+          body_global = body;
+
+
+    //           $.ajax({
+    //   // all URLs are relative to http://localhost:3000/
+    //     url: 'callback',
+    //   type: 'POST', // <-- this is POST, not GET
+    //   data: {
+    //           $name: body.id,
+    //           $display_name: body.display_name,
+    //           $external_urls: body.external_urls,
+    //           $href: body.href,
+    //           $email: body.email,
+    //           $images: body.images,
+    //         },
+    //   success: (data) => {
+    //     $('#status').html(data.message);
+    //   }
+    // });
+
+        db.run(
+          "INSERT INTO accounts VALUES ($id, $display_name, $external_urls, $href, $email, $images)",
+            {
+              $id: body.id,
+              $display_name: body.display_name,
+              $external_urls: body.external_urls,
+              $href: body.href,
+              $email: body.email,
+              $images: body.images,
+            }
+            ,
+
+            (err) => {
+              if (err) {
+              //res.send({message: 'error in app.post(/users)'});
+              console.log("ERROR: error in app.post(/callback");
+            } else {
+               //res.send({message: 'successfully run app.post(/users)'});
+               console.log("Successfully ran app.post(/callback)");
+            }
+            } 
+
+
+            );
+    console.log('successfully created the users table in musaic.db');
+
+
+
+    db.all('SELECT id FROM accounts', (err, rows) => {
+      console.log("ROWS: "+rows);
+      const allDisplayNames = rows.map(e => e.id);
+      console.log(allDisplayNames);
+    });
+
+//    db.each("SELECT id, display_name, external_urls FROM accounts", (err, row) => {
+
+   //        console.log('successfully SELECTED the users table in musaic.db');
+
+   //  console.log(row.id + ": " + row.display_name + ' - ' +  row.external_urls);
+   // });
+
         });
 
         // we can also pass the token to the browser to make requests from there
@@ -206,19 +275,76 @@ app.get('/callback', function(req, res) {
             error: 'invalid_token'
           }));
       }
+
+
+
+
     });
 	 //db.run("CREATE TABLE accounts (id TEXT, display_name TEXT,  external_urls TEXT, href TEXT, email TEXT, images TEXT)");
 
     //db.run("INSERT INTO accounts VALUES ('42069', 'Jennifer Klage Amerine', '{}', '', '', '')");
 
-    db.run("INSERT INTO accounts VALUES (body.id, body.display_name, body.external_urls, body.href, body.email, body.images)");
-    console.log('successfully created the users table in musaic.db');
 
-    db.each("SELECT id, display_name, external_urls FROM accounts", (err, row) => {
-    console.log(row.id + ": " + row.display_name + ' - ' +  row.external_urls);
-    });
+
+
+
+//THESE ARE THE LINES WE SHOULD NEED
+
   }
 });
+
+
+app.post('/callback', (req, res) => {
+console.log("Running /callback post request");
+
+console.log("DEBUG: global_body.id"+id);
+   db.run(
+          "INSERT INTO accounts VALUES ($id, $display_name, $external_urls, $href, $email, $images)",
+            {
+              $name: req.body.id,
+              $display_name: req.body.display_name,
+              $external_urls: req.body.external_urls,
+              $href: req.body.href,
+              $email: req.body.email,
+              $images: req.body.images,
+            },
+
+            (err) => {
+              if (err) {
+              res.send({message: 'error in app.post(/users)'});
+            } else {
+               res.send({message: 'successfully run app.post(/users)'});
+            }
+            } 
+
+
+            );
+
+
+
+
+   // db.run(
+   //        "INSERT INTO accounts VALUES ($id, $display_name, $external_urls, $href, $email, $images)",
+   //          {
+   //            $name: body.id,
+   //            $display_name: body.display_name,
+   //            $external_urls: body.external_urls,
+   //            $href: body.href,
+   //            $email: body.email,
+   //            $images: body.images,
+   //          },
+
+   //          (err) => {
+   //            if (err) {
+   //            res.send({message: 'error in app.post(/users)'});
+   //          } else {
+   //             res.send({message: 'successfully run app.post(/users)'});
+   //          }
+   //          } 
+
+
+   //          );
+})
 
 app.get('/refresh_token', function(req, res) {
 
