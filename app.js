@@ -207,6 +207,16 @@ app.get('/callback', function(req, res) {
           }));
       }
     });
+	 //db.run("CREATE TABLE accounts (id TEXT, display_name TEXT,  external_urls TEXT, href TEXT, email TEXT, images TEXT)");
+
+    //db.run("INSERT INTO accounts VALUES ('42069', 'Jennifer Klage Amerine', '{}', '', '', '')");
+
+    db.run("INSERT INTO accounts VALUES (body.id, body.display_name, body.external_urls, body.href, body.email, body.images)");
+    console.log('successfully created the users table in musaic.db');
+
+    db.each("SELECT id, display_name, external_urls FROM accounts", (err, row) => {
+    console.log(row.id + ": " + row.display_name + ' - ' +  row.external_urls);
+    });
   }
 });
 
