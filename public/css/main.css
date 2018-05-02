@@ -1,3 +1,17 @@
+/* Font style */
+@font-face {
+  font-family: Poppins-Regular;
+  src: url('../fonts/poppins/Poppins-Regular.ttf'); 
+}
+
+h1, h2, h3, h4, h5 {
+	font-family: Poppins-Regular, sans-serif;
+}
+
+.profileText {
+	margin-left: 250px;
+}
+
 .profilePic {
 	width: 125px;
 	height: 100px;
@@ -11,4 +25,126 @@
 
 #searchButton{
 	margin-left: 85%;
+}
+
+.profilePic {
+	width: 225px;
+	height: 200px;
+	border-radius: 50%;
+}
+
+#searchImage{
+	margin: 0 auto;
+	display: none;
+}
+
+#searchButton{
+	margin-left: 85%;
+}
+
+.albumCover {
+	width: 250px;
+	height: 250px;
+	z-index: -2;
+	position: relative;
+	margin-top: 20px;
+}
+
+.bottomFirstLeft {
+	position: absolute;
+	font-size: 30px;
+	width: 100%;
+	left: 0px;
+	top: 10px;
+}
+
+.bottomSecondLeft {
+	position: absolute;
+	width: 100%;
+	left: 0px;
+	top: 65px;
+	font-size: 25px;
+	text-decoration: underline;
+}
+
+.bottomThirdLeft {
+	position: absolute;
+	width: 100%;
+	left: 0px;
+	top: 100px;
+	text-decoration: underline;
+}
+
+ .transparentBox {
+	background-color: #08B2E3;
+	width: 300px;
+	height: 200px;
+	bottom: 0px;
+	left: 0px;
+	top: 0px;
+	right: 0px;
+	position: absolute;
+	margin-left: 130px;
+	margin-right: auto;
+	margin-top: auto;
+	z-index: -1;
+}
+
+.bottomFirstLeftTwoLine {
+	position: absolute;
+	width: 100%;
+	left: 0px;
+	bottom: 50px;
+}
+
+.bottomSecondLeftTwoLine {
+	position: absolute;
+	width: 100%;
+	left: 0px;
+	bottom: 15px;
+	font-size: 20px;
+}
+
+.grow { 
+	transition: all .2s ease-in-out; 
+}
+
+.grow:hover { 
+	transform: scale(1.1); 
+}
+
+.icon {
+	width: 25px;
+	height: 25px;
+}
+
+.chatBubble {
+	position: absolute;
+	bottom: 20px;
+	left: 250px;
+}
+
+.chatNumber {
+	position: absolute;
+	left: 290px;
+	bottom: 15px;
+	color: black;
+}
+
+.clock {
+	position: absolute;
+	bottom: 20px;
+	left: 350px;
+}
+
+.clockNumber {
+	position: absolute;
+	left: 390px;
+	bottom: 15px;
+	color: black;
+}
+
+.profile {
+	margin-bottom: 25px;
+	margin-top: 25px;
 }
