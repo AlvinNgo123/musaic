@@ -11,7 +11,7 @@ var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 
 const sqlite3 = require('sqlite3');
-const db = new sqlite3.Database('musaic.db');
+const db = new sqlite3.Database('accounts.db');
 
 const bodyParser = require('body-parser');
 
@@ -92,7 +92,7 @@ app.get('/data/:name', (req, res) => {
 
 // Gets all the users
 app.get('/users', (req, res) => {
-  db.all('SELECT name FROM users', (err, rows) => {
+  db.all('SELECT id FROM accounts', (err, rows) => {
     console.log(rows);
     const allUsernames = rows.map(e => e.name);
     res.send(allUsernames);
