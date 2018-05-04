@@ -31,8 +31,15 @@
                  console.log(searchName);
 
                  if (data) {
+                  console.log(data.favSong);
                    $('.profile').hide();
-                   $("#" + data.firstName).show();
+                   $('#userName').html(data.name);
+                   $('#songName').html(data.favSong);
+                   $('#artistName').html(data.artist);
+                   $('#chatText').html(data.chat);
+                   $('#clockText').html(data.time);
+                   $('#pic').attr('src', data.img);
+                   $('#searchProfile').attr('display', 'block');
                   /* $('#searchResult').html("<p>"+searchName+"'s Favorite Song: "+data[0].favSong+"</p>");
                    $('#searchImage').attr('src', data[0].img);
                    $('#searchImage').attr('style', 'display:block'); */
@@ -94,7 +101,24 @@
   </div>
 </div>
 
-      <!--User profiles -->
+    <!--Profile that comes up after being searched -->
+    <div class="container-fluid" id="searchProfile" style="display: none;">
+      <div class="row">
+          <div class="col-sm-4 grow profile">
+            <h3 class="bottomFirstLeft profileText" id="userName"></h3>
+            <h4 class="bottomSecondLeft profileText" id="songName"></h4>
+            <h4 class="bottomThirdLeft profileText" id="artistName"></h4>
+            <div class="transparentBox text-center"></div>
+            <a href="/profile"><img class="profilePic col-sm-2" id="pic"></a>
+            <img class="icon chatBubble" src="css/Icons/chatBubble.png">
+            <h5 class="chatNumber" id="chatText"></h5>
+            <img class="icon clock" src="css/Icons/clock.png">
+            <h5 class="clockNumber" id="clockText"></h5>
+          </div>
+        </div>
+      </div>
+
+    <!--User profiles -->
     <div class="container-fluid">
       <div class="row">
           <div class="col-sm-4 grow profile" id="Hunter">
