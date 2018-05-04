@@ -13,7 +13,7 @@ var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 
 const sqlite3 = require('sqlite3');
-const db = new sqlite3.Database('accounts.db');
+const db = new sqlite3.Database('friends.db');
 
 const bodyParser = require('body-parser');
 
@@ -88,8 +88,8 @@ app.get('/mainPage', mainPage.view);
 // GET a list of all usernames
 //
 // To test, open this URL in your browser:
-//   http://localhost:3000/users
-app.get('/data', (req, res) => {
+//   http://localhost:3000/friends
+app.get('/friend', (req, res) => {
   // db.all() fetches all results from an SQL query into the 'rows' variable:
   db.all('SELECT name FROM friends', (err, rows) => {
     console.log(rows);
@@ -101,7 +101,7 @@ app.get('/data', (req, res) => {
 
 
 //AJAX call
-app.get('/data/:name', (req, res) => {
+app.get('/friend/:name', (req, res) => {
   console.log("running get request");
   const nameToLookup = req.params.name; // matches ':userid' above
 
