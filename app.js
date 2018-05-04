@@ -55,7 +55,7 @@ var generateRandomString = function(length) {
 var stateKey = 'spotify_auth_state';
 
 var app = express();
-var data = require("./data.json");
+//var data = require("./data.json");
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -85,20 +85,52 @@ app.get('/', login.view);
 app.get('/mainPage', mainPage.view);
 
 
+// GET a list of all usernames
+//
+// To test, open this URL in your browser:
+//   http://localhost:3000/users
+app.get('/data', (req, res) => {
+  // db.all() fetches all results from an SQL query into the 'rows' variable:
+  db.all('SELECT name FROM friends', (err, rows) => {
+    console.log(rows);
+    const allUsernames = rows.map(e => e.name);
+    console.log(allUsernames);
+    res.send(allUsernames);
+  });
+});
+
+
 //AJAX call
 app.get('/data/:name', (req, res) => {
   console.log("running get request");
   const nameToLookup = req.params.name; // matches ':userid' above
-  const val = data[nameToLookup];
-  console.log(nameToLookup, '->', val); // for debugging
-  if (val) {
-    res.send(val);
-  } else {
-    res.send({}); // failed, so return an empty object instead of undefined
-  }
+
+  db.all(
+    'SELECT * FROM friends WHERE name=$name', 
+    {
+      $name: nameToLookup, 
+    }, 
+    (err, rows) => {
+      console.log(rows);
+      if(rows.length > 0){
+        res.send(rows[0]);
+      } else {
+        res.send({});
+      }
+    }
+  )
+
+
+  //const val = data[nameToLookup];
+  //console.log(nameToLookup, '->', val); // for debugging
+  //if (val) {
+    //res.send(val);
+  //} else {
+    //res.send({}); // failed, so return an empty object instead of undefined
+  //}
 });
 
-
+/*
 // Gets all the users
 app.get('/users', (req, res) => {
   db.all('SELECT id FROM accounts', (err, rows) => {
@@ -128,7 +160,7 @@ app.get('/users/:userid', (req, res) => {
       }
     });
 });
-
+*/
 
 app.get('/profile', profile.view);
 app.get('/friends', friends.view);
