@@ -30,9 +30,11 @@
                  console.log('You received some data!', data);
 
                  if (data[0].favSong && data[0].img) {
-                   $('#searchResult').html("<p>"+searchName+"'s Favorite Song: "+data[0].favSong+"</p>");
+                   $('.profile').hide();
+                   $('#' + searchName).show();
+                  /* $('#searchResult').html("<p>"+searchName+"'s Favorite Song: "+data[0].favSong+"</p>");
                    $('#searchImage').attr('src', data[0].img);
-                   $('#searchImage').attr('style', 'display:block');
+                   $('#searchImage').attr('style', 'display:block'); */
 
                 } else {
                   $('#searchResult').html('User not found!!');
@@ -94,7 +96,7 @@
       <!--User profiles -->
     <div class="container-fluid">
       <div class="row">
-          <div class="col-sm-4 grow profile">
+          <div class="col-sm-4 grow profile" id="Hunter">
             <h3 class="bottomFirstLeft profileText">Hunter</h3>
             <h4 class="bottomSecondLeft profileText">Starboy</h4>
             <h4 class="bottomThirdLeft profileText">The Weeknd</h4>
@@ -106,7 +108,7 @@
             <h5 class="clockNumber">1h</h5>
           </div>
 
-          <div class="col-sm-4 grow profile">
+          <div class="col-sm-4 grow profile" id="Nathan">
             <h3 class="bottomFirstLeft profileText">Nathan</h3>
             <h4 class="bottomSecondLeft profileText">Radioactive</h4>
             <h4 class="bottomThirdLeft profileText">Imagine Dragons</h4>
@@ -118,7 +120,7 @@
             <h5 class="clockNumber">1h</h5>
           </div>
 
-          <div class="col-sm-4 grow profile">
+          <div class="col-sm-4 grow profile" id="Alvin">
             <h3 class="bottomFirstLeft profileText">Alvin</h3>
             <h4 class="bottomSecondLeft profileText">Shame</h4>
             <h4 class="bottomThirdLeft profileText">Hearts &amp; Colors</h4>
@@ -132,7 +134,7 @@
       </div>
 
       <div class="row">
-          <div class="col-sm-4 grow profile">
+          <div class="col-sm-4 grow profile" id="Luis">
             <h3 class="bottomFirstLeft profileText">Luis</h3>
             <h4 class="bottomSecondLeft profileText">Viva La Vida</h4>
             <h4 class="bottomThirdLeft profileText">Coldplay</h4>
@@ -144,7 +146,7 @@
             <h5 class="clockNumber">4h</h5>
           </div>
 
-          <div class="col-sm-4 grow profile">
+          <div class="col-sm-4 grow profile" id="Jason">
             <h3 class="bottomFirstLeft profileText">Jason</h3>
             <h4 class="bottomSecondLeft profileText">Mine</h4>
             <h4 class="bottomThirdLeft profileText">Bazzi</h4>
@@ -156,7 +158,7 @@
             <h5 class="clockNumber">5h</h5>
           </div>
 
-          <div class="col-sm-4 grow profile">
+          <div class="col-sm-4 grow profile" id="Justin">
             <h3 class="bottomFirstLeft profileText">Justin</h3>
             <h4 class="bottomSecondLeft profileText">MIC Drop</h4>
             <h4 class="bottomThirdLeft profileText">BTS</h4>
@@ -170,7 +172,7 @@
       </div>
 
       <div class="row">
-          <div class="col-sm-4 grow profile">
+          <div class="col-sm-4 grow profile" id="Victoria">
             <h3 class="bottomFirstLeft profileText">Victoria</h3>
             <h4 class="bottomSecondLeft profileText">Stay</h4>
             <h4 class="bottomThirdLeft profileText">Zedd</h4>
@@ -182,7 +184,7 @@
             <h5 class="clockNumber">12h</h5>
           </div>
 
-          <div class="col-sm-4 grow profile">
+          <div class="col-sm-4 grow profile" id="Kenneth">
             <h3 class="bottomFirstLeft profileText">Kenneth</h3>
             <h4 class="bottomSecondLeft profileText">Better Now</h4>
             <h4 class="bottomThirdLeft profileText">Post Malone</h4>
@@ -194,7 +196,7 @@
             <h5 class="clockNumber">1d</h5>
           </div>
 
-          <div class="col-sm-4 grow profile">
+          <div class="col-sm-4 grow profile" id="Nessa">
             <h3 class="bottomFirstLeft profileText">Nessa</h3>
             <h4 class="bottomSecondLeft profileText">The Middle</h4>
             <h4 class="bottomThirdLeft profileText">Zedd</h4>

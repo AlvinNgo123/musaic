@@ -1,21 +1,21 @@
 {
-	"Hunter Lai": [
+	"Hunter": [
 		{
-			"favSong": "Father Stretch My Hands Part I by Kanye West",
+			"favSong": "Starboy",
 			"img": "css/ProfilePics/Hunter.jpg"
 		}
 	],
 
-	"Alvin Ngo": [
+	"Alvin": [
 		{
-			"favSong": "Make Daddy Proud by Blackbear",
+			"favSong": "Shame",
 			"img": "css/ProfilePics/Alvin.jpg"
 		}
 	],
 
-	"Jason Liu": [
+	"Jason": [
 		{
-			"favSong": "Baby Got Back by Sir Mix a Lot",
+			"favSong": "Mine",
 			"img": "css/ProfilePics/Jason.jpg"
 		}
 	]	
