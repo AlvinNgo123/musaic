@@ -1,21 +1,63 @@
 {
-	"Hunter Lai": [
+	"Hunter": [
 		{
-			"favSong": "Father Stretch My Hands Part I by Kanye West",
+			"favSong": "Starboy",
 			"img": "css/ProfilePics/Hunter.jpg"
 		}
 	],
 
-	"Alvin Ngo": [
+	"Alvin": [
 		{
-			"favSong": "Make Daddy Proud by Blackbear",
+			"favSong": "Shame",
 			"img": "css/ProfilePics/Alvin.jpg"
 		}
 	],
 
-	"Jason Liu": [
+	"Nathan": [
 		{
-			"favSong": "Baby Got Back by Sir Mix a Lot",
+			"favSong": "Radioactive",
+			"img": "css/ProfilePics/Nathan.jpg"
+		}
+	],
+
+	"Luis": [
+		{
+			"favSong": "Viva La Vida",
+			"img": "css/ProfilePics/Luis.jpg"
+		}
+	],
+
+	"Justin": [
+		{
+			"favSong": "Mic Drop",
+			"img": "css/ProfilePics/Justin.jpg"
+		}
+	],
+
+	"Victoria": [
+		{
+			"favSong": "Stay",
+			"img": "css/ProfilePics/Victoria.jpg"
+		}
+	],
+
+	"Alvin": [
+		{
+			"favSong": "Better Now",
+			"img": "css/ProfilePics/Kenneth.jpg"
+		}
+	],
+
+	"Nessa": [
+		{
+			"favSong": "The Middle",
+			"img": "css/ProfilePics/Nessa.jpg"
+		}
+	],
+
+	"Jason": [
+		{
+			"favSong": "Mine",
 			"img": "css/ProfilePics/Jason.jpg"
 		}
 	]	
