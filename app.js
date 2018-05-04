@@ -84,6 +84,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.get('/', login.view);
 app.get('/mainPage', mainPage.view);
 
+app.get('/mainPage/:id', mainPage.viewID);
+
 
 //AJAX call
 app.get('/data/:name', (req, res) => {
@@ -155,7 +157,7 @@ app.get('/login', function(req, res) {
 });
 
 
-let body_global = {};
+var id_global = "";
 
 
 app.get('/callback', function(req, res) {
@@ -210,7 +212,7 @@ app.get('/callback', function(req, res) {
           console.log("EMAIL = "+body.email);
           console.log("DEBUG:  body.id ="+body.id);
 
-          body_global = body;
+          id_global = body.id;
 
 
 
@@ -230,6 +232,7 @@ app.get('/callback', function(req, res) {
       if(rows.length > 0){
         //ID already found so login as that user
         console.log("DEBUG: user id found in database");
+        res.redirect("/mainPage/"+body.id);
        // res.redirect("/mainPage");
       }else{
         //ID not found so add it to database
@@ -259,6 +262,8 @@ app.get('/callback', function(req, res) {
 
 
             );
+
+        res.redirect("/mainPage/"+body.id);
       }
     }
       )
@@ -274,7 +279,8 @@ app.get('/callback', function(req, res) {
         //     refresh_token: refresh_token
         //   }));
 
-    res.redirect("/mainPage");
+ 
+    //res.redirect("/mainPage/"+id_global);
 
 
 

@@ -11,7 +11,7 @@ db.serialize(() => {
   db.run("CREATE TABLE accounts (id TEXT, display_name TEXT,  external_urls TEXT, href TEXT, email TEXT, images TEXT)");
 
   db.run("INSERT INTO accounts VALUES ('42069', 'Jennifer Klage Amerine', '{}', '', '', '')");
-
+  console.log('successfully created the users table in musaic.db');
 
 
   // db.run("CREATE TABLE users (name TEXT, favoriteSong TEXT, mostPlayedS TEXT, newestDiscovery TEXT, favoriteArtist TEXT, mostPlayedA TEXT, recentlyPlayed TEXT)");
@@ -21,7 +21,7 @@ db.serialize(() => {
   // db.run("INSERT INTO users VALUES ('Nathan', 'Whatever It Takes - Imagine Dragons', 'Counting Stars - OneRepublic', 'Changed - Bazzi', 'Imagine Dragons', 'Imagine Dragons', 'Better Now - Post Malone')");
   // db.run("INSERT INTO users VALUES ('Luis', 'Starboy - The Weeknd', 'Pompeii - Bastille', 'Chun Li - Nicki Minaj', 'The Weeknd', 'Cash Cash', 'Mine - Bazzi')");
 
-  console.log('successfully created the users table in musaic.db');
+  
 
 db.each("SELECT id, display_name, external_urls FROM accounts", (err, row) => {
       console.log(row.id + ": " + row.display_name + ' - ' +  row.external_urls);
