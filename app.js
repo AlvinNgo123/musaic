@@ -29,6 +29,8 @@ var myProfile = require('./routes/myProfile');
 
 
 
+
+//SPOTIFY VARIABLES
 var client_id = 'a289562a1f854fe4bb7c6ef6ebbde25d'; // Your client id
 var client_secret = '5934bdba7c534aaca5239d185b76cbb1'; // Your secret
 var redirect_uri = 'http://localhost:3000/callback'; // Your redirect uri
@@ -47,6 +49,8 @@ var generateRandomString = function(length) {
   }
   return text;
 };
+
+
 
 var stateKey = 'spotify_auth_state';
 
@@ -80,6 +84,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.get('/', login.view);
 app.get('/mainPage', mainPage.view);
 
+
+//AJAX call
 app.get('/data/:name', (req, res) => {
   console.log("running get request");
   const nameToLookup = req.params.name; // matches ':userid' above
@@ -92,6 +98,7 @@ app.get('/data/:name', (req, res) => {
   }
 });
 
+
 // Gets all the users
 app.get('/users', (req, res) => {
   db.all('SELECT id FROM accounts', (err, rows) => {
@@ -100,6 +107,7 @@ app.get('/users', (req, res) => {
     res.send(allUsernames);
   });
 });
+
 
 // GET Profile data for a user
 app.get('/users/:userid', (req, res) => {
@@ -121,13 +129,14 @@ app.get('/users/:userid', (req, res) => {
     });
 });
 
+
 app.get('/profile', profile.view);
 app.get('/friends', friends.view);
 app.get('/myProfile', myProfile.view);
 
 
 
-
+//Spotify Login Button
 app.get('/login', function(req, res) {
 
   var state = generateRandomString(16);
@@ -196,7 +205,7 @@ app.get('/callback', function(req, res) {
 
         // use the access token to access the Spotify Web API
         request.get(options, function(error, response, body) {
-          console.log(body);
+          //console.log(body);
           console.log("EMAIL = "+body.email);
           console.log("DEBUG:  body.id ="+body.id);
 
@@ -229,8 +238,7 @@ app.get('/callback', function(req, res) {
               $href: body.href,
               $email: body.email,
               $images: body.images,
-            }
-            ,
+            },
 
             (err) => {
               if (err) {
@@ -247,20 +255,12 @@ app.get('/callback', function(req, res) {
     console.log('successfully created the users table in musaic.db');
 
 
-
+    //TESTING 
     db.all('SELECT id FROM accounts', (err, rows) => {
       console.log("ROWS: "+rows);
       const allDisplayNames = rows.map(e => e.id);
       console.log(allDisplayNames);
     });
-
-//    db.each("SELECT id, display_name, external_urls FROM accounts", (err, row) => {
-
-   //        console.log('successfully SELECTED the users table in musaic.db');
-
-   //  console.log(row.id + ": " + row.display_name + ' - ' +  row.external_urls);
-   // });
-
         });
 
         // we can also pass the token to the browser to make requests from there
