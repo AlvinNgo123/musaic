@@ -32,8 +32,8 @@ db.serialize(() => {
 
   
 
-db.each("SELECT name FROM friends", (err, row) => {
-      console.log(row.name);
+db.each("SELECT name, favSong, img FROM friends", (err, row) => {
+      console.log(row.name + ": " + row.favSong + row.img);
   });
 });
 
