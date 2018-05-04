@@ -13,6 +13,48 @@
 		}
 	],
 
+	"Nathan": [
+		{
+			"favSong": "Radioactive",
+			"img": "css/ProfilePics/Nathan.jpg"
+		}
+	],
+
+	"Luis": [
+		{
+			"favSong": "Viva La Vida",
+			"img": "css/ProfilePics/Luis.jpg"
+		}
+	],
+
+	"Justin": [
+		{
+			"favSong": "Mic Drop",
+			"img": "css/ProfilePics/Justin.jpg"
+		}
+	],
+
+	"Victoria": [
+		{
+			"favSong": "Stay",
+			"img": "css/ProfilePics/Victoria.jpg"
+		}
+	],
+
+	"Alvin": [
+		{
+			"favSong": "Better Now",
+			"img": "css/ProfilePics/Kenneth.jpg"
+		}
+	],
+
+	"Nessa": [
+		{
+			"favSong": "The Middle",
+			"img": "css/ProfilePics/Nessa.jpg"
+		}
+	],
+
 	"Jason": [
 		{
 			"favSong": "Mine",
