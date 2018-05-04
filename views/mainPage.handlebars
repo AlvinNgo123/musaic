@@ -16,8 +16,10 @@
 
   <script type="text/javascript">
   $(document).ready(()=>{
-      $('.searchProfile').hide();
 
+      $('.searchProfile').hide(); // Hides search profile template
+
+      // Search button grabs the string in the search bar
       $('#searchButton').click(() => {
             console.log("button clicked");
             const searchName = $('#searchBar').val()
@@ -32,6 +34,7 @@
                  console.log('You received some data!', data);
                  console.log(searchName);
 
+                 // If there is a name, pull up the user info
                  if (data.name) {
                   console.log(data.favSong);
                    $('.profile').hide();
@@ -42,10 +45,14 @@
                    $('#clockText').html(data.time);
                    $('#pic').attr('src', data.img);
                    $('.searchProfile').show()
-                   
+                   $('#searchResult').html('');
+
+
+                  // Otherwise, return none
                 } else {
                   $('#searchResult').html('User not found!!');
                   $('.profile').show();
+                  $('.searchProfile').hide();
                   // clear the display
                 }
               },
@@ -102,7 +109,7 @@
 </div>
 
     <!--Profile that comes up after being searched -->
-    <div class="container-fluid" id="searchProfile">
+    <div class="container-fluid">
       <div class="row">
           <div class="col-sm-4 grow searchProfile">
             <h3 class="bottomFirstLeft profileText" id="userName"></h3>
