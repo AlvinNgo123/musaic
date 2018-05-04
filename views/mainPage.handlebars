@@ -16,6 +16,8 @@
 
   <script type="text/javascript">
   $(document).ready(()=>{
+      $('.searchProfile').hide();
+
       $('#searchButton').click(() => {
             console.log("button clicked");
             const searchName = $('#searchBar').val()
@@ -30,7 +32,7 @@
                  console.log('You received some data!', data);
                  console.log(searchName);
 
-                 if (data) {
+                 if (data.name) {
                   console.log(data.favSong);
                    $('.profile').hide();
                    $('#userName').html(data.name);
@@ -39,13 +41,11 @@
                    $('#chatText').html(data.chat);
                    $('#clockText').html(data.time);
                    $('#pic').attr('src', data.img);
-                   $('#searchProfile').attr('display', 'block');
-                  /* $('#searchResult').html("<p>"+searchName+"'s Favorite Song: "+data[0].favSong+"</p>");
-                   $('#searchImage').attr('src', data[0].img);
-                   $('#searchImage').attr('style', 'display:block'); */
-
+                   $('.searchProfile').show()
+                   
                 } else {
                   $('#searchResult').html('User not found!!');
+                  $('.profile').show();
                   // clear the display
                 }
               },
@@ -102,9 +102,9 @@
 </div>
 
     <!--Profile that comes up after being searched -->
-    <div class="container-fluid" id="searchProfile" style="display: none;">
+    <div class="container-fluid" id="searchProfile">
       <div class="row">
-          <div class="col-sm-4 grow profile">
+          <div class="col-sm-4 grow searchProfile">
             <h3 class="bottomFirstLeft profileText" id="userName"></h3>
             <h4 class="bottomSecondLeft profileText" id="songName"></h4>
             <h4 class="bottomThirdLeft profileText" id="artistName"></h4>
