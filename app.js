@@ -84,6 +84,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.get('/', login.view);
 app.get('/mainPage', mainPage.view);
 
+// app.get('/mainPage/:id', mainPage.viewID);
+
 
 // GET a list of all usernames
 //
@@ -187,7 +189,7 @@ app.get('/login', function(req, res) {
 });
 
 
-let body_global = {};
+var id_global = "";
 
 
 app.get('/callback', function(req, res) {
@@ -242,11 +244,9 @@ app.get('/callback', function(req, res) {
           console.log("EMAIL = "+body.email);
           console.log("DEBUG:  body.id ="+body.id);
 
-          body_global = body;
+          id_global = body.id;
 
-
-
-    console.log('successfully created the users table in musaic.db');
+          console.log('successfully created the users table in musaic.db');
 
 
     //TESTING 
@@ -262,7 +262,10 @@ app.get('/callback', function(req, res) {
       if(rows.length > 0){
         //ID already found so login as that user
         console.log("DEBUG: user id found in database");
-       // res.redirect("/mainPage");
+        //res.redirect("/mainPage/"+body.id);
+
+        console.log("\nLOGGING IN AS A RETURNING USER.  ID="+body.id+" EMAIL="+body.email+"\n");
+        res.redirect("/mainPage");
       }else{
         //ID not found so add it to database
         console.log("DEBUG: user id NOT found in database. You should not be seeing this message");
@@ -291,6 +294,11 @@ app.get('/callback', function(req, res) {
 
 
             );
+
+
+        console.log("\nLOGGING IN AS A NEW USER.  ID="+body.id+" EMAIL="+body.email+"\n");
+        res.redirect("/mainPage");
+        // res.redirect("/mainPage/"+body.id);
       }
     }
       )
@@ -306,7 +314,8 @@ app.get('/callback', function(req, res) {
         //     refresh_token: refresh_token
         //   }));
 
-    res.redirect("/mainPage");
+ 
+    //res.redirect("/mainPage/"+id_global);
 
 
 

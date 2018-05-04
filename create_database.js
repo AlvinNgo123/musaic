@@ -8,7 +8,7 @@ const db = new sqlite3.Database('friends.db');
 db.serialize(() => {
   // create a new database table:
 
-  //db.run("CREATE TABLE accounts (id TEXT, display_name TEXT,  external_urls TEXT, href TEXT, email TEXT, images TEXT)");
+  db.run("CREATE TABLE accounts (id TEXT, display_name TEXT,  external_urls TEXT, href TEXT, email TEXT, images TEXT)");
 
   //db.run("INSERT INTO accounts VALUES ('42069', 'Jennifer Klage Amerine', '{}', '', '', '')");
   //console.log('successfully created the users table in musaic.db');
