@@ -15,11 +15,19 @@ db.serialize(() => {
 
 
 
-  db.run("CREATE TABLE friends (name TEXT, favSong TEXT, img TEXT)");
+  db.run("CREATE TABLE friends (name TEXT, firstName TEXT, favSong TEXT, artist TEXT, chat TEXT, time TEXT, img TEXT)");
 
-  db.run("INSERT INTO friends VALUES ('Hunter Lai', 'Starboy', 'Hunter.jpg')");
-  db.run("INSERT INTO friends VALUES ('Alvin Ngo', 'Shame', 'Alvin.jpg')");
-  db.run("INSERT INTO friends VALUES ('Luis Lu', 'Viva La Vida', 'Luis.jpg')");
+  db.run("INSERT INTO friends VALUES ('Hunter Lai', 'Hunter', 'Starboy', 'The Weekend', '15', '1h', 'Hunter.jpg')");
+  db.run("INSERT INTO friends VALUES ('Alvin Ngo', 'Alvin', 'Shame', 'Hearts & Colors', '65', '2h', 'Alvin.jpg')");
+  db.run("INSERT INTO friends VALUES ('Nathan Mansur', 'Nathan', 'Radioactive', 'Imagine Dragons', '45', '1h', 'Nathan.jpg')");
+  db.run("INSERT INTO friends VALUES ('Luis Lu', 'Luis', 'Viva La Vida', 'Coldplay', '55', '4h', 'Luis.jpg')");
+  db.run("INSERT INTO friends VALUES ('Jason Liu', 'Jason', 'Mine', 'Bazzi', '70', '5h', 'Jason.jpg')");
+  db.run("INSERT INTO friends VALUES ('Justin Wu', 'Justin', 'Mic Drop', 'BTS', '80', '7h', 'Justin.jpg')");
+  db.run("INSERT INTO friends VALUES ('Victoria Vu', 'Victoria', 'Stay', 'Zedd', '90', '12h', 'Victoria.jpg')");
+  db.run("INSERT INTO friends VALUES ('Kenneth Truong', 'Kenneth', 'Better Now', 'Post Malone', '124', '1d', 'Kenneth.jpg')");
+  db.run("INSERT INTO friends VALUES ('Nessa Vu', 'Nessa', 'The Middle', 'Zedd', '170', '3d', 'Nessa.jpg')");
+
+
 
   console.log('successfully created friends');   
 

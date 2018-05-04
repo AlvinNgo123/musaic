@@ -19,8 +19,8 @@
       $('#searchButton').click(() => {
             console.log("button clicked");
             const searchName = $('#searchBar').val()
-            const requestURL = 'data/' + searchName;
-             console.log('making ajax request to:', requestURL);
+            const requestURL = 'friend/' + searchName;
+            console.log('making ajax request to:', requestURL);
 
             $.ajax({
                  url: requestURL,
@@ -28,10 +28,11 @@
                  dataType : 'json', // this URL returns data in JSON format
                  success: (data) => {
                  console.log('You received some data!', data);
+                 console.log(searchName);
 
-                 if (data[0].favSong && data[0].img) {
+                 if (data) {
                    $('.profile').hide();
-                   $('#' + searchName).show();
+                   $("#" + data.firstName).show();
                   /* $('#searchResult').html("<p>"+searchName+"'s Favorite Song: "+data[0].favSong+"</p>");
                    $('#searchImage').attr('src', data[0].img);
                    $('#searchImage').attr('style', 'display:block'); */
