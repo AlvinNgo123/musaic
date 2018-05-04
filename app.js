@@ -178,7 +178,8 @@ app.get('/callback', function(req, res) {
       url: 'https://accounts.spotify.com/api/token',
       form: {
         code: code,
-        redirect_uri: redirect_uri,
+      //  redirect_uri: redirect_uri,
+       redirect_uri: 'http://localhost:3000/callback',
         grant_type: 'authorization_code'
       },
       headers: {
@@ -229,6 +230,7 @@ app.get('/callback', function(req, res) {
       if(rows.length > 0){
         //ID already found so login as that user
         console.log("DEBUG: user id found in database");
+       // res.redirect("/mainPage");
       }else{
         //ID not found so add it to database
         console.log("DEBUG: user id NOT found in database. You should not be seeing this message");
@@ -263,11 +265,19 @@ app.get('/callback', function(req, res) {
         });
 
         // we can also pass the token to the browser to make requests from there
-        res.redirect('/#' +
-          querystring.stringify({
-            access_token: access_token,
-            refresh_token: refresh_token
-          }));
+        
+
+        //DO NOT DELETE THIS CODE.  I AM JUST COMMENTING IT OUT BC I DONT WANT TO DEAL W TOKENS RN. THANK YOU
+        // res.redirect('/#' +
+        //   querystring.stringify({
+        //     access_token: access_token,
+        //     refresh_token: refresh_token
+        //   }));
+
+    res.redirect("/mainPage");
+
+
+
       } else {
         res.redirect('/#' +
           querystring.stringify({
@@ -307,7 +317,7 @@ console.log("DEBUG: global_body.id"+id);
             );
 
 
-})
+});
 
 app.get('/refresh_token', function(req, res) {
 
