@@ -205,29 +205,34 @@ app.get('/callback', function(req, res) {
 
         // use the access token to access the Spotify Web API
         request.get(options, function(error, response, body) {
-          //console.log(body);
+          console.log(body);
           console.log("EMAIL = "+body.email);
           console.log("DEBUG:  body.id ="+body.id);
 
           body_global = body;
 
 
-    //           $.ajax({
-    //   // all URLs are relative to http://localhost:3000/
-    //     url: 'callback',
-    //   type: 'POST', // <-- this is POST, not GET
-    //   data: {
-    //           $name: body.id,
-    //           $display_name: body.display_name,
-    //           $external_urls: body.external_urls,
-    //           $href: body.href,
-    //           $email: body.email,
-    //           $images: body.images,
-    //         },
-    //   success: (data) => {
-    //     $('#status').html(data.message);
-    //   }
-    // });
+
+    console.log('successfully created the users table in musaic.db');
+
+
+    //TESTING 
+   
+
+   //Checks Database to see if ID already exists
+    db.all('SELECT * FROM accounts WHERE id=$id',
+
+    {
+      $id: body.id
+    },
+    (err, rows)=> {
+      if(rows.length > 0){
+        //ID already found so login as that user
+        console.log("DEBUG: user id found in database");
+      }else{
+        //ID not found so add it to database
+        console.log("DEBUG: user id NOT found in database. You should not be seeing this message");
+
 
         db.run(
           "INSERT INTO accounts VALUES ($id, $display_name, $external_urls, $href, $email, $images)",
@@ -252,15 +257,9 @@ app.get('/callback', function(req, res) {
 
 
             );
-    console.log('successfully created the users table in musaic.db');
-
-
-    //TESTING 
-    db.all('SELECT id FROM accounts', (err, rows) => {
-      console.log("ROWS: "+rows);
-      const allDisplayNames = rows.map(e => e.id);
-      console.log(allDisplayNames);
-    });
+      }
+    }
+      )
         });
 
         // we can also pass the token to the browser to make requests from there
@@ -275,21 +274,8 @@ app.get('/callback', function(req, res) {
             error: 'invalid_token'
           }));
       }
-
-
-
-
     });
-	 //db.run("CREATE TABLE accounts (id TEXT, display_name TEXT,  external_urls TEXT, href TEXT, email TEXT, images TEXT)");
-
-    //db.run("INSERT INTO accounts VALUES ('42069', 'Jennifer Klage Amerine', '{}', '', '', '')");
-
-
-
-
-
-//THESE ARE THE LINES WE SHOULD NEED
-
+	
   }
 });
 
@@ -321,29 +307,6 @@ console.log("DEBUG: global_body.id"+id);
             );
 
 
-
-
-   // db.run(
-   //        "INSERT INTO accounts VALUES ($id, $display_name, $external_urls, $href, $email, $images)",
-   //          {
-   //            $name: body.id,
-   //            $display_name: body.display_name,
-   //            $external_urls: body.external_urls,
-   //            $href: body.href,
-   //            $email: body.email,
-   //            $images: body.images,
-   //          },
-
-   //          (err) => {
-   //            if (err) {
-   //            res.send({message: 'error in app.post(/users)'});
-   //          } else {
-   //             res.send({message: 'successfully run app.post(/users)'});
-   //          }
-   //          } 
-
-
-   //          );
 })
 
 app.get('/refresh_token', function(req, res) {
