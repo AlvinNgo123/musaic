@@ -95,7 +95,6 @@ app.get('/mainPage', mainPage.view);
 app.get('/friend', (req, res) => {
   // db.all() fetches all results from an SQL query into the 'rows' variable:
   db.all('SELECT * FROM friends', (err, rows) => {
-    console.log(rows);
     if (rows.length > 0) {
       res.send(rows);
     } else {
