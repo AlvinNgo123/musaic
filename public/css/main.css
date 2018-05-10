@@ -45,34 +45,35 @@ h1, h2, h3, h4, h5 {
 	margin-top: 20px;
 }
 
-.bottomFirstLeft {
+.userNameText {
 	position: absolute;
-	font-size: 30px;
+	font-size: 22px;
 	width: 100%;
 	left: 0px;
 	top: 10px;
 }
 
-.bottomSecondLeft {
+.songNameText {
 	position: absolute;
 	width: 100%;
 	left: 0px;
 	top: 65px;
-	font-size: 25px;
+	font-size: 20px;
 	text-decoration: underline;
 }
 
-.bottomThirdLeft {
+.artistNameText {
 	position: absolute;
 	width: 100%;
 	left: 0px;
 	top: 100px;
 	text-decoration: underline;
+	font-size: 16px;
 }
 
  .transparentBox {
 	background-color: #08B2E3;
-	width: 370px;
+	width: 300px;
 	height: 200px;
 	bottom: 0px;
 	left: 0px;

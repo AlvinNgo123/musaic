@@ -91,13 +91,16 @@ app.get('/mainPage', mainPage.view);
 //
 // To test, open this URL in your browser:
 //   http://localhost:3000/friends
+
 app.get('/friend', (req, res) => {
   // db.all() fetches all results from an SQL query into the 'rows' variable:
-  db.all('SELECT name FROM friends', (err, rows) => {
+  db.all('SELECT * FROM friends', (err, rows) => {
     console.log(rows);
-    const allUsernames = rows.map(e => e.name);
-    console.log(allUsernames);
-    res.send(allUsernames);
+    if (rows.length > 0) {
+      res.send(rows);
+    } else {
+      res.send({});
+    }
   });
 });
 

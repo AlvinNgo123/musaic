@@ -17,18 +17,50 @@
   <script type="text/javascript">
   $(document).ready(()=>{
    
-   // Implement loop to load all profiles on start
-   /*   const friendURL = 'friend/';
+   // Loads all profiles that are currently in the database
+      const friendURL = 'friend/';
       $.ajax({
                  url: friendURL,
                  type: 'GET',
                  dataType : 'json', // this URL returns data in JSON format
                  success: (data) => {
-                 console.log('You received some data!', data);
-                 console.log('hi');
-                 // Implement a for loop here for all the profiles
+
+                  const toAdd = document.createDocumentFragment();
+                  let index = 0;
+
+                  // Goes through the database and creates a square for each person
+                  for (const e of data) {
+                    const newLi = document.createElement('div');
+                    let userName = 'userName' + index;
+                    let songName = 'songName' + index;
+                    let artistName = 'artistName' + index;
+                    let pic = 'pic' + index;
+                    let chatText = 'chatText' + index;
+                    let clockText = 'clockText' + index;
+
+                    // HTML template being added for each user 
+                    newLi.innerHTML = "<div class='col-sm-4 grow profile'><h3 class='userNameText profileText' id='"+userName+"'></h3><h4 class='songNameText profileText' id='"+songName+"'></h4><h4 class='artistNameText profileText' id='"+artistName+"'></h4><div class='transparentBox text-center'></div><a href='/profile'><img class='profilePic col-sm-2' id='"+pic+"'></a><img class='icon chatBubble' src='css/Icons/chatBubble.png'><h5 class='chatNumber' id='"+chatText+"'></h5><img class='icon clock' src='css/Icons/clock.png'><h5 class='clockNumber' id='"+clockText+"'></h5></div></div>";
+
+                    toAdd.appendChild(newLi);
+                    index = index + 1;
+                 }
+                 // Adds all the squares into the HTML
+                 document.getElementById('test').appendChild(toAdd); 
+
+                 index = 0; //reset index
+
+                 // Gets info from the database to fill in the newly created squares
+                 for (const e of data) {
+                  $('#userName' + index).html(e.name);
+                  $('#songName' + index).html(e.favSong);
+                  $('#artistName' + index).html(e.artist);
+                  $('#chatText' + index).html(e.chat);
+                  $('#clockText' + index).html(e.time);
+                  $('#pic' + index).attr('src', e.img);
+                  index = index + 1;
+                 }
                },
-      }); */
+      }); 
 
 
       $('.searchProfile').hide(); // Hides search profile template
@@ -51,13 +83,13 @@
                  // If there is a name, pull up the user info
                  if (data.name) {
                   console.log(data.favSong);
-                   $('.profile').hide();
-                   $('#userName').html(data.name);
-                   $('#songName').html(data.favSong);
-                   $('#artistName').html(data.artist);
-                   $('#chatText').html(data.chat);
-                   $('#clockText').html(data.time);
-                   $('#pic').attr('src', data.img);
+                   $('.profileBeg').hide();
+                   $('#userNameSearch').html(data.name);
+                   $('#songNameSearch').html(data.favSong);
+                   $('#artistNameSearch').html(data.artist);
+                   $('#chatTextSearch').html(data.chat);
+                   $('#clockTextSearch').html(data.time);
+                   $('#picSearch').attr('src', data.img);
                    $('.searchProfile').show()
                    $('#searchResult').html('');
 
@@ -65,7 +97,7 @@
                   // Otherwise, return none
                 } else {
                   $('#searchResult').html('User not found!!');
-                  $('.profile').show();
+                  $('.profileBeg').show();
                   $('.searchProfile').hide();
                   // clear the display
                 }
@@ -122,140 +154,28 @@
   </div>
 </div>
 
+    <!-- Div that holds all the profiles in the beginning -->
+    <div class="container-fluid">
+      <div class="profileBeg row" id="test">
+      </div>
+    </div>
+
     <!--Profile that comes up after being searched -->
     <div class="container-fluid">
       <div class="row">
           <div class="col-sm-4 grow searchProfile">
-            <h3 class="bottomFirstLeft profileText" id="userName"></h3>
-            <h4 class="bottomSecondLeft profileText" id="songName"></h4>
-            <h4 class="bottomThirdLeft profileText" id="artistName"></h4>
+            <h3 class="userNameText profileText" id="userNameSearch"></h3>
+            <h4 class="songNameText profileText" id="songNameSearch"></h4>
+            <h4 class="artistNameText profileText" id="artistNameSearch"></h4>
             <div class="transparentBox text-center"></div>
-            <a href="/profile"><img class="profilePic col-sm-2" id="pic"></a>
+            <a href="/profile"><img class="profilePic col-sm-2" id="picSearch"></a>
             <img class="icon chatBubble" src="css/Icons/chatBubble.png">
-            <h5 class="chatNumber" id="chatText"></h5>
+            <h5 class="chatNumber" id="chatTextSearch"></h5>
             <img class="icon clock" src="css/Icons/clock.png">
-            <h5 class="clockNumber" id="clockText"></h5>
+            <h5 class="clockNumber" id="clockTextSearch"></h5>
           </div>
         </div>
       </div>
-
-    <!--User profiles -->
-    <div class="container-fluid">
-      <div class="row">
-          <div class="col-sm-4 grow profile" id="Hunter">
-            <h3 class="bottomFirstLeft profileText">Hunter Lai</h3>
-            <h4 class="bottomSecondLeft profileText">Starboy</h4>
-            <h4 class="bottomThirdLeft profileText">The Weeknd</h4>
-            <div class="transparentBox text-center"></div>
-            <a href="/profile"><img class="profilePic col-sm-2" src="css/ProfilePics/hunter.jpg"></a>
-            <img class="icon chatBubble" src="css/Icons/chatBubble.png">
-            <h5 class="chatNumber">15</h5>
-            <img class="icon clock" src="css/Icons/clock.png">
-            <h5 class="clockNumber">1h</h5>
-          </div>
-
-          <div class="col-sm-4 grow profile" id="Nathan">
-            <h3 class="bottomFirstLeft profileText">Nathan Mansur</h3>
-            <h4 class="bottomSecondLeft profileText">Radioactive</h4>
-            <h4 class="bottomThirdLeft profileText">Imagine Dragons</h4>
-            <div class="transparentBox text-center odd"></div>
-            <a href="/profile"><img class="profilePic col-sm-2" src="css/ProfilePics/Nathan.jpg"></a>
-            <img class="icon chatBubble" src="css/Icons/chatBubble.png">
-            <h5 class="chatNumber">45</h5>
-            <img class="icon clock" src="css/Icons/clock.png">
-            <h5 class="clockNumber">1h</h5>
-          </div>
-
-          <div class="col-sm-4 grow profile" id="Alvin">
-            <h3 class="bottomFirstLeft profileText">Alvin Ngo</h3>
-            <h4 class="bottomSecondLeft profileText">Shame</h4>
-            <h4 class="bottomThirdLeft profileText">Hearts &amp; Colors</h4>
-            <div class="transparentBox text-center"></div>
-            <a href="/profile"><img class="profilePic col-sm-2" src="css/ProfilePics/alvin.jpg"></a>
-            <img class="icon chatBubble" src="css/Icons/chatBubble.png">
-            <h5 class="chatNumber">65</h5>
-            <img class="icon clock" src="css/Icons/clock.png">
-            <h5 class="clockNumber">2h</h5>
-          </div>
-      </div>
-
-      <div class="row">
-          <div class="col-sm-4 grow profile" id="Luis">
-            <h3 class="bottomFirstLeft profileText">Luis Lu</h3>
-            <h4 class="bottomSecondLeft profileText">Viva La Vida</h4>
-            <h4 class="bottomThirdLeft profileText">Coldplay</h4>
-            <div class="transparentBox text-center odd"></div>
-            <a href="/profile"><img class="profilePic col-sm-2" src="css/ProfilePics/luis.jpg"></a>
-            <img class="icon chatBubble" src="css/Icons/chatBubble.png">
-            <h5 class="chatNumber">55</h5>
-            <img class="icon clock" src="css/Icons/clock.png">
-            <h5 class="clockNumber">4h</h5>
-          </div>
-
-          <div class="col-sm-4 grow profile" id="Jason">
-            <h3 class="bottomFirstLeft profileText">Jason Liu</h3>
-            <h4 class="bottomSecondLeft profileText">Mine</h4>
-            <h4 class="bottomThirdLeft profileText">Bazzi</h4>
-            <div class="transparentBox text-center"></div>
-            <a href="/profile"><img class="profilePic col-sm-2" src="css/ProfilePics/jason.jpg"></a>
-            <img class="icon chatBubble" src="css/Icons/chatBubble.png">
-            <h5 class="chatNumber">70</h5>
-            <img class="icon clock" src="css/Icons/clock.png">
-            <h5 class="clockNumber">5h</h5>
-          </div>
-
-          <div class="col-sm-4 grow profile" id="Justin">
-            <h3 class="bottomFirstLeft profileText">Justin Wu</h3>
-            <h4 class="bottomSecondLeft profileText">MIC Drop</h4>
-            <h4 class="bottomThirdLeft profileText">BTS</h4>
-            <div class="transparentBox text-center odd"></div>
-            <a href="/profile"><img class="profilePic col-sm-2" src="css/ProfilePics/justin.jpg"></a>
-            <img class="icon chatBubble" src="css/Icons/chatBubble.png">
-            <h5 class="chatNumber">80</h5>
-            <img class="icon clock" src="css/Icons/clock.png">
-            <h5 class="clockNumber">7h</h5>
-          </div>
-      </div>
-
-      <div class="row">
-          <div class="col-sm-4 grow profile" id="Victoria">
-            <h3 class="bottomFirstLeft profileText">Victoria Vu</h3>
-            <h4 class="bottomSecondLeft profileText">Stay</h4>
-            <h4 class="bottomThirdLeft profileText">Zedd</h4>
-            <div class="transparentBox text-center"></div>
-            <a href="/profile"><img class="profilePic col-sm-2" src="css/ProfilePics/victoria.jpg"></a>
-            <img class="icon chatBubble" src="css/Icons/chatBubble.png">
-            <h5 class="chatNumber">90</h5>
-            <img class="icon clock" src="css/Icons/clock.png">
-            <h5 class="clockNumber">12h</h5>
-          </div>
-
-          <div class="col-sm-4 grow profile" id="Kenneth">
-            <h3 class="bottomFirstLeft profileText">Kenneth Truong</h3>
-            <h4 class="bottomSecondLeft profileText">Better Now</h4>
-            <h4 class="bottomThirdLeft profileText">Post Malone</h4>
-            <div class="transparentBox text-center odd"></div>
-            <a href="/profile"><img class="profilePic col-sm-2" src="css/ProfilePics/kenneth.jpg"></a>
-            <img class="icon chatBubble" src="css/Icons/chatBubble.png">
-            <h5 class="chatNumber">124</h5>
-            <img class="icon clock" src="css/Icons/clock.png">
-            <h5 class="clockNumber">1d</h5>
-          </div>
-
-          <div class="col-sm-4 grow profile" id="Nessa">
-            <h3 class="bottomFirstLeft profileText">Nessa Vu</h3>
-            <h4 class="bottomSecondLeft profileText">The Middle</h4>
-            <h4 class="bottomThirdLeft profileText">Zedd</h4>
-            <div class="transparentBox text-center"></div>
-            <a href="/profile"><img class="profilePic col-sm-2" src="css/ProfilePics/nessa.jpg"></a>
-            <img class="icon chatBubble" src="css/Icons/chatBubble.png">
-            <h5 class="chatNumber">170</h5>
-            <img class="icon clock" src="css/Icons/clock.png">
-            <h5 class="clockNumber">3d</h5>
-          </div>
-      </div>
-    </div>
-
 
 
 </body>
