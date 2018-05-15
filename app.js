@@ -24,6 +24,7 @@ var mainPage = require('./routes/mainPage');
 var profile = require('./routes/profile');
 var friends = require('./routes/friends');
 var myProfile = require('./routes/myProfile');
+var yourProfile = require('./routes/yourProfile');
 // Example route
 // var user = require('./routes/user');
 
@@ -169,6 +170,7 @@ app.get('/users/:userid', (req, res) => {
 app.get('/profile', profile.view);
 app.get('/friends', friends.view);
 app.get('/myProfile', myProfile.view);
+app.get('/yourProfile', yourProfile.view);
 
 
 
