@@ -40,7 +40,7 @@
                     let transparentBoxColor = 'transparentBoxColor' + index;
 
                     // HTML template being added for each user 
-                    newLi.innerHTML = "<div class='col-sm-4 grow profile'><h3 class='userNameText profileText' id='"+userName+"'></h3><h4 class='songNameText profileText' id='"+songName+"'></h4><h4 class='artistNameText profileText' id='"+artistName+"'></h4><div class='transparentBox text-center' id='"+transparentBoxColor+"'></div><a href='/profile'><img class='profilePic col-sm-2' id='"+pic+"'></a><img class='icon chatBubble' src='css/Icons/chatBubble.png'><h5 class='chatNumber' id='"+chatText+"'></h5><img class='icon clock' src='css/Icons/clock.png'><h5 class='clockNumber' id='"+clockText+"'></h5></div></div>";
+                    newLi.innerHTML = "<div class='col-sm-4 grow profile'><h3 class='userNameText profileText' id='"+userName+"'></h3><h4 class='songNameText profileText' id='"+songName+"'></h4><h4 class='artistNameText profileText' id='"+artistName+"'></h4><div class='transparentBox text-center' id='"+transparentBoxColor+"'></div><a href=''><img class='profilePic col-sm-2' id='"+pic+"'></a><img class='icon chatBubble' src='css/Icons/chatBubble.png'><h5 class='chatNumber' id='"+chatText+"'></h5><img class='icon clock' src='css/Icons/clock.png'><h5 class='clockNumber' id='"+clockText+"'></h5></div></div>";
 
                     toAdd.appendChild(newLi);
                     index = index + 1;
@@ -109,7 +109,12 @@
               },
 
             });
-  });
+          });
+
+        $('.userNameText').click(() => {
+          console.log("Hi");
+        });
+
     });
   </script>
 </head>
@@ -140,9 +145,24 @@
 
     <h1 class="text-center">Musaic</h1>
 
-    <h2 class="text-center">Music Tastes</h2>
+    <h3 class="text-center">Music Tastes</h3>
 
-    <h4 class="text-center">Favorite Songs</h3>
+    <h4 class="text-center">Favorite Songs</h4>
+
+    <div class="text-center">
+      <!-- Trigger/Open The Modal -->
+      <button type="button" class="btn btn-info" id="myBtn">Set Favorite Song</button>
+
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Some text in the Modal..</p>
+          </div>
+      </div>
+    </div>  
 
    <!--
     <div class="text-center">
@@ -152,19 +172,23 @@
 
 
     <!-- form -->
-    <form class="form-inline md-form form-sm active-pink active-pink-2">
-      <i class="fa fa-search" aria-hidden="true"></i>
-      <input class="form-control form-control-sm ml-3 w-75" id="searchBar" type="text" placeholder="Search Friend's Name" aria-label="Search">
-      <button type="button" class="btn btn-info" id="searchButton">
-        <span class="glyphicon glyphicon-search"></span> Search
-      </button>
-    </form>
+    <div class="container-fluid ">
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <form class="form-inline md-form form-sm active-pink active-pink-2">
+              <input class="form-control form-control-sm" id="searchBar" type="text" placeholder="Search Friend's Name" aria-label="Search">
+              <button type="button" class="btn btn-info" id="searchButton">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
   <div class="container-fluid text-center">
       <div class="row">
-    <div id="searchResult" class="col-sm-2"></div>
-    <a href="/profile"><img id="searchImage" class="profilePic" src=""></a>
+        <div id="searchResult" class="col-sm-2"></div>
+        <a href="/profile"><img id="searchImage" class="profilePic" src=""></a>
+      </div>
   </div>
-</div>
 
     <!-- Div that holds all the profiles in the beginning -->
     <div class="container-fluid">
@@ -189,6 +213,32 @@
         </div>
       </div>
 
+  <script type="text/javascript">
+    // Get the modal
+    var modal = document.getElementById('myModal');
 
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal 
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+  </script>
 </body>
 </html>

@@ -13,6 +13,59 @@
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="/js/bootstrap.js"></script>
 
+  <script type="text/javascript">
+  $(document).ready(()=>{
+     const friendURL = 'friend/';
+      $.ajax({
+                 url: friendURL,
+                 type: 'GET',
+                 dataType : 'json', // this URL returns data in JSON format
+                 success: (data) => {
+
+                  const toAdd = document.createDocumentFragment();
+                  let index = 0;
+
+                  // Goes through the database and creates a square for each person
+                  for (const e of data) {
+                    const newLi = document.createElement('div');
+                    let userName = 'userName' + index;
+                    let songName = 'songName' + index;
+                    let artistName = 'artistName' + index;
+                    let pic = 'pic' + index;
+                    let chatText = 'chatText' + index;
+                    let clockText = 'clockText' + index;
+                    let transparentBoxColor = 'transparentBoxColor' + index;
+
+                    // HTML template being added for each user 
+                    newLi.innerHTML;
+
+                    toAdd.appendChild(newLi);
+                    index = index + 1;
+                 }
+                 // Adds all the squares into the HTML
+                 document.getElementById('allProfiles').appendChild(toAdd); 
+
+                 index = 0; //reset index
+
+                 // Gets info from the database to fill in the newly created squares
+                 for (const e of data) {
+                  if (index % 2 === 1) {
+                    $('#transparentBoxColor' + index).css("background-color", "#FF4365");
+                  }
+
+                  $('#userName' + index).html(e.name);
+                  $('#songName' + index).html(e.favSong);
+                  $('#artistName' + index).html(e.artist);
+                  $('#chatText' + index).html(e.chat);
+                  $('#clockText' + index).html(e.time);
+                  $('#pic' + index).attr('src', e.img);
+                  index = index + 1;
+                 }
+               },
+      }); 
+    });
+    </script>
+
 </head>
 
 <body>
@@ -39,7 +92,7 @@
   		</div>
 	</nav>
 
-    <h1 class="text-center">Hunter Lai</h1>
+    <h1 class="text-center userName"></h1>
     <div class="container-fluid">
         <div class="row">
           <img class="profilePic center-block" src="css/ProfilePics/hunter.jpg"></a>
