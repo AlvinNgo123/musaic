@@ -9,7 +9,10 @@ h1, h2, h3, h4, h5 {
 }
 
 body {
-	background-color: #4388ff;
+	background-image: url("/css/Backgrounds/bg-01.jpg");
+  	background-repeat: no-repeat;
+  	background-position: center;
+  	background-size: cover;
 }
 
 .profile, .searchProfile {
@@ -81,7 +84,7 @@ body {
 }
 
  .transparentBox {
-	background-color: #ff8e43;
+	background-color: #4388ff;
 	/* Previous Color: 08b2e3; */
 	width: 300px;
 	height: 200px;

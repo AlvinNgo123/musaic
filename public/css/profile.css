@@ -1,6 +1,8 @@
 body {
-	background-color: #4388ff;
-
+	background-image: url("/css/Backgrounds/bg-01.jpg");
+  	background-repeat: no-repeat;
+  	background-position: center;
+  	background-size: cover;
 }
 
 h4 {
