@@ -1,7 +1,5 @@
 
 
-
-
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
 
@@ -53,6 +51,7 @@ a {
 	-webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
+  outline: none;
 }
 
 a:focus {
@@ -60,6 +59,7 @@ a:focus {
 }
 
 a:hover {
+  outline: none;
 	text-decoration: none;
   color: #a64bf4;
 }
@@ -175,6 +175,7 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 15px;
+  background-image: url("/css/Backgrounds/bg-01.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
