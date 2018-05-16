@@ -170,7 +170,10 @@ app.get('/users/:userid', (req, res) => {
 app.get('/profile', profile.view);
 app.get('/friends', friends.view);
 app.get('/myProfile', myProfile.view);
-app.get('/yourProfile', yourProfile.view);
+app.get('/yourProfile', function(req, res){
+  //res.sendfile(path.join(__dirname+'/views/yourProfile.html'));
+  res.render("/views/yourProfile.html")
+});
 
 
 

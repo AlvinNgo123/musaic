@@ -7,10 +7,10 @@ var templateSourceSingle = document.getElementById('results-template-single').in
     playingCssClass = 'playing',
     audioObject = null;
 
-var access_token = "BQBXlFQeM7_O0CDPHx5vjuk3jDAna0tTPrT-WIaaSgEFgGK_aRSo4d5Pi7nV9DBroyw34jkQbmgJAa9FvquYkW26tcr6bBupL2DDfd9QDzOqrrBbol8ZTF_k1skWZZ0XCbASl0NjddWFedsznqKEFA2p0Xqm7aoT";
+var access_token = "BQCYEXcHdUSI06HdgYZoYBbWgLMJlyjWwEwbt1_SuO05FvBz4F8Dp5erWqvjlDcrP6HWwqEB0-iVbq9zUU34wTUILlKwhIES8NXMfQ3pQQaRTiY1tgZVNkbY356ambUEx3GbA2Y6ynWRWR2gKZV3H4tGr35K1VH1";
 
 var searchTracks = function (query) {
-    console.log("running searchTracks");
+    console.log("running searchTracks");	
 	    $.ajax({
 	        url: 'https://api.spotify.com/v1/search',
 	        headers: {
@@ -21,11 +21,9 @@ var searchTracks = function (query) {
 	            type: 'track'
 	        },
 	        success: function (response) {
-	            
-	            console.log("Response: "+response.tracks.href);
-	            console.log("template"+templateSingle(response));
+	           
 	            resultsPlaceholderSingles.innerHTML = templateSingle(response);
-
+	            console.log("resultsPlaceholderSingles.innerHTML = "+resultsPlaceholderSingles.innerHTML);
 	        }
     });
 };
