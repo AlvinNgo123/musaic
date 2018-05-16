@@ -235,7 +235,7 @@ app.get('/callback', function(req, res) {
             refresh_token = body.refresh_token;
 
         var recentSong = {
-          url: 'https://api.spotify.com/v1/me/player/recently-played',
+          url: 'https://api.spotify.com/v1/me/player/recently-played?before=1525928815663&limit=1',
           headers: { 'Authorization': 'Bearer ' + access_token },
           json: true
         }
@@ -246,7 +246,7 @@ app.get('/callback', function(req, res) {
         });
 
         var topArtists = {
-          url: 'https://api.spotify.com/v1/me/top/artists',
+          url: 'https://api.spotify.com/v1/me/top/artists?limit=1&offset=20',
           headers: { 'Authorization': 'Bearer ' + access_token },
           json: true
         };
