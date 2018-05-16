@@ -7,6 +7,11 @@ h1, h2, h3 {
 	font-family: Poppins-Regular, sans-serif;
 }
 
+body {
+	background-color: #4388ff;
+
+}
+
 .profilePic {
 	width: 150px;
 	height: 150px;
