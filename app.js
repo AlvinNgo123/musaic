@@ -73,6 +73,11 @@ app.use(express.session());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+app.set('views', __dirname + '/views');
+app.engine('html', require('ejs').renderFile);
+
+
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
@@ -170,9 +175,10 @@ app.get('/users/:userid', (req, res) => {
 app.get('/profile', profile.view);
 app.get('/friends', friends.view);
 app.get('/myProfile', myProfile.view);
+
 app.get('/yourProfile', function(req, res){
   //res.sendfile(path.join(__dirname+'/views/yourProfile.html'));
-  res.render("/views/yourProfile.html")
+  res.render("yourProfile.html")
 });
 
 
