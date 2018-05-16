@@ -1,7 +1,7 @@
 <h1>ScreenShots of Latest UI Skeleton</h1> </br>
 
 New Login Page</br>
-![Login Screenshot](hhttps://github.com/AlvinNgo123/musaic/blob/master/images/m5images/NewLogin.JPG)
+![Login Screenshot](https://github.com/AlvinNgo123/musaic/blob/master/images/m5images/NewLogin.JPG)
 
 New HomePage</br>
 ![HomePage Screenshot](https://github.com/AlvinNgo123/musaic/blob/master/images/m5images/MainPage.JPG)
