@@ -181,7 +181,7 @@ app.get('/login', function(req, res) {
   res.cookie(stateKey, state);
 
   // your application requests authorization
-  var scope = 'user-read-private user-read-email user-top-read';
+  var scope = 'user-read-private user-read-email user-top-read user-read-recently-played';
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
@@ -233,6 +233,17 @@ app.get('/callback', function(req, res) {
 
         var access_token = body.access_token,
             refresh_token = body.refresh_token;
+
+        var recentSong = {
+          url: 'https://api.spotify.com/v1/me/player/recently-played',
+          headers: { 'Authorization': 'Bearer ' + access_token },
+          json: true
+        }
+
+        request.get(recentSong, function(error, response, body) {
+          console.log('Should show most recently played song'); //Test
+          console.log(body);
+        });
 
         var topArtists = {
           url: 'https://api.spotify.com/v1/me/top/artists',
