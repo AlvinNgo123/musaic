@@ -151,7 +151,7 @@
 
     <div class="text-center">
       <!-- Trigger/Open The Modal -->
-      <button type="button" class="btn btn-info" id="myBtn">Set Favorite Song</button>
+      <a href="yourProfile"><button type="button" class="btn btn-info" id="myBtn">Set Favorite Song</button></a>
 
       <!-- The Modal -->
       <div id="myModal" class="modal">
@@ -224,9 +224,10 @@
     var span = document.getElementsByClassName("close")[0];
 
     // When the user clicks on the button, open the modal 
-    btn.onclick = function() {
-        modal.style.display = "block";
-    }
+    // btn.onclick = function() {
+    //     // modal.style.display = "block";
+    //     res.render("/yourProfile");
+    // }
 
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {

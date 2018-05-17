@@ -7,7 +7,7 @@ var templateSourceSingle = document.getElementById('results-template-single').in
     playingCssClass = 'playing',
     audioObject = null;
 
-var access_token = "BQCYEXcHdUSI06HdgYZoYBbWgLMJlyjWwEwbt1_SuO05FvBz4F8Dp5erWqvjlDcrP6HWwqEB0-iVbq9zUU34wTUILlKwhIES8NXMfQ3pQQaRTiY1tgZVNkbY356ambUEx3GbA2Y6ynWRWR2gKZV3H4tGr35K1VH1";
+var access_token = "BQA6grauX6jjsVCtJ9dh_0aWZrNHhC2mb1515Bw0bYtw3N2VofvTFtouUD_FELsoJjHiaQTyMiPWyxl3_53oCfL9l1YvagZoJuJfCraDNBdZ95SkfSeH3CFT_dOf9cMWIoE4AuyEvUZrEUzym8vfrTPdn1euc0lV";
 
 var searchTracks = function (query) {
     console.log("running searchTracks");	
@@ -31,7 +31,15 @@ var searchTracks = function (query) {
 	resultsSingle.addEventListener('click', function (e) {
 	    var target = e.target;
 
-	    console.log("printing target: "+target);
+	    console.log("printing target ID: "+target.getAttribute('data-track-id'));
+	      console.log("printing target URL: "+target.getAttribute('data-prev-url'));
+
+	      if(!(target.getAttribute('data-prev-url'))){
+	      	document.getElementById('notPlayingMsg').setAttribute('display', 'block');
+	      }else{
+	      	document.getElementById('notPlayingMsg').setAttribute('display', 'none');
+	      }
+
 	    if (target !== null && target.classList.contains('cover')) {
 	        if (target.classList.contains(playingCssClass)) {
 	            audioObject.pause();
