@@ -263,6 +263,8 @@ app.get('/callback', function(req, res) {
         request.get(topArtists, function(error, response, body) {
           console.log('Goes into top artists'); //Test
           console.log(body);
+          console.log('BELOW IS TOP ARTIST');
+          console.log(body.items[0].name);
         });
 
 
