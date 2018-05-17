@@ -49,7 +49,7 @@
 
   <div class="container">
     <h1>Select Showcased Single</h1>
-    <h1 id="notPlayingMsg" style="display:none"> We're Sorry, this song is not available to preview </h1>
+    <!-- <h1 id="notPlayingMsg" style="display:none"> We're Sorry, this song is not available to preview </h1> -->
     <form id="search-form-single">
         <input type="text" id="query-single" value="" class="form-control" placeholder="Type a Track Name"/>
         <input type="submit" id="search-single" class="btn btn-primary" value="Search" />
@@ -60,7 +60,12 @@
 
 <script id="results-template-single" type="text/x-handlebars-template">
     {{#each tracks.items}}
-        <div style="background-image:url({{album.images.0.url}})" data-track-id="{{id}}"  data-prev-url="{{preview_url}}" class="cover"></div>
+        <div style="background-image:url({{album.images.0.url}})" data-track-id="{{id}}"  data-prev-url="{{preview_url}}" trackName = "{{name}}" artist="{{album.artists.0.name}}"  album="{{album.name}}" class="cover"></div>
+        <h1 id={{id}} style="display:none"> We're Sorry, this song is not available to preview </h1>
+        <p>Name: {{name}}</p>
+        <p>Artist: {{album.artists.0.name}}</p>
+        <p>Album: {{album.name}}</p>
+        <button track="{{name}}" class="song-btn">Set {{name}} as Favorite Song </button> <hr> 
     {{/each}}
 </script>
 <script src="https://code.jquery.com/jquery.js"></script>

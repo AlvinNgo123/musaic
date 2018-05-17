@@ -7,7 +7,8 @@ var templateSourceSingle = document.getElementById('results-template-single').in
     playingCssClass = 'playing',
     audioObject = null;
 
-var access_token = "BQA6grauX6jjsVCtJ9dh_0aWZrNHhC2mb1515Bw0bYtw3N2VofvTFtouUD_FELsoJjHiaQTyMiPWyxl3_53oCfL9l1YvagZoJuJfCraDNBdZ95SkfSeH3CFT_dOf9cMWIoE4AuyEvUZrEUzym8vfrTPdn1euc0lV";
+var access_token = 
+"BQCwI5tJI1NwUgBLWenly_hif_cZ0EyRW7MAUcQHZ4-940rozvR5eMSKoUFa3lat0USLXWQwPRu4kfNLC1uVwfcorbNKJphPqxqZtSx7ZOzBGNw7IEv3KA0al9M_KPVCp11DftxnutDWqNSGa1ocEk2H5p6jMeCg";
 
 var searchTracks = function (query) {
     console.log("running searchTracks");	
@@ -30,17 +31,27 @@ var searchTracks = function (query) {
 
 	resultsSingle.addEventListener('click', function (e) {
 	    var target = e.target;
-
+	    if (target !== null && target.classList.contains('cover')) {
 	    console.log("printing target ID: "+target.getAttribute('data-track-id'));
 	      console.log("printing target URL: "+target.getAttribute('data-prev-url'));
+	      console.log("printing track name: "+target.getAttribute('trackName'));
+	      var id = target.getAttribute('data-track-id');
+		console.log("printing artist: "+target.getAttribute('artist'));
+
+		console.log("printing album: "+target.getAttribute('album'));
+
 
 	      if(!(target.getAttribute('data-prev-url'))){
-	      	document.getElementById('notPlayingMsg').setAttribute('display', 'block');
+	      	console.log("preview not found");
+	      	document.getElementById(id).style.display = "block";
 	      }else{
-	      	document.getElementById('notPlayingMsg').setAttribute('display', 'none');
+	      	// document.getElementById('notPlayingMsg').setAttribute('display', 'none');
+	      		document.getElementById(id).style.display = "none";
 	      }
 
-	    if (target !== null && target.classList.contains('cover')) {
+
+
+	    
 	        if (target.classList.contains(playingCssClass)) {
 	            audioObject.pause();
 	        } else {
@@ -61,7 +72,7 @@ var searchTracks = function (query) {
 	    }
 });
 
-
+	
 
 document.getElementById('search-form-single').addEventListener('submit', function (e) {
     e.preventDefault();
