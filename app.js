@@ -24,7 +24,7 @@ var mainPage = require('./routes/mainPage');
 var profile = require('./routes/profile');
 var friends = require('./routes/friends');
 var myProfile = require('./routes/myProfile');
-var yourProfile = require('./routes/yourProfile');
+var selectSong = require('./routes/selectSong');
 // Example route
 // var user = require('./routes/user');
 
@@ -176,9 +176,9 @@ app.get('/profile', profile.view);
 app.get('/friends', friends.view);
 app.get('/myProfile', myProfile.view);
 
-app.get('/yourProfile', function(req, res){
+app.get('/selectSong', function(req, res){
   //res.sendfile(path.join(__dirname+'/views/yourProfile.html'));
-  res.render("yourProfile.html")
+  res.render("selectSong.html")
 });
 
 
