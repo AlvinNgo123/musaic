@@ -15,9 +15,12 @@ body {
   	background-size: cover;
 }
 
-.profile, .profileText, .profilePic, .userNameText, .songNameText, .transparentBox, .icon, .chatBubble, .chatNumber, .clock, .clockNumber {
+
+
+.searchProfile, .profileBeg {
 	transform: scale(.90);
 }
+
 
 .profile, .searchProfile {
 	margin-bottom: 25px;
