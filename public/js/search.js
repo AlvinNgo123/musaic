@@ -8,7 +8,7 @@ var templateSourceSingle = document.getElementById('results-template-single').in
     audioObject = null;
 
 var access_token = 
-"BQCwI5tJI1NwUgBLWenly_hif_cZ0EyRW7MAUcQHZ4-940rozvR5eMSKoUFa3lat0USLXWQwPRu4kfNLC1uVwfcorbNKJphPqxqZtSx7ZOzBGNw7IEv3KA0al9M_KPVCp11DftxnutDWqNSGa1ocEk2H5p6jMeCg";
+"BQB9tX7qmyjpd7HZtr51NV67CW6B2qkhGN7WT1naNwvVagpCyYQmXs0R3Z5FCNxaWUpoMnzK37DDqjaFWPQe64SIIchv5DxpLGg3RbrmHQ6dSOZyd4D7meWwuj8m296SmhIQ95VCL22goTuxVPuvovM4TG2Oxq8uIQ1dr3Dw_SPccbpvbRm8C9oCJgWPCduQ5BaTJTLk5hHvaBhgWJOZd01ajPQkdj49dFfFeSbH-xona4byj-r864ucFAdGoBZjIzOq7qtCiQ";
 
 var searchTracks = function (query) {
     console.log("running searchTracks");	

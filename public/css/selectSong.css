@@ -1,0 +1,22 @@
+html, body {
+	background-image: url("/css/Backgrounds/bg-01.jpg");
+  	background-repeat: no-repeat;
+  	background-position: center;
+  	background-size: cover;
+}
+
+html, body{
+  padding: 0;
+  margin: 0;
+}
+html{
+  height: 1200%;
+}
+
+body{
+  min-height: 100%;
+}
+
+.btn {
+	margin-bottom: 15px;
+}
