@@ -15,6 +15,10 @@ body {
   	background-size: cover;
 }
 
+.profile, .profileText, .profilePic, .userNameText, .songNameText, .transparentBox, .icon, .chatBubble, .chatNumber, .clock, .clockNumber {
+	transform: scale(.90);
+}
+
 .profile, .searchProfile {
 	margin-bottom: 25px;
 	margin-top: 25px;
@@ -46,7 +50,8 @@ body {
 }
 
 #searchBar {
-	max-width: 75%
+	max-width: 75%;
+	min-width: 415px;
 }
 
 .albumCover {
@@ -61,7 +66,7 @@ body {
 	position: absolute;
 	font-size: 22px;
 	width: 100%;
-	left: 0px;
+	left: -30px;
 	top: 10px;
 }
 
@@ -147,12 +152,12 @@ body {
 .clock {
 	position: absolute;
 	bottom: 20px;
-	left: 350px;
+	left: 330px;
 }
 
 .clockNumber {
 	position: absolute;
-	left: 390px;
+	left: 370px;
 	bottom: 15px;
 	color: black;
 }
