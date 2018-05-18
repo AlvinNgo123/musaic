@@ -83,9 +83,9 @@
         $('#userName' + index).html(name);
         $('#songName' + index).html(users[name].topSong);
         $('#artistName' + index).html(users[name].topSongArtist);
+        $('#pic' + index).attr('src', users[name].image);
         //$('#chatText' + index).html(e.chat);
         //$('#clockText' + index).html(e.time);
-        $('#pic' + index).attr('src', users[name].image);
         index = index + 1;
       });
     }
@@ -103,51 +103,28 @@
         Object.keys(users).forEach((name) => {
           if (users[name].displayName === searchName) {
             console.log("match!");
+            $('#userNameSearch').html(name);
+            $('#songNameSearch').html(users[name].topSong);
+            $('#artistNameSearch').html(users[name].topSongArtist);
+            // $('#chatTextSearch').html(data.chat);
+            // $('#clockTextSearch').html(data.time);
+            $('#picSearch').attr('src', users[name].image);
+            $('.searchProfile').show()
+            $('#searchResult').html('');
             index = index + 1;
-          }
+            } 
+          
         });
-      });
-      // Search button grabs the string in the search bar
-  /*    $('#searchButton').click(() => {
-            console.log("button clicked");
-            const searchName = $('#searchBar').val()
-            const requestURL = 'friend/' + searchName;
-            console.log('making ajax request to:', requestURL);
 
-            $.ajax({
-                 url: requestURL,
-                 type: 'GET',
-                 dataType : 'json', // this URL returns data in JSON format
-                 success: (data) => {
-                 console.log('You received some data!', data);
-                 console.log(searchName);
-
-                 // If there is a name, pull up the user info
-                 if (data.name) {
-                  console.log(data.favSong);
-                   $('.profileBeg').hide();
-                   $('#userNameSearch').html(data.name);
-                   $('#songNameSearch').html(data.favSong);
-                   $('#artistNameSearch').html(data.artist);
-                   $('#chatTextSearch').html(data.chat);
-                   $('#clockTextSearch').html(data.time);
-                   $('#picSearch').attr('src', data.img);
-                   $('.searchProfile').show()
-                   $('#searchResult').html('');
-
-
-                  // Otherwise, return none
-                } else {
+        // Otherwise, return none
+        if (index === 0) {
                   $('#searchResult').html('User not found!!');
                   $('.profileBeg').show();
                   $('.searchProfile').hide();
                   // clear the display
-                }
-              },
-
-            });
-          });
-*/
+        }
+      });
+      
         $('.userNameText').click(() => {
           console.log("Hi");
         });
@@ -188,7 +165,7 @@
 
     <div class="text-center">
       <!-- Trigger/Open The Modal -->
-      <a href="selectSong"><button type="button" class="btn btn-info" id="myBtn">Set Favorite Song</button></a>
+      <a href="selectSong"><button type="button" class="btn btn-info" id="myBtn">Search for a Song</button></a>
 
       <!-- The Modal -->
       <div id="myModal" class="modal">
