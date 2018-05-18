@@ -277,7 +277,11 @@ app.get('/callback', function(req, res) {
           json: true
         };
 
-        
+        var topSongs = {
+          url: 'https://api.spotify.com/v1/me/top/tracks?limit=1&offset=20',
+          headers: { 'Authorization': 'Bearer ' + access_token },
+          json: true
+        };
 
 
         var options = {
@@ -300,12 +304,15 @@ app.get('/callback', function(req, res) {
           console.log(body.images[0].url);
 
           request.get(topArtists, function(error, response, bod) {
-          console.log('Goes into top artists'); //Test
-          console.log(bod);
-          console.log('BELOW IS TOP ARTIST VARIABLE');
-          console.log(bod.items[0].name); 
-        
-          database.ref('users/' + body.display_name).set({image: body.images[0].url, topArtist: bod.items[0].name});
+            console.log('Goes into top artists'); //Test
+            console.log(bod);
+            console.log('BELOW IS TOP ARTIST VARIABLE');
+            console.log(bod.items[0].name); 
+
+            request.get(topSongs, function(error, response, bo) {
+              console.log(bo);
+              database.ref('users/' + body.display_name).set({image: body.images[0].url, topArtist: bod.items[0].name, topSong: bo.items[0].name});
+            });    
           });
 
           id_global = body.id;
