@@ -50,7 +50,7 @@
 
 
 <!-- CONTAINS SEARCH FORM  -->
-  <h1 class="text-center">Set Favorite</h1>
+  <h1 class="text-center">Search Song</h1>
   <div class="container text-center">
     <form id="search-form-single">
         <input type="text" id="query-single" value="" class="form-control" placeholder="Type a Track Name"/>
@@ -64,6 +64,7 @@
 
 
 <!-- CREATES A HANDLEBARS TEMPLATE FOR TRACKS--> 
+<!-- Move this: <button track="{{name}}" class="song-btn btn-info">Set {{name}} as Favorite Song </button> <hr> back into for each loop -->
 <script id="results-template-single" type="text/x-handlebars-template">
     {{#each tracks.items}}
         <div style="background-image:url({{album.images.0.url}})" data-track-id="{{id}}"  data-prev-url="{{preview_url}}" trackName = "{{name}}" artist="{{album.artists.0.name}}"  album="{{album.name}}" class="cover"></div>
@@ -71,7 +72,6 @@
         <p>Name: {{name}}</p>
         <p>Artist: {{album.artists.0.name}}</p>
         <p>Album: {{album.name}}</p>
-        <button track="{{name}}" class="song-btn btn-info">Set {{name}} as Favorite Song </button> <hr> 
     {{/each}}
 
 

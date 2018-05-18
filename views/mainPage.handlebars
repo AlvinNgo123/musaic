@@ -81,10 +81,16 @@
           $('#transparentBoxColor' + index).css("background-color", "#FF4365");
         }
 
-        $('#userName' + index).html(name);
+        $('#userName' + index).html(users[name].displayName);
         $('#songName' + index).html(users[name].topSong);
         $('#artistName' + index).html(users[name].topSongArtist);
-        $('#pic' + index).attr('src', users[name].image);
+        if (users[name].image) {
+          $('#pic' + index).attr('src', users[name].image);
+        }
+
+        else {
+          $('#pic' + index).attr('src', 'css/ProfilePics/userDefault.png');
+        }
         //$('#chatText' + index).html(e.chat);
         //$('#clockText' + index).html(e.time);
         index = index + 1;

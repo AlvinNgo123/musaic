@@ -301,7 +301,7 @@ app.get('/callback', function(req, res) {
 
           console.log(body.display_name);
           console.log('BELOW IS THEIR PROFILE PIC VARIABLE');
-          console.log(body.images[0].url);
+          //console.log(body.images[0].url);
 
           request.get(topArtists, function(error, response, bod) {
             console.log('Goes into top artists'); //Test
@@ -313,7 +313,12 @@ app.get('/callback', function(req, res) {
               console.log(bo);
               console.log('SHOW ARTIST THE SINGS TOP SONG');
               console.log(bo.items[0].artists[0].name); //variable for showing artist that sings top song
-              database.ref('users/' + body.display_name).set({displayName: body.display_name, image: body.images[0].url, topArtist: bod.items[0].name, topSong: bo.items[0].name, topSongArtist: bo.items[0].artists[0].name});
+              try { 
+                database.ref('users/' + body.display_name).set({displayName: body.display_name, image: body.images[0].url, topArtist: bod.items[0].name, topSong: bo.items[0].name, topSongArtist: bo.items[0].artists[0].name});
+              }
+              catch (e) {
+                 database.ref('users/' + body.display_name).set({displayName: body.display_name, image: '' , topArtist: bod.items[0].name, topSong: bo.items[0].name, topSongArtist: bo.items[0].artists[0].name});
+              }
             });    
           });
 
