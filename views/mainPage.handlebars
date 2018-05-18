@@ -61,7 +61,8 @@
         let transparentBoxColor = 'transparentBoxColor' + index;
 
         //Template for Square Boxes
-        newLi.innerHTML = "<div class='col-sm-4 grow profile' id='profile'"+index+"><h3 class='userNameText profileText' id='"+userName+"'></h3><h4 class='songNameText profileText' id='"+songName+"'></h4><h4 class='artistNameText profileText' id='"+artistName+"'></h4><div class='transparentBox text-center' id='"+transparentBoxColor+"'></div><a href='/profile'><img class='profilePic col-sm-2' id='"+pic+"'></a><img class='icon chatBubble' src='css/Icons/chatBubble.png'><h5 class='chatNumber' id='"+chatText+"'></h5><img class='icon clock' src='css/Icons/clock.png'><h5 class='clockNumber' id='"+clockText+"'></h5></div></div>";
+        // <a href='/profile'> reimplement </a> reimplement by wrapping around image
+        newLi.innerHTML = "<div class='col-sm-4 grow profile' id='profile'"+index+"><h3 class='userNameText profileText' id='"+userName+"'></h3><h4 class='songNameText profileText' id='"+songName+"'></h4><h4 class='artistNameText profileText' id='"+artistName+"'></h4><div class='transparentBox text-center' id='"+transparentBoxColor+"'></div><img class='profilePic col-sm-2' id='"+pic+"'><img class='icon chatBubble' src='css/Icons/chatBubble.png'><h5 class='chatNumber' id='"+chatText+"'></h5><img class='icon clock' src='css/Icons/clock.png'><h5 class='clockNumber' id='"+clockText+"'></h5></div></div>";
 
         toAdd.appendChild(newLi);
         index = index +1;
@@ -91,12 +92,13 @@
     }
    });
 
-      index = 0; //reset index
+      
 
       $('.searchProfile').hide(); // Hides search profile template
      
       // Search button grabs the string in the search bar
       $('#searchButton').click(() => {
+        index = 0; //reset index
         console.log("button clicked");
         const searchName = $('#searchBar').val()
         $('.profileBeg').hide();
@@ -118,10 +120,11 @@
 
         // Otherwise, return none
         if (index === 0) {
-                  $('#searchResult').html('User not found!!');
-                  $('.profileBeg').show();
-                  $('.searchProfile').hide();
-                  // clear the display
+            console.log("Could not find user");
+            document.getElementById("searchBar").value = "User not found...Search for another friend";
+            $('.profileBeg').show();
+            $('.searchProfile').hide();
+            // clear the display
         }
       });
       
@@ -161,11 +164,11 @@
 
     <h3 class="text-center">Music Tastes</h3>
 
-    <h4 class="text-center">Favorite Songs</h4>
+    <h4 class="text-center">Top Songs</h4>
 
     <div class="text-center">
       <!-- Trigger/Open The Modal -->
-      <a href="selectSong"><button type="button" class="btn btn-info" id="myBtn">Search for a Song</button></a>
+      <a href="selectSong"><button type="button" class="btn btn-info" id="myBtn">Search For A Song</button></a>
 
       <!-- The Modal -->
       <div id="myModal" class="modal">
@@ -190,7 +193,7 @@
       <div class="row">
         <div class="col-sm-12 text-center">
           <form class="form-inline md-form form-sm active-pink active-pink-2">
-              <input class="form-control form-control-sm" id="searchBar" type="text" placeholder="Search Friend's Name" aria-label="Search">
+              <input class="form-control form-control-sm" id="searchBar" type="text" value="" placeholder="Search Friend's Name" aria-label="Search">
               <button type="button" class="btn btn-info" id="searchButton">Search</button>
           </form>
         </div>
