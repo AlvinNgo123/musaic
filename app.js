@@ -252,6 +252,8 @@ app.get('/callback', function(req, res) {
         request.get(recentSong, function(error, response, body) {
           console.log('Should show most recently played song'); //Test
           console.log(body);
+          console.log('BELOW IS MOST RECENTLY PLAYED SONG VARIABLE');
+          console.log(body.items[0].track.name);
         });
 
         var topArtists = {
@@ -263,8 +265,8 @@ app.get('/callback', function(req, res) {
         request.get(topArtists, function(error, response, body) {
           console.log('Goes into top artists'); //Test
           console.log(body);
-          console.log('BELOW IS TOP ARTIST');
-          console.log(body.items[0].name);
+          console.log('BELOW IS TOP ARTIST VARIABLE');
+          console.log(body.items[0].name); 
         });
 
 
@@ -277,8 +279,13 @@ app.get('/callback', function(req, res) {
         // use the access token to access the Spotify Web API
         request.get(options, function(error, response, body) {
           console.log(body);
-          console.log("EMAIL = "+body.email);
+          console.log('BELOW IS EMAIL VARIABLE')
+          console.log(body.email);
           console.log("DEBUG:  body.id ="+body.id);
+          console.log('BELOW IS NAME OF USER VARIABLE');
+          console.log(body.display_name);
+          //console.log('BELOW IS THEIR PROFILE PIC VARIABLE');
+          //console.log(body.images.url);
 
           id_global = body.id;
 
