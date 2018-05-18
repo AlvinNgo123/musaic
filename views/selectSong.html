@@ -44,9 +44,14 @@
   		</div>
 	</nav>
 
+
+
+
+
+
+
   <h1 class="text-center">Set Favorite</h1>
   <div class="container text-center">
-    <!-- <h1 id="notPlayingMsg" style="display:none"> We're Sorry, this song is not available to preview </h1> -->
     <form id="search-form-single">
         <input type="text" id="query-single" value="" class="form-control" placeholder="Type a Track Name"/>
         <input type="submit" id="search-single" class="btn btn-info" value="Search" />
@@ -55,6 +60,8 @@
 </div>
 
 
+
+<!-- CREATES A HANDLEBARS TEMPLATE FOR TRACKS--> 
 <script id="results-template-single" type="text/x-handlebars-template">
     {{#each tracks.items}}
         <div style="background-image:url({{album.images.0.url}})" data-track-id="{{id}}"  data-prev-url="{{preview_url}}" trackName = "{{name}}" artist="{{album.artists.0.name}}"  album="{{album.name}}" class="cover"></div>
