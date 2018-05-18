@@ -12,79 +12,103 @@
  
   <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
   <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyD3LN58BAvOG8ouHInfEzCKYmbwZI06gec",
-      authDomain: "musaic-1c1c3.firebaseapp.com",
-      databaseURL: "https://musaic-1c1c3.firebaseio.com",
-      projectId: "musaic-1c1c3",
-      storageBucket: "musaic-1c1c3.appspot.com",
-      messagingSenderId: "287286942286"
-    };
-    firebase.initializeApp(config);
-  </script>
+  // Initialize Firebase
+  
+</script>
+
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="/js/bootstrap.js"></script>
 
 
   <script type="text/javascript">
+    // Firebase
+    var config = {
+     apiKey: "AIzaSyD3LN58BAvOG8ouHInfEzCKYmbwZI06gec",
+     authDomain: "musaic-1c1c3.firebaseapp.com",
+     databaseURL: "https://musaic-1c1c3.firebaseio.com",
+     projectId: "musaic-1c1c3",
+     storageBucket: "musaic-1c1c3.appspot.com",
+     messagingSenderId: "287286942286"
+    };
+    firebase.initializeApp(config);
+
+    const database = firebase.database();
+
+    const key = 'users/'; // Gets all users
+
+   database.ref(key).once('value', (snapshot) => {
+    const users = snapshot.val();
+
   $(document).ready(()=>{
    
-   // Loads all profiles that are currently in the database
-      const friendURL = 'friend/';
-      $.ajax({
-                 url: friendURL,
-                 type: 'GET',
-                 dataType : 'json', // this URL returns data in JSON format
-                 success: (data) => {
+    console.log(users);
+    console.log(users.topSong);
 
-                  const toAdd = document.createDocumentFragment();
-                  let index = 0;
+    const toAdd = document.createDocumentFragment();
+    let index = 0;
 
-                  // Goes through the database and creates a square for each person
-                  for (const e of data) {
-                    const newLi = document.createElement('div');
-                    let userName = 'userName' + index;
-                    let songName = 'songName' + index;
-                    let artistName = 'artistName' + index;
-                    let pic = 'pic' + index;
-                    let chatText = 'chatText' + index;
-                    let clockText = 'clockText' + index;
-                    let transparentBoxColor = 'transparentBoxColor' + index;
+    if (users) {
+      //Loops through all users
+      Object.keys(users).forEach((name) => {
+        const newLi = document.createElement('div');
 
-                    // HTML template being added for each user 
-                    newLi.innerHTML = "<div class='col-sm-4 grow profile'><h3 class='userNameText profileText' id='"+userName+"'></h3><h4 class='songNameText profileText' id='"+songName+"'></h4><h4 class='artistNameText profileText' id='"+artistName+"'></h4><div class='transparentBox text-center' id='"+transparentBoxColor+"'></div><a href='/profile'><img class='profilePic col-sm-2' id='"+pic+"'></a><img class='icon chatBubble' src='css/Icons/chatBubble.png'><h5 class='chatNumber' id='"+chatText+"'></h5><img class='icon clock' src='css/Icons/clock.png'><h5 class='clockNumber' id='"+clockText+"'></h5></div></div>";
+        let userName = 'userName' + index;
+        let songName = 'songName' + index;
+        let artistName = 'artistName' + index;
+        let pic = 'pic' + index;
+        let chatText = 'chatText' + index;
+        let clockText = 'clockText' + index;
+        let transparentBoxColor = 'transparentBoxColor' + index;
 
-                    toAdd.appendChild(newLi);
-                    index = index + 1;
-                 }
-                 // Adds all the squares into the HTML
-                 document.getElementById('allProfiles').appendChild(toAdd); 
+        //Template for Square Boxes
+        newLi.innerHTML = "<div class='col-sm-4 grow profile' id='profile'"+index+"><h3 class='userNameText profileText' id='"+userName+"'></h3><h4 class='songNameText profileText' id='"+songName+"'></h4><h4 class='artistNameText profileText' id='"+artistName+"'></h4><div class='transparentBox text-center' id='"+transparentBoxColor+"'></div><a href='/profile'><img class='profilePic col-sm-2' id='"+pic+"'></a><img class='icon chatBubble' src='css/Icons/chatBubble.png'><h5 class='chatNumber' id='"+chatText+"'></h5><img class='icon clock' src='css/Icons/clock.png'><h5 class='clockNumber' id='"+clockText+"'></h5></div></div>";
 
-                 index = 0; //reset index
+        toAdd.appendChild(newLi);
+        index = index +1;
 
-                 // Gets info from the database to fill in the newly created squares
-                 for (const e of data) {
-                  if (index % 2 === 1) {
-                    $('#transparentBoxColor' + index).css("background-color", "#FF4365");
-                  }
+        console.log(users[name].topSong);
+      });
 
-                  $('#userName' + index).html(e.name);
-                  $('#songName' + index).html(e.favSong);
-                  $('#artistName' + index).html(e.artist);
-                  $('#chatText' + index).html(e.chat);
-                  $('#clockText' + index).html(e.time);
-                  $('#pic' + index).attr('src', e.img);
-                  index = index + 1;
-                 }
-               },
-      }); 
+      // Adds all the squares into the HTML
+      document.getElementById('allProfiles').appendChild(toAdd); 
 
+      index = 0; //reset index
+
+      // Gets info from the database to fill in the newly created squares
+      Object.keys(users).forEach((name) => {
+        if (index % 2 === 1) {
+          $('#transparentBoxColor' + index).css("background-color", "#FF4365");
+        }
+
+        $('#userName' + index).html(name);
+        $('#songName' + index).html(users[name].topSong);
+        $('#artistName' + index).html(users[name].topSongArtist);
+        //$('#chatText' + index).html(e.chat);
+        //$('#clockText' + index).html(e.time);
+        $('#pic' + index).attr('src', users[name].image);
+        index = index + 1;
+      });
+    }
+   });
+
+      index = 0; //reset index
 
       $('.searchProfile').hide(); // Hides search profile template
-
+     
       // Search button grabs the string in the search bar
       $('#searchButton').click(() => {
+        console.log("button clicked");
+        const searchName = $('#searchBar').val()
+        $('.profileBeg').hide();
+        Object.keys(users).forEach((name) => {
+          if (users[name].displayName === searchName) {
+            console.log("match!");
+            index = index + 1;
+          }
+        });
+      });
+      // Search button grabs the string in the search bar
+  /*    $('#searchButton').click(() => {
             console.log("button clicked");
             const searchName = $('#searchBar').val()
             const requestURL = 'friend/' + searchName;
@@ -123,12 +147,12 @@
 
             });
           });
-
+*/
         $('.userNameText').click(() => {
           console.log("Hi");
         });
 
-    });
+    }); 
   </script>
 </head>
 
