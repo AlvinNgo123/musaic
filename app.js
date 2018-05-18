@@ -2,7 +2,22 @@
  * Module dependencies.
  */
 
+/* Firebase Code */
+var firebase = require('firebase');
 
+var config = {
+    apiKey: "AIzaSyD3LN58BAvOG8ouHInfEzCKYmbwZI06gec",
+    authDomain: "musaic-1c1c3.firebaseapp.com",
+    databaseURL: "https://musaic-1c1c3.firebaseio.com",
+    projectId: "musaic-1c1c3",
+    storageBucket: "musaic-1c1c3.appspot.com",
+    messagingSenderId: "287286942286"
+  };
+
+firebase.initializeApp(config);
+
+const database = firebase.database();
+// ------- //
 
 var express = require('express');
 var http = require('http');
@@ -267,6 +282,7 @@ app.get('/callback', function(req, res) {
           console.log(body);
           console.log('BELOW IS TOP ARTIST VARIABLE');
           console.log(body.items[0].name); 
+          database.ref('users/Nathan').set({topArtist: body.items[0].name});
         });
 
 

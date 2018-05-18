@@ -17,6 +17,8 @@
     "ejs": "^2.6.1",
     "express": "3.x",
     "express3-handlebars": "*",
+    "firebase": "^5.0.3",
+    "firebase-admin": "^5.12.1",
     "mongodb": "*",
     "mongoose": "*",
     "querystring": "~0.2.0",
