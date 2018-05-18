@@ -277,13 +277,7 @@ app.get('/callback', function(req, res) {
           json: true
         };
 
-        request.get(topArtists, function(error, response, body) {
-          console.log('Goes into top artists'); //Test
-          console.log(body);
-          console.log('BELOW IS TOP ARTIST VARIABLE');
-          console.log(body.items[0].name); 
-          database.ref('users/Nathan').set({topArtist: body.items[0].name});
-        });
+        
 
 
         var options = {
@@ -299,9 +293,20 @@ app.get('/callback', function(req, res) {
           console.log(body.email);
           console.log("DEBUG:  body.id ="+body.id);
           console.log('BELOW IS NAME OF USER VARIABLE');
+
+
           console.log(body.display_name);
           console.log('BELOW IS THEIR PROFILE PIC VARIABLE');
           console.log(body.images[0].url);
+
+          request.get(topArtists, function(error, response, bod) {
+          console.log('Goes into top artists'); //Test
+          console.log(bod);
+          console.log('BELOW IS TOP ARTIST VARIABLE');
+          console.log(bod.items[0].name); 
+        
+          database.ref('users/' + body.display_name).set({image: body.images[0].url, topArtist: bod.items[0].name});
+          });
 
           id_global = body.id;
 
