@@ -252,8 +252,8 @@ app.get('/callback', function(req, res) {
         request.get(recentSong, function(error, response, body) {
           console.log('Should show most recently played song'); //Test
           console.log(body);
-          console.log('BELOW IS MOST RECENTLY PLAYED SONG VARIABLE');
-          console.log(body.items[0].track.name);
+          //console.log('BELOW IS MOST RECENTLY PLAYED SONG VARIABLE');
+          //console.log(body.items[0].track.name);
         });
 
         var topArtists = {
