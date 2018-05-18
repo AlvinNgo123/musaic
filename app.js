@@ -284,8 +284,8 @@ app.get('/callback', function(req, res) {
           console.log("DEBUG:  body.id ="+body.id);
           console.log('BELOW IS NAME OF USER VARIABLE');
           console.log(body.display_name);
-          //console.log('BELOW IS THEIR PROFILE PIC VARIABLE');
-          //console.log(body.images.url);
+          console.log('BELOW IS THEIR PROFILE PIC VARIABLE');
+          console.log(body.images[0].url);
 
           id_global = body.id;
 
