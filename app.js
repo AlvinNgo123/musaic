@@ -311,7 +311,9 @@ app.get('/callback', function(req, res) {
 
             request.get(topSongs, function(error, response, bo) {
               console.log(bo);
-              database.ref('users/' + body.display_name).set({image: body.images[0].url, topArtist: bod.items[0].name, topSong: bo.items[0].name});
+              console.log('SHOW ARTIST THE SINGS TOP SONG');
+              console.log(bo.items[0].artists[0].name); //variable for showing artist that sings top song
+              database.ref('users/' + body.display_name).set({image: body.images[0].url, topArtist: bod.items[0].name, topSong: bo.items[0].name, topSongArtist: bo.items[0].artists[0].name});
             });    
           });
 
