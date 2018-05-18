@@ -8,7 +8,7 @@ var templateSourceSingle = document.getElementById('results-template-single').in
     audioObject = null;
 
 var access_token = 
-"BQDaeSY1cr2phwut4daiWHjVuj-vp_uPlpzdATmFs-vLg_0lXX2a_xytXZsUK95YqVvvDYJXLwpI9DYJzcAg8M3DkhA1iq_UVyzTT5xYe8uvoHudIQYpvBjyOFPH5OmYmTMQjuqYlmqj_8UgC_2aTyZ6JT6ObepxtcTHWhslotzJO6eIMIJoXS2x4dRWPgfF4lSvkWtb-omLGYbZyqgqsXbZ3BCBLwGRgGi-5wUL4EZP8n3RaUlbkPb1CwpY2jp3G2R_I6gK0Q";
+"BQAMmXsE8D1R0-uxiEEjs0laUzTCXM_b0QSLGmmACP3JCssIybix4CGMiyFQFN4UJfrgc-gtumzwVb96ea_Qr40Kbvxo8koGWEgNXzyQ7H7yXR6pbt-Z4eRddb8K29HDB4Zt8YXbkFCaBavNkYR95OncqLrOlFub";
 
 
 
@@ -29,10 +29,16 @@ var searchTracks = function (query) {
 	            q: query,
 	            type: 'track'
 	        },
+
+	        //response is the data received from spotify
 	        success: function (response) {
 	           
 	           //uses the handlebars template to show each song on the selectSong page based on the response received
 	            resultsPlaceholderSingles.innerHTML = templateSingle(response);
+
+
+
+
 	            console.log("resultsPlaceholderSingles.innerHTML = "+resultsPlaceholderSingles.innerHTML);
 	        }
     });
@@ -72,6 +78,7 @@ var searchTracks = function (query) {
 
 
 	    	
+	    	//Creates audio object and plays
 	        if (target.classList.contains(playingCssClass)) {
 	            audioObject.pause();
 	        } else {
@@ -101,5 +108,7 @@ var searchTracks = function (query) {
 //search results
 document.getElementById('search-form-single').addEventListener('submit', function (e) {
     e.preventDefault();
+
+    //runs searchTracks with the user's search input
     searchTracks(document.getElementById('query-single').value);
 }, false);
