@@ -11,10 +11,6 @@
   <link href="css/searchbar.css" rel="stylesheet">
  
   <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
-  <script>
-  // Initialize Firebase
-  
-</script>
 
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="/js/bootstrap.js"></script>
@@ -62,7 +58,7 @@
 
         //Template for Square Boxes
         // <a href='/profile'> reimplement </a> reimplement by wrapping around image
-        newLi.innerHTML = "<div class='col-sm-4 grow profile' id='profile'"+index+"><h3 class='userNameText profileText' id='"+userName+"'></h3><h4 class='songNameText profileText' id='"+songName+"'></h4><h4 class='artistNameText profileText' id='"+artistName+"'></h4><div class='transparentBox text-center' id='"+transparentBoxColor+"'></div><img class='profilePic col-sm-2' id='"+pic+"'><img class='icon chatBubble' src='css/Icons/chatBubble.png'><h5 class='chatNumber' id='"+chatText+"'></h5><img class='icon clock' src='css/Icons/clock.png'><h5 class='clockNumber' id='"+clockText+"'></h5></div></div>";
+        newLi.innerHTML = "<div class='col-sm-4 grow profile' id='profile'"+index+"><div class='transparentBox' id='"+transparentBoxColor+"'><h3 class='userNameText profileText' id='"+userName+"'></h3><h4 class='songNameText profileText' id='"+songName+"'></h4><h4 class='artistNameText profileText' id='"+artistName+"'></h4></div><img class='profilePic col-sm-2' id='"+pic+"'><img class='icon chatBubble' src='css/Icons/chatBubble.png'><h5 class='chatNumber' id='"+chatText+"'></h5><img class='icon clock' src='css/Icons/clock.png'><h5 class='clockNumber' id='"+clockText+"'></h5></div></div>";
 
         toAdd.appendChild(newLi);
         index = index +1;
@@ -77,13 +73,9 @@
 
       // Gets info from the database to fill in the newly created squares
       Object.keys(users).forEach((name) => {
-
-        //Color changer
         if (index % 2 === 1) {
           $('#transparentBoxColor' + index).css("background-color", "#FF4365");
         }
-
-
 
         $('#userName' + index).html(users[name].displayName);
         $('#songName' + index).html(users[name].topSong);
@@ -100,7 +92,6 @@
         index = index + 1;
       });
     }
-
    });
 
       
@@ -142,19 +133,6 @@
         $('.userNameText').click(() => {
           console.log("Hi");
         });
-
-        //Overflow check
-        $('.songNameText').hover(() => {
-          console.log($(this).attr('id'));
-          //$('.songNameText').css("background-color", "#4388ff");
-
-          console.log("hover");
-          console.log(document.getElementsByClassName('songNameText')[0].scrollWidth);
-          console.log(document.getElementsByClassName('songNameText')[0].offsetWidth);
-
-          console.log(document.getElementsByClassName('transparentBox')[0].offsetWidth);
-        });
-        
 
     }); 
   </script>
@@ -224,17 +202,16 @@
       </div>
     </div>
 
-<!-- Idk what this is for -Nathan
   <div class="container-fluid text-center">
       <div class="row">
         <div id="searchResult" class="col-sm-2"></div>
         <a href="/profile"><img id="searchImage" class="profilePic" src=""></a>
       </div>
-  </div> -->
+  </div>
 
     <!-- Div that holds all the profiles in the beginning -->
-    <div class="container-fluid" id="allProfiles">
-      <div class="profileBeg row">
+    <div class="container-fluid">
+      <div class="profileBeg row" id="allProfiles">
       </div>
     </div>
 

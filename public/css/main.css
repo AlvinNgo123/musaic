@@ -15,9 +15,10 @@ body {
   	background-size: cover;
 }
 
-.searchProfile, .profileBeg {
-	transform: scale(.90);
-}
+ .searchProfile, .profileBeg, #allProfiles {
+	transform: scale(.80);
+
+} 
 
 .profile, .searchProfile {
 	margin-bottom: 25px;
@@ -65,34 +66,60 @@ body {
 .userNameText {
 	position: absolute;
 	font-size: 22px;
-	width: 100%;
+	width: 45%;
 	left: 0px;
 	top: 10px;
 }
 
 .songNameText {
 	position: absolute;
-	width: 100%;
+	width: 45%;
+	height: 12%;
 	left: 0px;
 	top: 65px;
 	font-size: 20px;
 	text-decoration: underline;
+	overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.songNameText:hover {
+	overflow: visible; 
+    white-space: normal; 
+    width: auto;
+    display: block;
+    width: 45%;
+    height: 60%;
+    background: #4388ff;
+    z-index: 2;
+    
 }
 
 .artistNameText {
 	position: absolute;
-	width: 100%;
+	width: 45%;
 	left: 0px;
 	top: 100px;
 	text-decoration: underline;
 	font-size: 16px;
+
+}
+
+.songNameText:after{
+
 }
 
  .transparentBox {
 	background-color: #4388ff;
 	/* Previous Color: 08b2e3; */
-	width: 300px;
+	/* width: 350px;
 	height: 200px;
+	
+	width: 20vw;
+	height: 13vw; */
+
+	width: 75%;
 	bottom: 0px;
 	left: 0px;
 	top: 0px;
@@ -102,6 +129,12 @@ body {
 	margin-right: auto;
 	margin-top: auto;
 	z-index: -1;
+}
+
+.box {
+	width: 25%;
+	height: 25%;
+	background-color: white;
 }
 
 .odd {
@@ -128,7 +161,7 @@ body {
 }
 
 .grow:hover { 
-	transform: scale(1.1); 
+	transform: scale(1.05); 
 }
 
 .icon {
@@ -203,6 +236,7 @@ body {
     text-decoration: none;
     cursor: pointer;
 }
+
 
 
 
