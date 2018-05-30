@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+
+  <link rel="stylesheet" type="text/css" href="css/search.css">
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/bootstrap-theme.css" rel="stylesheet">
+
+	<link href="css/navbar.css" rel="stylesheet">
+
+	<link href="css/searchbar.css" rel="stylesheet">
+
+  	
+   
+
+
+	<title>Your Profile</title>
+</head>
+<body>
+<h1>Your Profile</h1>
+
+ <!-- Hamburger Menu -->
+	<nav role="navigation">
+		<div id="menuToggle">
+   	 		<!-- A fake / hidden checkbox is used as click reciever, so you can use the :checked selector on it.-->
+ 	   		
+ 	   		<input type="checkbox" />
+    
+ 	   		<!--Some spans to act as a hamburger.-->
+  	  		<span></span>
+  	  		<span></span>
+  	  		<span></span>
+   	  		<ul id="menu">
+   	   			<a href="mainPage"><li>Home</li></a>
+   	   			<a href="friends"><li>Friends</li></a>
+  	    		<!-- <a href="myProfile"><li>My Profile</li></a> -->
+  	    		<!-- <a href="#"><li>Settings</li></a> -->
+            <a href="/"><li>Sign Out</li></a>
+   			</ul>
+  		</div>
+	</nav>
+
+
+  <div class="container">
+    <h1>Select Showcased Single</h1>
+    <form id="search-form-single">
+        <input type="text" id="query-single" value="" class="form-control" placeholder="Type a Track Name"/>
+        <input type="submit" id="search-single" class="btn btn-primary" value="Search" />
+    </form>
+    <div id="resultsSingle"></div>
+</div>
+
+
+<script id="results-template-single" type="text/x-handlebars-template">
+    {{#each tracks.items}}
+        <div style="background-image:url({{album.images.0.url}})" data-track-id="{{id}}"  data-prev-url="{{preview_url}}" class="cover"></div>
+    {{/each}}
+</script>
+<script src="https://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+ <script type="text/javascript" src="js/search.js"></script>
+
+
+	
+</body>
+</html>
