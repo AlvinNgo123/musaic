@@ -1,0 +1,26 @@
+@font-face {
+  font-family: Poppins-Regular;
+  src: url('../fonts/poppins/Poppins-Regular.ttf'); 
+}
+
+h1, h2, h3 {
+	font-family: Poppins-Regular, sans-serif;
+}
+
+body {
+	background-image: url("/css/Backgrounds/bg-01.jpg");
+  	background-repeat: no-repeat;
+  	background-position: center;
+  	background-size: cover;
+}
+
+.profilePic {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+}
+
+.friends {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
