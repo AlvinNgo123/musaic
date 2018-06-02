@@ -13,6 +13,7 @@ var access_token =
 
 
 
+
 //TAKES THE USER'S INPUT AND SENDS IT AS A QUERY TO SPOTIFY TO SEARCH FOR TRACKS WITH THAT NAME
 var searchTracks = function (query) {
     console.log("running searchTracks");	
