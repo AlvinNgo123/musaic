@@ -26,6 +26,10 @@ body {
 
 .profileText {
 	margin-left: 250px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+
 }
 
 #searchImage{
@@ -65,14 +69,14 @@ body {
 .userNameText {
 	position: absolute;
 	font-size: 22px;
-	width: 100%;
+	width: 45%;
 	left: 0px;
 	top: 10px;
 }
 
 .songNameText {
 	position: absolute;
-	width: 100%;
+	width: 45%;
 	left: 0px;
 	top: 65px;
 	font-size: 20px;
@@ -81,7 +85,7 @@ body {
 
 .artistNameText {
 	position: absolute;
-	width: 100%;
+	width: 45%;
 	left: 0px;
 	top: 100px;
 	text-decoration: underline;
@@ -91,7 +95,7 @@ body {
  .transparentBox {
 	background-color: #4388ff;
 	/* Previous Color: 08b2e3; */
-	width: 300px;
+	width: 350px;
 	height: 200px;
 	bottom: 0px;
 	left: 0px;
