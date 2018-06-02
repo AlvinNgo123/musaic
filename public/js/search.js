@@ -7,9 +7,10 @@ var templateSourceSingle = document.getElementById('results-template-single').in
     playingCssClass = 'playing',
     audioObject = null;
 
-var access_token = 
-"BQCHiLbi_S-4eoqDr6Z3VIfHOGMtVl6-viUmnHL689_0eje4DCIG9RavWurhuTX880-cqszD8NqiooohxPTKYARqjn2vwhuqYjQRMiUB-Cd_-LIUhP0WnQzD3CBMWZVpbL_bwYzATbmDCADKdxTzSIB7Q2NkuXXwX1jcKlUVMvPgZbejU4RHa-2XHGdQ1VQw9LGNIOia_g7NI10KFsfBBrMQEbnvwADQzzQofUZ1ksCeL9usXXMsPwMYQXFA-N6g-6G26uqeIg";
+    console.log("SESSION TOKEN = "+"<%=sess_access_token%>");
 
+var access_token = "<%=sess_access_token%>",
+    id = "<%=sess_id%>";
 
 
 

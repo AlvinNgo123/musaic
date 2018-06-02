@@ -20,6 +20,7 @@ const database = firebase.database();
 // ------- //
 
 var express = require('express');
+var expressSession = require('express-session');
 var http = require('http');
 var path = require('path');
 var handlebars = require('express3-handlebars');
@@ -100,7 +101,7 @@ if ('development' == app.get('env')) {
 
 
 app.use(bodyParser.urlencoded({extended: true})); 
-
+app.use(expressSession({secret: "npminstall", saveUninitialized: false, resave: false}));
 
 app.get('/', login.view);
 app.get('/mainPage', mainPage.view);
@@ -193,7 +194,12 @@ app.get('/myProfile', myProfile.view);
 
 app.get('/selectSong', function(req, res){
   //res.sendfile(path.join(__dirname+'/views/yourProfile.html'));
-  res.render("selectSong.html")
+  res.render("selectSong.html", { 
+    sess_id: req.session.id,
+    sess_access_token: req.session.access_token,
+    sess_refresh_token: req.session.refresh_token,
+    sess_display_name: req.session.display_name
+  });
 });
 
 
@@ -257,6 +263,10 @@ app.get('/callback', function(req, res) {
 
         var access_token = body.access_token,
             refresh_token = body.refresh_token;
+
+        req.session.access_token = access_token;
+        req.session.refresh_token = refresh_token;
+
 
         var recentSong = {
           url: 'https://api.spotify.com/v1/me/player/recently-played?before=1525928815663&limit=1',
@@ -323,6 +333,15 @@ app.get('/callback', function(req, res) {
           });
 
           id_global = body.id;
+
+           req.session.id = body.id;
+
+           if(body.display_name)
+          req.session.display_name = body.display_name;
+          else{
+          req.session.display_name = "Hunter Lai";
+          body.display_name = req.session.display_name;
+         }
 
           console.log('successfully created the users table in musaic.db');
 
@@ -442,6 +461,8 @@ app.get('/refresh_token', function(req, res) {
 
   // requesting access token from refresh token
   var refresh_token = req.query.refresh_token;
+  req.session.refresh_token = req.query.refresh_token;
+
   var authOptions = {
     url: 'https://accounts.spotify.com/api/token',
     headers: { 'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64')) },
