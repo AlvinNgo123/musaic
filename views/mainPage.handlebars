@@ -112,7 +112,7 @@
         index = 0; //reset index
         console.log("button clicked");
         const searchName = $('#searchBar').val()
-        $('.profileBeg').hide();
+        $('#allProfiles').hide();
         Object.keys(users).forEach((name) => {
           if (users[name].displayName === searchName) {
             console.log("match!");
@@ -133,7 +133,8 @@
         if (index === 0) {
             console.log("Could not find user");
             document.getElementById("searchBar").value = "User not found...Search for another friend";
-            $('.profileBeg').show();
+            $("#searchBar").text("").css("color", "white");
+            $('#allProfiles').show();
             $('.searchProfile').hide();
             // clear the display
         }
@@ -176,7 +177,7 @@
   	  		<span></span>
    	  		<ul id="menu">
    	   			<a href="#" id="active"><li>Home</li></a>
-   	   			<a href="friends"><li>Friends</li></a>
+   	   			<!--<a href="friends"><li>Community</li></a> -->
   	    		<!-- <a href="myProfile"><li>My Profile</li></a> -->
   	    		<!-- <a href="#"><li>Settings</li></a> -->
             <a href="/"><li>Sign Out</li></a>
@@ -187,8 +188,6 @@
     <h1 class="text-center">Musaic</h1>
 
     <h3 class="text-center">Music Tastes</h3>
-
-    <h4 class="text-center">Top Songs</h4>
 
     <div class="text-center">
       <!-- Trigger/Open The Modal -->
@@ -204,6 +203,8 @@
           </div>
       </div>
     </div>  
+
+
 
    <!--
     <div class="text-center">
@@ -224,13 +225,13 @@
       </div>
     </div>
 
-<!-- Idk what this is for -Nathan
+    <h2 class="text-center">Top Songs</h2>
+
   <div class="container-fluid text-center">
       <div class="row">
         <div id="searchResult" class="col-sm-2"></div>
         <a href="/profile"><img id="searchImage" class="profilePic" src=""></a>
       </div>
-  </div> -->
 
     <!-- Div that holds all the profiles in the beginning -->
     <div class="container-fluid" id="allProfiles">
