@@ -162,7 +162,11 @@
           console.log(document.getElementsByClassName('transparentBox')[0].offsetWidth); */
         });
 
+        let playingCssClass = 'playing';
+        let audioObject = null;
         $('.songNameText').click((e) => {
+
+
 
           var target = e.target;
           console.log(target);
@@ -171,11 +175,30 @@
           console.log(target.innerHTML);
           console.log("Preview URL = "+target.getAttribute('data-prev_url')); 
 
+
+          if (target.classList.contains(playingCssClass)) {
+              audioObject.pause();
+          } else {
+              if (audioObject) {
+                  audioObject.pause();
+              }
+
           audioObject = new Audio(target.getAttribute('data-prev_url'));
           audioObject.play();
 
+          target.classList.add(playingCssClass);
 
-        });
+
+          audioObject.addEventListener('ended', function () {
+              target.classList.remove(playingCssClass);
+          });
+          audioObject.addEventListener('pause', function () {
+               target.classList.remove(playingCssClass);
+          });
+
+
+        }
+      });
         
 
     }); 
