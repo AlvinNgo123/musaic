@@ -152,14 +152,14 @@
 
         //Overflow check
         $('.songNameText').hover(() => {
-          console.log($(this).attr('id'));
+        /*  console.log($(this).attr('id'));
           //$('.songNameText').css("background-color", "#4388ff");
 
           console.log("hover");
           console.log(document.getElementsByClassName('songNameText')[0].scrollWidth);
           console.log(document.getElementsByClassName('songNameText')[0].offsetWidth);
 
-          console.log(document.getElementsByClassName('transparentBox')[0].offsetWidth);
+          console.log(document.getElementsByClassName('transparentBox')[0].offsetWidth); */
         });
 
         $('.songNameText').click((e) => {
@@ -169,7 +169,7 @@
           console.log("Song Name Clicked");
           console.log("ID: "+target.id);
           console.log(target.innerHTML);
-          console.log("Preview URL = "+target.getAttribute('data-prev_url'));
+          console.log("Preview URL = "+target.getAttribute('data-prev_url')); 
 
           audioObject = new Audio(target.getAttribute('data-prev_url'));
           audioObject.play();
