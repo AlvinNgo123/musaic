@@ -11,6 +11,72 @@
 
  	<script src="https://code.jquery.com/jquery.js"></script>
   	<script src="/js/bootstrap.js"></script>
+
+  	<script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
+  
+  	<script type="text/javascript">
+  		// Firebase
+     	var config = {
+     	apiKey: "AIzaSyD3LN58BAvOG8ouHInfEzCKYmbwZI06gec",
+     	authDomain: "musaic-1c1c3.firebaseapp.com",
+     	databaseURL: "https://musaic-1c1c3.firebaseio.com",
+     	projectId: "musaic-1c1c3",
+     	storageBucket: "musaic-1c1c3.appspot.com",
+     	messagingSenderId: "287286942286"
+    	};
+    	firebase.initializeApp(config);
+
+    	const database = firebase.database();
+
+    	const key = 'users/'; // Gets all users
+
+    	database.ref(key).once('value', (snapshot) => {
+    		const users = snapshot.val();
+
+    		$(document).ready(() => {
+    			console.log(users);
+
+    			const toAdd = document.createDocumentFragment();
+    			let index = 0;
+
+    			if (users) {
+    				Object.keys(users).forEach((name) => {
+    					const newLi = document.createElement('div');
+
+
+    					let userName = 'userName' + index;
+    					let pic = 'pic' + index;
+
+    					//Insert template for images into our HTML
+    					newLi.innerHTML = "<div class='friends col-sm-3'><img class='profilePic img-responsive center-block' id='"+pic+"'><h3 id='"+userName+"''></h3></div>";
+
+
+    					//Add to constant toAdd so we can add all at once
+    					toAdd.appendChild(newLi);
+    					index = index + 1;
+    				});
+
+    				// Add all user and pictures into the HTML
+    				document.getElementById("allProfiles").appendChild(toAdd);
+    			
+    				index = 0
+
+    				// Populate the template with each user
+    				Object.keys(users).forEach((name)=> {
+    					$('#userName' + index).html(users[name].displayName);
+    					try {
+    						$('#pic' + index).attr('src', users[name].image);
+    					} catch (e) {
+    						$('#pic' + index).attr('src', 'css/ProfilePics/userDefault.png');
+
+    					}
+    					index = index + 1;
+    				});
+    			}
+    		});
+    	});
+
+  	</script>
 </head>
 
 <body>
@@ -35,62 +101,13 @@
   		</div>
 	</nav>
 
-	<h1 class="text-center">Friends</h1>
+	<h1 class="text-center">Community</h1>
 
-	<div class="container-fluid text-center">
+	<!-- Template for users -->
+	<div class="container-fluid text-center" id="allProfiles">
 		<div class="row">
-			<div class="friends col-sm-3">
-				<img class="profilePic img-responsive center-block" src="css/ProfilePics/Alvin.jpg">
-				<h3>Alvin Ngo</h3>
-			</div>
-			
-			<div class="friends col-sm-3">
-				<img class="profilePic img-responsive center-block" src="css/ProfilePics/Hunter.jpg">
-				<h3>Hunter Lai</h3>
-			</div>
-
-			<div class="friends col-sm-3">
-				<img class="profilePic img-responsive center-block" src="css/ProfilePics/Jason.jpg">
-				<h3>Jason Liu</h3>
-			</div>
-
-			<div class="friends col-sm-3">
-				<img class="profilePic img-responsive center-block" src="css/ProfilePics/Justin.jpg">
-				<h3>Justin Wu</h3>
-			</div>
-
 		</div>
-
-	<div class="row">
-			<div class="friends col-sm-3">
-				<img class="profilePic img-responsive center-block" src="css/ProfilePics/Kenneth.jpg">
-				<h3>Kenneth Truong</h3>
-			</div>
-			
-			<div class="friends col-sm-3">
-				<img class="profilePic img-responsive center-block" src="css/ProfilePics/Luis.jpg">
-				<h3>Luis Lu</h3>
-			</div>
-
-			<div class="friends col-sm-3">
-				<img class="profilePic img-responsive center-block" src="css/ProfilePics/Nathan.jpg">
-				<h3>Nathan Mansur</h3>
-			</div>
-
-			<div class="friends col-sm-3">
-				<img class="profilePic img-responsive center-block" src="css/ProfilePics/Nessa.jpg">
-				<h3>Nessa Vu</h3>
-			</div>
 	</div>
-
-	<div class="row">
-			<div class="friends col-sm-3">
-				<img class="profilePic img-responsive center-block" src="css/ProfilePics/Victoria.jpg">
-				<h3>Victoria Vu</h3>
-			</div>
-	</div>
-
-</div>
-
+	
 </body>
 </html>
