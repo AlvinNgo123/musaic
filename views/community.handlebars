@@ -77,6 +77,33 @@
     					index = index + 1;
     				});
     			}
+
+          $('#searchButton').click(() => {
+            index = 0; //reset index
+            console.log("button clicked");
+            const searchName = $('#searchBar').val()
+            $('#allProfiles').hide();
+              Object.keys(users).forEach((name) => {
+              if (users[name].displayName === searchName) {
+                console.log("match!");
+              } 
+              index = index + 1;
+
+          
+        });
+
+        // Otherwise, return none
+        if (index === 0) {
+            console.log("Could not find user");
+            document.getElementById("searchBar").value = "User not found...Search for another friend";
+            $("#searchBar").text("").css("color", "white");
+            $('#allProfiles').show();
+            $('.searchProfile').hide();
+            // clear the display
+        }
+      });
+
+
     		});
     	});
 
