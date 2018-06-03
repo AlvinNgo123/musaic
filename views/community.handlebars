@@ -9,6 +9,8 @@
 	<link href="css/navbar.css" rel="stylesheet">
  	<link href="css/community.css" rel="stylesheet">
   <link href="css/searchbar.css" rel="stylesheet">
+    <link href="css/modal.css" rel="stylesheet">
+
 
 
  	<script src="https://code.jquery.com/jquery.js"></script>
@@ -95,15 +97,38 @@
                 found = true;
               }
               index = index + 1;
-        });
+              });
 
-        // Otherwise, return none
-        if (!found) {
-            console.log("Could not find user");
-            document.getElementById("searchBar").value = "User not found...Search for another user";
-            $("#searchBar").text("").css("color", "white");
-        }
-      });
+             // Otherwise, return none
+             if (!found) {
+               console.log("Could not find user");
+               document.getElementById("searchBar").value = "User not found...Search for another user";
+               $("#searchBar").text("").css("color", "white");
+            }
+          });
+
+          // Make modal appear
+          $('.friends').click((e) => {
+
+            $('#myModal').show();
+          });
+
+          // Close modal when clicked
+          $('.close').click(() => {
+            $('#myModal').hide();
+          });
+
+          // Supposed to close modal when clicking outside but not working
+          $(window).click((e) => {
+            let modal = $('#myModal');
+            console.log('here');
+            if (e.target == modal) {
+              console.log('here2');
+              modal.hide();
+            }
+          });
+
+
 
 
     		});
@@ -151,8 +176,18 @@
 	<!-- Template for users -->
 	<div class="container-fluid text-center" id="allProfiles">
 		<div class="row">
-		</div>
+      </div>
 	</div>
+
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p>Some text in the Modal..</p>
+      </div>
+  
 	
 </body>
 </html>
