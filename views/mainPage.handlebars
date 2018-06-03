@@ -9,6 +9,9 @@
 	<link href="css/navbar.css" rel="stylesheet">
   <link href="css/main.css" rel="stylesheet">
   <link href="css/searchbar.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+
  
   <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
   <script>
@@ -89,6 +92,8 @@
 
         if(users[name].topSongPrev){
           $('#songName' + index).attr("data-prev_url", users[name].topSongPrev);
+          $('#songName' + index).attr("data-songName", users[name].topSong);
+          $('#songName' + index).attr("data-topSongArtist", users[name].topSongArtist);
           console.log("SONG PREVIEW ADDED");
           console.log($('#songName' + index).attr("data-prev_url"));
         }
@@ -127,6 +132,7 @@
 
         let playingCssClass = 'playing';
         let audioObject = null;
+        var playing = false;
         $('.songNameText').click((e) => {
 
 
@@ -139,29 +145,56 @@
           console.log("Preview URL = "+target.getAttribute('data-prev_url')); 
 
 
+
+
           if (target.classList.contains(playingCssClass)) {
               audioObject.pause();
+              playing=false;
           } else {
               if (audioObject) {
                   audioObject.pause();
+                  playing = false
               }
 
           audioObject = new Audio(target.getAttribute('data-prev_url'));
           audioObject.play();
+          $("#play-btn").html("<i class='far fa-pause-circle'></i>");
+          playing = true;
 
           target.classList.add(playingCssClass);
+
+          console.log(target.getAttribute('data-songName'));
+          console.log(target.getAttribute('data-topSongArtist'));
+
+          $("#songTitle" ).html(target.getAttribute('data-songName'));
+          $("#songArtist").html(target.getAttribute('data-topSongArtist'));
 
 
           audioObject.addEventListener('ended', function () {
               target.classList.remove(playingCssClass);
+              playing = false;
           });
           audioObject.addEventListener('pause', function () {
                target.classList.remove(playingCssClass);
+               playing = false;
           });
 
 
         }
       });
+
+        $("#play-btn").click(() =>{
+
+          if(playing == false){
+              audioObject.play();
+              $("#play-btn").html("<i class='far fa-pause-circle'></i>");
+              playing = true;
+            }else{
+              audioObject.pause();
+              $("#play-btn").html("<i class='far fa-play-circle'></i>");
+              playing = false;
+            }
+        })
         
 
     }); 
@@ -203,6 +236,13 @@
       <div class="profileBeg row">
       </div>
     </div>
+
+
+  <div class="navbar">
+    <a href="#" id="play-btn"><i class="far fa-play-circle"></i></a>
+    <p id="songTitle"> song title </p>
+    <p id="songArtist"> Artist </p>
+  </div>
 
 </body>
 </html>
