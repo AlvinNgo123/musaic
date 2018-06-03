@@ -108,43 +108,6 @@
     }
 
    });
-
-      
-
-      $('.searchProfile').hide(); // Hides search profile template
-     
-      // Search button grabs the string in the search bar
-      $('#searchButton').click(() => {
-        index = 0; //reset index
-        console.log("button clicked");
-        const searchName = $('#searchBar').val()
-        $('#allProfiles').hide();
-        Object.keys(users).forEach((name) => {
-          if (users[name].displayName === searchName) {
-            console.log("match!");
-            $('#userNameSearch').html(name);
-            $('#songNameSearch').html(users[name].topSong);
-            $('#artistNameSearch').html(users[name].topSongArtist);
-            // $('#chatTextSearch').html(data.chat);
-            // $('#clockTextSearch').html(data.time);
-            $('#picSearch').attr('src', users[name].image);
-            $('.searchProfile').show()
-            $('#searchResult').html('');
-            index = index + 1;
-            } 
-          
-        });
-
-        // Otherwise, return none
-        if (index === 0) {
-            console.log("Could not find user");
-            document.getElementById("searchBar").value = "User not found...Search for another friend";
-            $("#searchBar").text("").css("color", "white");
-            $('#allProfiles').show();
-            $('.searchProfile').hide();
-            // clear the display
-        }
-      });
       
         $('.userNameText').click(() => {
           console.log("Hi");
@@ -233,49 +196,7 @@
 
     <h3 class="text-center">Music Tastes</h3>
 
-    <div class="text-center">
-      <!-- Trigger/Open The Modal -->
-      <a href="selectSong"><button type="button" class="btn btn-info" id="myBtn">Search For A Song</button></a>
-
-      <!-- The Modal -->
-      <div id="myModal" class="modal">
-
-          <!-- Modal content -->
-          <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>Some text in the Modal..</p>
-          </div>
-      </div>
-    </div>  
-
-
-
-   <!--
-    <div class="text-center">
-      <button class="favoriteButton">Set Favorite</button>
-    </div>
-  -->
-
-
-    <!-- form -->
-    <div class="container-fluid ">
-      <div class="row">
-        <div class="col-sm-12 text-center">
-          <form class="form-inline md-form form-sm active-pink active-pink-2">
-              <input class="form-control form-control-sm" id="searchBar" type="text" value="" placeholder="Search Friend's Name" aria-label="Search">
-              <button type="button" class="btn btn-info" id="searchButton">Search</button>
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <h2 class="text-center">Top Songs</h2>
-
-  <div class="container-fluid">
-      <div class="row">
-        <div id="searchResult" class="col-sm-2"></div>
-        <a href="/profile"><img id="searchImage" class="profilePic" src=""></a>
-      </div>
+    <h2 class="text-center underline">Top Songs</h2>
 
     <!-- Div that holds all the profiles in the beginning -->
     <div class="container-fluid" id="allProfiles">
@@ -283,50 +204,5 @@
       </div>
     </div>
 
-    <!--Profile that comes up after being searched -->
-    <div class="container-fluid searchProfile">
-      <div class="row">
-          <div class="col-sm-4 grow">
-            <h3 class="userNameText profileText" id="userNameSearch"></h3>
-            <h4 class="songNameText profileText" id="songNameSearch"></h4>
-            <h4 class="artistNameText profileText" id="artistNameSearch"></h4>
-            <div class="transparentBox text-center"></div>
-            <a href="/profile"><img class="profilePic col-sm-2" id="picSearch"></a>
-            <img class="icon chatBubble" src="css/Icons/chatBubble.png">
-            <h5 class="chatNumber" id="chatTextSearch"></h5>
-            <img class="icon clock" src="css/Icons/clock.png">
-            <h5 class="clockNumber" id="clockTextSearch"></h5>
-          </div>
-        </div>
-      </div>
-
-  <script type="text/javascript">
-    // Get the modal
-    var modal = document.getElementById('myModal');
-
-    // Get the button that opens the modal
-    var btn = document.getElementById("myBtn");
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks on the button, open the modal 
-    // btn.onclick = function() {
-    //     // modal.style.display = "block";
-    //     res.render("/yourProfile");
-    // }
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-  </script>
 </body>
 </html>
