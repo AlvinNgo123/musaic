@@ -38,7 +38,7 @@ const bodyParser = require('body-parser');
 var login = require('./routes/login');
 var mainPage = require('./routes/mainPage');
 var profile = require('./routes/profile');
-var friends = require('./routes/friends');
+var community = require('./routes/community');
 var myProfile = require('./routes/myProfile');
 var selectSong = require('./routes/selectSong');
 // Example route
@@ -189,7 +189,7 @@ app.get('/users/:userid', (req, res) => {
 */
 
 app.get('/profile', profile.view);
-app.get('/friends', friends.view);
+app.get('/community', community.view);
 app.get('/myProfile', myProfile.view);
 
 app.get('/selectSong', function(req, res){

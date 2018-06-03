@@ -16,7 +16,7 @@ body {
 }
 
 .searchProfile, .profileBeg {
-	transform: scale(.90);
+	transform: scale(.85);
 }
 
 .profile, .searchProfile {
@@ -68,14 +68,14 @@ body {
 .userNameText {
 	position: absolute;
 	font-size: 22px;
-	width: 45%;
+	width: 43%;
 	left: 0px;
 	top: 10px;
 }
 
 .songNameText {
 	position: absolute;
-	width: 45%;
+	width: 43%;
 	left: 0px;
 	top: 65px;
 	font-size: 20px;
@@ -84,7 +84,7 @@ body {
 
 .artistNameText {
 	position: absolute;
-	width: 45%;
+	width: 43%;
 	left: 0px;
 	top: 100px;
 	text-decoration: underline;
@@ -94,7 +94,7 @@ body {
  .transparentBox {
 	background-color: #4388ff;
 	/* Previous Color: 08b2e3; */
-	width: 350px;
+	width: 300px;
 	height: 200px;
 	bottom: 0px;
 	left: 0px;
