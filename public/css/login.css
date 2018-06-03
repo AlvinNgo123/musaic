@@ -38,7 +38,11 @@
 body, html {
 	height: 100%;
 	font-family: Poppins-Regular, sans-serif;
+  background-image: url("images/background.jpg");
+  background-size: 100% 100%;
 }
+
+
 
 /*---------------------------------------------*/
 a {
@@ -182,8 +186,9 @@ iframe {
 }
 
 .wrap-login100 {
-  width: 500px;
-  background: #fff;
+  align-items: center;
+  width: 50%;
+  margin:auto;
   border-radius: 10px;
   overflow: hidden;
 }
@@ -200,7 +205,7 @@ iframe {
   display: block;
   font-family: Poppins-Bold;
   font-size: 39px;
-  color: #333333;
+  color: #fff;
   line-height: 1.2;
   text-align: center;
 }
