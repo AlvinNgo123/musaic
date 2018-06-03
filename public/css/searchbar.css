@@ -38,6 +38,16 @@
 .active-pink .fa, .active-pink-2 .fa {
     color: #f48fb1;
 }
+
+#searchBar {
+    max-width: 75%;
+    min-width: 415px;
+}
+
+#searchButton{
+    margin-left: 0%;
+    margin-top: -1%;
+}
                             
                             
 

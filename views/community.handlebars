@@ -7,14 +7,18 @@
 	<link href="css/bootstrap-theme.css" rel="stylesheet">
 
 	<link href="css/navbar.css" rel="stylesheet">
-  	<link href="css/friends.css" rel="stylesheet">
+ 	<link href="css/community.css" rel="stylesheet">
+  <link href="css/searchbar.css" rel="stylesheet">
+
 
  	<script src="https://code.jquery.com/jquery.js"></script>
-  	<script src="/js/bootstrap.js"></script>
+  <script src="/js/bootstrap.js"></script>
 
-  	<script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
+
+
+	<script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
   
-  	<script type="text/javascript">
+ 	<script type="text/javascript">
   		// Firebase
      	var config = {
      	apiKey: "AIzaSyD3LN58BAvOG8ouHInfEzCKYmbwZI06gec",
@@ -102,6 +106,18 @@
 	</nav>
 
 	<h1 class="text-center">Community</h1>
+
+  <!-- form -->
+    <div class="container-fluid ">
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <form class="form-inline md-form form-sm active-pink active-pink-2">
+              <input class="form-control form-control-sm" id="searchBar" type="text" value="" placeholder="Search Friend's Name" aria-label="Search">
+              <button type="button" class="btn btn-info" id="searchButton">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
 
 	<!-- Template for users -->
 	<div class="container-fluid text-center" id="allProfiles">
