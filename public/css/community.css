@@ -23,5 +23,12 @@ body {
 .friends {
 	margin-top: 15px;
 	margin-bottom: 15px;
+	transition: all .2s ease-in-out
+
+}
+
+.friends:hover {
+	transform: scale(1.2);
+	transition: all .2s ease-in-out
 }
 

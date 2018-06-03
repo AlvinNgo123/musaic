@@ -50,9 +50,10 @@
 
     					let userName = 'userName' + index;
     					let pic = 'pic' + index;
+              let container = 'container' + index;
 
     					//Insert template for images into our HTML
-    					newLi.innerHTML = "<div class='friends col-sm-3'><img class='profilePic img-responsive center-block' id='"+pic+"'><h3 id='"+userName+"''></h3></div>";
+    					newLi.innerHTML = "<div class='friends col-sm-3' id='"+container+"'><img class='profilePic img-responsive center-block' id='"+pic+"'><h3 id='"+userName+"''></h3></div>";
 
 
     					//Add to constant toAdd so we can add all at once
@@ -78,28 +79,29 @@
     				});
     			}
 
+          // Makes the user show up
           $('#searchButton').click(() => {
+            $('.friends').show();
+            let found = false; 
             index = 0; //reset index
             console.log("button clicked");
             const searchName = $('#searchBar').val()
-            $('#allProfiles').hide();
+            //$('#allProfiles').hide();
               Object.keys(users).forEach((name) => {
               if (users[name].displayName === searchName) {
                 console.log("match!");
-              } 
+                $('.friends').hide();
+                $('#container' + index).show();
+                found = true;
+              }
               index = index + 1;
-
-          
         });
 
         // Otherwise, return none
-        if (index === 0) {
+        if (!found) {
             console.log("Could not find user");
-            document.getElementById("searchBar").value = "User not found...Search for another friend";
+            document.getElementById("searchBar").value = "User not found...Search for another user";
             $("#searchBar").text("").css("color", "white");
-            $('#allProfiles').show();
-            $('.searchProfile').hide();
-            // clear the display
         }
       });
 
@@ -139,7 +141,7 @@
       <div class="row">
         <div class="col-sm-12 text-center">
           <form class="form-inline md-form form-sm active-pink active-pink-2">
-              <input class="form-control form-control-sm" id="searchBar" type="text" value="" placeholder="Search Friend's Name" aria-label="Search">
+              <input class="form-control form-control-sm" id="searchBar" type="text" value="" placeholder="Search a User's Name" aria-label="Search">
               <button type="button" class="btn btn-info" id="searchButton">Search</button>
           </form>
         </div>
