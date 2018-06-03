@@ -324,10 +324,10 @@ app.get('/callback', function(req, res) {
               console.log('SHOW ARTIST THE SINGS TOP SONG');
               console.log(bo.items[0].artists[0].name); //variable for showing artist that sings top song
               try { 
-                database.ref('users/' + body.display_name).set({displayName: body.display_name, image: body.images[0].url, topArtist: bod.items[0].name, topSong: bo.items[0].name, topSongArtist: bo.items[0].artists[0].name});
+                database.ref('users/' + body.display_name).set({displayName: body.display_name, image: body.images[0].url, topArtist: bod.items[0].name, topSong: bo.items[0].name, topSongArtist: bo.items[0].artists[0].name, topSongPrev: bo.items[0].preview_url});
               }
               catch (e) {
-                 database.ref('users/' + body.display_name).set({displayName: body.display_name, image: '' , topArtist: bod.items[0].name, topSong: bo.items[0].name, topSongArtist: bo.items[0].artists[0].name});
+                 database.ref('users/' + body.display_name).set({displayName: body.display_name, image: '' , topArtist: bod.items[0].name, topSong: bo.items[0].name, topSongArtist: bo.items[0].artists[0].name,  topSongPrev: bo.items[0].preview_url});
               }
             });    
           });
@@ -339,7 +339,9 @@ app.get('/callback', function(req, res) {
            if(body.display_name)
           req.session.display_name = body.display_name;
           else{
-          req.session.display_name = "Hunter Lai";
+
+          var user_name ="Hunter Lai";
+          req.session.display_name = user_name;
           body.display_name = req.session.display_name;
          }
 

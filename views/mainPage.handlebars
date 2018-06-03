@@ -59,10 +59,11 @@
         let chatText = 'chatText' + index;
         let clockText = 'clockText' + index;
         let transparentBoxColor = 'transparentBoxColor' + index;
+        
 
         //Template for Square Boxes
         // <a href='/profile'> reimplement </a> reimplement by wrapping around image
-        newLi.innerHTML = "<div class='col-sm-4 grow profile profileBeg' id='profile'"+index+"><h3 class='userNameText profileText' id='"+userName+"'></h3><h4 class='songNameText profileText' id='"+songName+"'></h4><h4 class='artistNameText profileText' id='"+artistName+"'></h4><div class='transparentBox' id='"+transparentBoxColor+"'></div><img class='profilePic col-sm-2' id='"+pic+"'><img class='icon chatBubble' src='css/Icons/chatBubble.png'><h5 class='chatNumber' id='"+chatText+"'></h5><img class='icon clock' src='css/Icons/clock.png'><h5 class='clockNumber' id='"+clockText+"'></h5></div></div>";
+        newLi.innerHTML = "<div class='col-sm-4 grow profile profileBeg' id='profile'"+index+"><h3 class='userNameText profileText' id='"+userName+"'></h3><h4 class='songNameText profileText' id='"+songName+"' ></h4><h4 class='artistNameText profileText' id='"+artistName+"'></h4><div class='transparentBox' id='"+transparentBoxColor+"'></div><img class='profilePic col-sm-2' id='"+pic+"'><img class='icon chatBubble' src='css/Icons/chatBubble.png'><h5 class='chatNumber' id='"+chatText+"'></h5><img class='icon clock' src='css/Icons/clock.png'><h5 class='clockNumber' id='"+clockText+"'></h5></div></div>";
 
         toAdd.appendChild(newLi);
         index = index +1;
@@ -83,10 +84,15 @@
           $('#transparentBoxColor' + index).css("background-color", "#FF4365");
         }
 
-
-
         $('#userName' + index).html(users[name].displayName);
         $('#songName' + index).html(users[name].topSong);
+
+        if(users[name].topSongPrev){
+          $('#songName' + index).attr("data-prev_url", users[name].topSongPrev);
+          console.log("SONG PREVIEW ADDED");
+          console.log($('#songName' + index).attr("data-prev_url"));
+        }
+
         $('#artistName' + index).html(users[name].topSongArtist);
         if (users[name].image) {
           $('#pic' + index).attr('src', users[name].image);
@@ -154,6 +160,21 @@
           console.log(document.getElementsByClassName('songNameText')[0].offsetWidth);
 
           console.log(document.getElementsByClassName('transparentBox')[0].offsetWidth);
+        });
+
+        $('.songNameText').click((e) => {
+
+          var target = e.target;
+          console.log(target);
+          console.log("Song Name Clicked");
+          console.log("ID: "+target.id);
+          console.log(target.innerHTML);
+          console.log("Preview URL = "+target.getAttribute('data-prev_url'));
+
+          audioObject = new Audio(target.getAttribute('data-prev_url'));
+          audioObject.play();
+
+
         });
         
 
