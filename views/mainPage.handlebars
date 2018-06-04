@@ -94,6 +94,7 @@
           $('#songName' + index).attr("data-prev_url", users[name].topSongPrev);
           $('#songName' + index).attr("data-songName", users[name].topSong);
           $('#songName' + index).attr("data-topSongArtist", users[name].topSongArtist);
+          $('#songName' + index).attr("data-topSongID", users[name].topSongID);
           console.log("SONG PREVIEW ADDED");
           console.log($('#songName' + index).attr("data-prev_url"));
         }
@@ -132,7 +133,8 @@
 
         let playingCssClass = 'playing';
         let audioObject = null;
-        var playing = false;
+        let playing = false;
+        let playingID = null;
         $('.songNameText').click((e) => {
 
 
@@ -158,6 +160,7 @@
 
           audioObject = new Audio(target.getAttribute('data-prev_url'));
           audioObject.play();
+          playingID = target.getAttribute('data-topSongID');
           $("#play-btn").html("<i class='far fa-pause-circle'></i>");
           playing = true;
 
@@ -166,7 +169,8 @@
           console.log(target.getAttribute('data-songName'));
           console.log(target.getAttribute('data-topSongArtist'));
 
-          $("#songTitle" ).html(target.getAttribute('data-songName'));
+          $("#album-cover").attr("src", "https://i.scdn.co/image/682c672df6bfb1e9125935bceab565d493108f8b");
+          $("#songTitle" ).html(target.getAttribute('data-songName') + " - ");
           $("#songArtist").html(target.getAttribute('data-topSongArtist'));
 
 
@@ -189,12 +193,38 @@
               audioObject.play();
               $("#play-btn").html("<i class='far fa-pause-circle'></i>");
               playing = true;
+             
             }else{
               audioObject.pause();
               $("#play-btn").html("<i class='far fa-play-circle'></i>");
               playing = false;
             }
-        })
+        });
+
+        $("#add-btn").click(() => {
+
+          console.log("PLAYING ID: "+playingID);
+
+          $.ajax({
+          url: 'https://api.spotify.com/v1/me/tracks?ids='+playingID,
+          type: 'PUT',
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + "{{sess_access_token}}"
+          },
+          data: {
+            //user's input
+              ids:  playingID,
+          },
+
+          //response is the data received from spotify
+          success: function (response) {
+             
+            console.log("Song added!");
+          }
+    });
+        });
         
 
     }); 
@@ -203,7 +233,7 @@
 
 <body>
 
-
+<h1> Welcome {{sess_display_name}} </h1>
   <!-- Hamburger Menu -->
 	<nav role="navigation">
 		<div id="menuToggle">
@@ -239,9 +269,13 @@
 
 
   <div class="navbar">
+    <img id="album-cover" src="https://i.scdn.co/image/80d6f580916371c80b8966beb28df8f349b4f9ad"></img>
     <a href="#" id="play-btn"><i class="far fa-play-circle"></i></a>
     <p id="songTitle"> song title </p>
     <p id="songArtist"> Artist </p>
+    <a href="#" id="add-btn"><i class="fas fa-plus"></i></a>
+
+
   </div>
 
 </body>

@@ -211,7 +211,7 @@ app.get('/login', function(req, res) {
   res.cookie(stateKey, state);
 
   // your application requests authorization
-  var scope = 'user-read-private user-read-email user-top-read user-read-recently-played';
+  var scope = 'user-read-private user-read-email user-top-read user-read-recently-played user-library-modify';
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
@@ -324,10 +324,15 @@ app.get('/callback', function(req, res) {
               console.log('SHOW ARTIST THE SINGS TOP SONG');
               console.log(bo.items[0].artists[0].name); //variable for showing artist that sings top song
               try { 
-                database.ref('users/' + body.display_name).set({displayName: body.display_name, image: body.images[0].url, topArtist: bod.items[0].name, topSong: bo.items[0].name, topSongArtist: bo.items[0].artists[0].name, topSongPrev: bo.items[0].preview_url});
+                database.ref('users/' + body.display_name).set({displayName: body.display_name, 
+                  image: body.images[0].url, topArtist: bod.items[0].name, topSong: bo.items[0].name, 
+                  topSongArtist: bo.items[0].artists[0].name, topSongPrev: bo.items[0].preview_url, 
+                  topSongCover: bo.items[0].album.images[2].url, topSongID: bo.items[0].id});
               }
               catch (e) {
-                 database.ref('users/' + body.display_name).set({displayName: body.display_name, image: '' , topArtist: bod.items[0].name, topSong: bo.items[0].name, topSongArtist: bo.items[0].artists[0].name,  topSongPrev: bo.items[0].preview_url});
+                 database.ref('users/' + body.display_name).set({displayName: body.display_name, image: '' , topArtist: bod.items[0].name, 
+                  topSong: bo.items[0].name, topSongArtist: bo.items[0].artists[0].name,  topSongPrev: bo.items[0].preview_url, 
+                  topSongCover: bo.items[0].album.images[2].url, topSongID: bot.items[0].id});
               }
             });    
           });
