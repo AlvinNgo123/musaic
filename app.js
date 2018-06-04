@@ -340,7 +340,7 @@ app.get('/callback', function(req, res) {
               catch (e) {
                  database.ref('users/' + body.display_name).set({displayName: body.display_name, image: '' , topArtist: bod.items[0].name, 
                   topSong: bo.items[0].name, topSongArtist: bo.items[0].artists[0].name,  topSongPrev: bo.items[0].preview_url, 
-                  topSongCover: bo.items[0].album.images[2].url, topSongID: bot.items[0].id});
+                  topSongCover: bo.items[0].album.images[2].url, topSongID: bo.items[0].id});
               }
             });    
           });
