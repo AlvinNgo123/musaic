@@ -55,7 +55,7 @@
               let container = 'container' + index;
 
     					//Insert template for images into our HTML
-    					newLi.innerHTML = "<div class='friends col-sm-3' id='"+container+"'><img class='profilePic img-responsive center-block' id='"+pic+"'><h3 id='"+userName+"''></h3></div>";
+    					newLi.innerHTML = "<div class='friends col-sm-3' id='"+container+"'><img class='profilePic img-responsive center-block' id='"+pic+"'><h3 id='"+userName+"'></h3></div>";
 
 
     					//Add to constant toAdd so we can add all at once
@@ -71,6 +71,9 @@
     				// Populate the template with each user
     				Object.keys(users).forEach((name)=> {
     					$('#userName' + index).html(users[name].displayName);
+              $('#userName' + index).attr('userName', users[name].displayName);
+              $('#pic' + index).attr('userName', users[name].displayName);
+              $('#container' + index).attr('userName', users[name].displayName);
     					try {
     						$('#pic' + index).attr('src', users[name].image);
     					} catch (e) {
@@ -107,8 +110,29 @@
             }
           });
 
-          // Make modal appear
+          // Make modal appear w/ info from people
           $('.friends').click((e) => {
+            index = 0;
+            let userName = ($('userName') + index);
+
+            Object.keys(users).forEach((name) => {
+              userName = ($('userName') + index);
+
+              if (users[name].displayName === e.target.getAttribute('userName')) {
+
+                // Picture in Modal
+                try {
+                  $('#picModal').attr('src', users[name].image);
+                } catch (e) {
+                  $('#picModal').attr('src', 'css/ProfilePics/userDefault.png');
+                }
+                //Top 5 Favorite Songs
+                $('#favoriteSong').html(users[name].topSong + " by " + users[name].topSongArtist);
+                
+              }
+
+              index = index + 1;
+            });
 
             $('#myModal').show();
           });
@@ -121,7 +145,6 @@
           // Supposed to close modal when clicking outside but not working
           $(window).click((e) => {
             let modal = $('#myModal');
-            console.log('here');
             if (e.target == modal) {
               console.log('here2');
               modal.hide();
@@ -185,7 +208,9 @@
       <!-- Modal content -->
       <div class="modal-content">
         <span class="close">&times;</span>
-        <p>Some text in the Modal..</p>
+        <img class="profilePic img-responsive center-block" id="picModal">
+        <div class="text-center">Favorite Song</div>
+        <div class="text-center" id="favoriteSong"></div>
       </div>
   
 	
