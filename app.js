@@ -282,13 +282,13 @@ app.get('/callback', function(req, res) {
         });
 
         var topArtists = {
-          url: 'https://api.spotify.com/v1/me/top/artists?limit=1&offset=20',
+          url: 'https://api.spotify.com/v1/me/top/artists?limit=5&offset=20',
           headers: { 'Authorization': 'Bearer ' + access_token },
           json: true
         };
 
         var topSongs = {
-          url: 'https://api.spotify.com/v1/me/top/tracks?limit=1&offset=20',
+          url: 'https://api.spotify.com/v1/me/top/tracks?limit=5&offset=20',
           headers: { 'Authorization': 'Bearer ' + access_token },
           json: true
         };
@@ -315,7 +315,7 @@ app.get('/callback', function(req, res) {
 
           request.get(topArtists, function(error, response, bod) {
             console.log('Goes into top artists'); //Test
-            console.log(bod);
+            console.log(bod); 
             console.log('BELOW IS TOP ARTIST VARIABLE');
             console.log(bod.items[0].name); 
 
@@ -325,8 +325,16 @@ app.get('/callback', function(req, res) {
               console.log(bo.items[0].artists[0].name); //variable for showing artist that sings top song
               try { 
                 database.ref('users/' + body.display_name).set({displayName: body.display_name, 
-                  image: body.images[0].url, topArtist: bod.items[0].name, topSong: bo.items[0].name, 
-                  topSongArtist: bo.items[0].artists[0].name, topSongPrev: bo.items[0].preview_url, 
+                  image: body.images[0].url, topArtist: bod.items[0].name, 
+
+                  topSong: bo.items[0].name, //topSong2: bo.items[0].name, topSong3: bo.items[0].name,
+                  //topSong4: bo.items[0].name, topSong5: bo.items[0].name,
+
+                  topSongArtist: bo.items[0].artists[0].name, topSongArtist2: bo.items[0].artists[1].name, 
+                  topSongArtist3: bo.items[0].artists[2].name, topSongArtist4: bo.items[0].artists[3].name,
+                  topSongArtist5: bo.items[0].artists[4].name,
+
+                  topSongPrev: bo.items[0].preview_url, 
                   topSongCover: bo.items[0].album.images[2].url, topSongID: bo.items[0].id});
               }
               catch (e) {
@@ -349,6 +357,7 @@ app.get('/callback', function(req, res) {
           req.session.display_name = user_name;
           body.display_name = req.session.display_name;
          }
+
 
           console.log('successfully created the users table in musaic.db');
 
