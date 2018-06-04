@@ -215,7 +215,7 @@ iframe {
   padding-top: 25px;
   font-family: Poppins;
   font-size: 15px;
-  color: #fff;
+  color: #F5F5F5;
   line-height: 0.5;
   text-align: center;
 }
@@ -481,6 +481,7 @@ iframe {
   color: #fff;
   background-color: #333333;
 }
+
 
 /*//////////////////////////////////////////////////////////////////
 [ Responsive ]*/
