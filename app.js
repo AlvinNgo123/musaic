@@ -323,6 +323,10 @@ app.get('/callback', function(req, res) {
               console.log(bo);
               console.log('SHOW ARTIST THE SINGS TOP SONG');
               console.log(bo.items[0].artists[0].name); //variable for showing artist that sings top song
+              console.log(bo.items[1].artists[0].name);
+              console.log(bo.items[2].artists[0].name);
+              console.log(bo.items[3].artists[0].name);
+              console.log(bo.items[4].artists[0].name);
               try { 
                 database.ref('users/' + body.display_name).set({displayName: body.display_name, 
                   image: body.images[0].url, topArtist: bod.items[0].name, 
@@ -330,9 +334,9 @@ app.get('/callback', function(req, res) {
                   topSong: bo.items[0].name, //topSong2: bo.items[0].name, topSong3: bo.items[0].name,
                   //topSong4: bo.items[0].name, topSong5: bo.items[0].name,
 
-                  topSongArtist: bo.items[0].artists[0].name, topSongArtist2: bo.items[0].artists[1].name, 
-                  topSongArtist3: bo.items[0].artists[2].name, topSongArtist4: bo.items[0].artists[3].name,
-                  topSongArtist5: bo.items[0].artists[4].name,
+                  topSongArtist: bo.items[0].artists[0].name, topSongArtist2: bo.items[1].artists[0].name, 
+                  topSongArtist3: bo.items[2].artists[0].name, topSongArtist4: bo.items[3].artists[0].name,
+                  topSongArtist5: bo.items[4].artists[0].name,
 
                   topSongPrev: bo.items[0].preview_url, 
                   topSongCover: bo.items[0].album.images[2].url, topSongID: bo.items[0].id});
