@@ -90,6 +90,8 @@
         $('#userName' + index).html(users[name].displayName);
         $('#songName' + index).html(users[name].topSong);
 
+
+        //adds variables to each song for when people click on it
         if(users[name].topSongPrev){
           $('#songName' + index).attr("data-prev_url", users[name].topSongPrev);
           $('#songName' + index).attr("data-songName", users[name].topSong);
@@ -227,6 +229,17 @@
           }
     });
         });
+
+        $("#topSong-btn").click(() =>{
+            console.log("top song button clicked");
+
+            });
+
+        $("#topArtist-btn").click(() =>{
+            console.log("top artist button clicked");
+
+            });
+       
         
 
     }); 
@@ -261,7 +274,8 @@
 
     <h3 class="text-center">Music Tastes</h3>
 
-    <h2 class="text-center underline">Top Songs</h2>
+    <h2 class="text-center underline" id="topSong-btn">Top Songs</h2>
+    <h2 class="text-center underline" id="topArtist-btn">Top Artists</h2>
 
     <!-- Div that holds all the profiles in the beginning -->
     <div class="container-fluid" id="allProfiles">
