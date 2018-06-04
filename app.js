@@ -282,13 +282,13 @@ app.get('/callback', function(req, res) {
         });
 
         var topArtists = {
-          url: 'https://api.spotify.com/v1/me/top/artists?limit=5&offset=20',
+          url: 'https://api.spotify.com/v1/me/top/artists?limit=6&offset=20',
           headers: { 'Authorization': 'Bearer ' + access_token },
           json: true
         };
 
         var topSongs = {
-          url: 'https://api.spotify.com/v1/me/top/tracks?limit=5&offset=20',
+          url: 'https://api.spotify.com/v1/me/top/tracks?limit=6&offset=20',
           headers: { 'Authorization': 'Bearer ' + access_token },
           json: true
         };
@@ -325,25 +325,32 @@ app.get('/callback', function(req, res) {
               console.log(bo.items[1].name);
               console.log(bo.items[2].name);
               console.log(bo.items[0].artists[0].name); //variable for showing artist that sings top song
-              
+
               try { 
                 database.ref('users/' + body.display_name).set({displayName: body.display_name, 
                   image: body.images[0].url, topArtist: bod.items[0].name, 
 
-                  topSong: bo.items[0].name, topSong2: bo.items[1].name, topSong3: bo.items[2].name,
-                  topSong4: bo.items[3].name, topSong5: bo.items[4].name,
+                  topSong: bo.items[1].name, topSong2: bo.items[2].name, topSong3: bo.items[3].name,
+                  topSong4: bo.items[4].name, topSong5: bo.items[5].name,
 
-                  topSongArtist: bo.items[0].artists[0].name, topSongArtist2: bo.items[1].artists[0].name, 
-                  topSongArtist3: bo.items[2].artists[0].name, topSongArtist4: bo.items[3].artists[0].name,
-                  topSongArtist5: bo.items[4].artists[0].name,
+                  topSongArtist: bo.items[1].artists[0].name, topSongArtist2: bo.items[2].artists[0].name, 
+                  topSongArtist3: bo.items[3].artists[0].name, topSongArtist4: bo.items[4].artists[0].name,
+                  topSongArtist5: bo.items[5].artists[0].name,
 
-                  topSongPrev: bo.items[0].preview_url, 
-                  topSongCover: bo.items[0].album.images[2].url, topSongID: bo.items[0].id});
+                  topSongPrev: bo.items[1].preview_url, 
+                  topSongCover: bo.items[1].album.images[2].url, topSongID: bo.items[1].id});
               }
               catch (e) {
                  database.ref('users/' + body.display_name).set({displayName: body.display_name, image: '' , topArtist: bod.items[0].name, 
-                  topSong: bo.items[0].name, topSongArtist: bo.items[0].artists[0].name,  topSongPrev: bo.items[0].preview_url, 
-                  topSongCover: bo.items[0].album.images[2].url, topSongID: bo.items[0].id});
+                  topSong: bo.items[1].name, topSong2: bo.items[2].name, topSong3: bo.items[3].name,
+                  topSong4: bo.items[4].name, topSong5: bo.items[5].name,
+
+                  topSongArtist: bo.items[1].artists[0].name, topSongArtist2: bo.items[2].artists[0].name, 
+                  topSongArtist3: bo.items[3].artists[0].name, topSongArtist4: bo.items[4].artists[0].name,
+                  topSongArtist5: bo.items[5].artists[0].name,
+
+                  topSongPrev: bo.items[1].preview_url, 
+                  topSongCover: bo.items[1].album.images[2].url, topSongID: bo.items[1].id});
               }
             });    
           });
@@ -355,7 +362,6 @@ app.get('/callback', function(req, res) {
            if(body.display_name)
           req.session.display_name = body.display_name;
           else{
-
           var user_name ="Hunter Lai";
           req.session.display_name = user_name;
           body.display_name = req.session.display_name;
