@@ -123,6 +123,17 @@
                 if (!users[name].image) {
                   $('#picModal').attr('src', 'css/ProfilePics/userDefault.png');
                 }
+
+                // Color of modal
+                if (index % 2 === 1) {
+                  console.log("Here");
+                  $('.modal-content').css("background-color", "#c7374a");
+                }
+
+                else {
+                  $('.modal-content').css("background-color", "#375ec7");
+                }
+
                 $('#userName').html(users[name].displayName);
                
                 //Top 5 Favorite Songs
