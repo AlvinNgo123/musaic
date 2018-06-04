@@ -74,12 +74,10 @@
               $('#userName' + index).attr('userName', users[name].displayName);
               $('#pic' + index).attr('userName', users[name].displayName);
               $('#container' + index).attr('userName', users[name].displayName);
-    					try {
-    						$('#pic' + index).attr('src', users[name].image);
-    					} catch (e) {
-    						$('#pic' + index).attr('src', 'css/ProfilePics/userDefault.png');
-
-    					}
+    					$('#pic' + index).attr('src', users[name].image);
+              if (!users[name].image) {
+                $('#pic' + index).attr('src', 'css/ProfilePics/userDefault.png');
+              }
     					index = index + 1;
     				});
     			}
@@ -121,12 +119,10 @@
               if (users[name].displayName === e.target.getAttribute('userName')) {
 
                 // Picture in Modal
-                try {
-                  $('#picModal').attr('src', users[name].image);
-                } catch (e) {
+                $('#picModal').attr('src', users[name].image);
+                if (!users[name].image) {
                   $('#picModal').attr('src', 'css/ProfilePics/userDefault.png');
                 }
-                //Username
                 $('#userName').html(users[name].displayName);
                
                 //Top 5 Favorite Songs
