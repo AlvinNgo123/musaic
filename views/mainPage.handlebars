@@ -95,6 +95,7 @@
           $('#songName' + index).attr("data-songName", users[name].topSong);
           $('#songName' + index).attr("data-topSongArtist", users[name].topSongArtist);
           $('#songName' + index).attr("data-topSongID", users[name].topSongID);
+          $('#songName' + index).attr("data-topSongCover", users[name].topSongCover);
           console.log("SONG PREVIEW ADDED");
           console.log($('#songName' + index).attr("data-prev_url"));
         }
@@ -169,8 +170,8 @@
           console.log(target.getAttribute('data-songName'));
           console.log(target.getAttribute('data-topSongArtist'));
 
-          $("#album-cover").attr("src", "https://i.scdn.co/image/682c672df6bfb1e9125935bceab565d493108f8b");
-          $("#songTitle" ).html(target.getAttribute('data-songName') + " - ");
+          $("#album-cover").attr("src", target.getAttribute('data-topSongCover'));
+          $("#songTitle" ).html(target.getAttribute('data-songName'));
           $("#songArtist").html(target.getAttribute('data-topSongArtist'));
 
 
@@ -222,6 +223,7 @@
           success: function (response) {
              
             console.log("Song added!");
+            $("#add-btn").html("<i class='fas fa-check'></i>");
           }
     });
         });
@@ -269,11 +271,12 @@
 
 
   <div class="navbar">
-    <img id="album-cover" src="https://i.scdn.co/image/80d6f580916371c80b8966beb28df8f349b4f9ad"></img>
+    <img id="album-cover" src="css/icons/music_note.png"></img>
     <a href="#" id="play-btn"><i class="far fa-play-circle"></i></a>
-    <p id="songTitle"> song title </p>
-    <p id="songArtist"> Artist </p>
+
     <a href="#" id="add-btn"><i class="fas fa-plus"></i></a>
+    <p id="songTitle"> Not Playing</p>
+    <p id="songArtist"></p>
 
 
   </div>
