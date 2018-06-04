@@ -318,6 +318,10 @@ app.get('/callback', function(req, res) {
             console.log(bod); 
             console.log('BELOW IS TOP ARTIST VARIABLE');
             console.log(bod.items[0].name);
+            console.log(bod.items[1].name);
+            console.log(bod.items[2].name);
+            console.log(bod.items[3].name);
+            console.log(bod.items[4].name);
 
             request.get(topSongs, function(error, response, bo) {
               console.log(bo);
@@ -328,7 +332,10 @@ app.get('/callback', function(req, res) {
 
               try { 
                 database.ref('users/' + body.display_name).set({displayName: body.display_name, 
-                  image: body.images[0].url, topArtist: bod.items[0].name, 
+                  image: body.images[0].url, 
+
+                  topArtist: bod.items[0].name, topArtist2: bod.items[1].name, topArtist3: bod.items[2].name,
+                  topArtist4: bod.items[3].name, topArtist5: bod.items[4].name,
 
                   topSong: bo.items[1].name, topSong2: bo.items[2].name, topSong3: bo.items[3].name,
                   topSong4: bo.items[4].name, topSong5: bo.items[5].name,
@@ -341,7 +348,10 @@ app.get('/callback', function(req, res) {
                   topSongCover: bo.items[1].album.images[2].url, topSongID: bo.items[1].id});
               }
               catch (e) {
-                 database.ref('users/' + body.display_name).set({displayName: body.display_name, image: '' , topArtist: bod.items[0].name, 
+                 database.ref('users/' + body.display_name).set({displayName: body.display_name, image: '' , 
+                  topArtist: bod.items[0].name, topArtist2: bod.items[1].name, topArtist3: bod.items[2].name,
+                  topArtist4: bod.items[3].name, topArtist5: bod.items[4].name,
+                  
                   topSong: bo.items[1].name, topSong2: bo.items[2].name, topSong3: bo.items[3].name,
                   topSong4: bo.items[4].name, topSong5: bo.items[5].name,
 
