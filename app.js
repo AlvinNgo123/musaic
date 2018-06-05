@@ -369,13 +369,13 @@ app.get('/callback', function(req, res) {
 
            req.session.id = body.id;
 
-           if(body.display_name)
-          req.session.display_name = body.display_name;
+          if(body.display_name)
+            req.session.display_name = body.display_name;
           else{
-          var user_name ="Hunter Lai";
-          req.session.display_name = user_name;
-          body.display_name = req.session.display_name;
-         }
+            const user_name ="None";
+            req.session.display_name = user_name;
+            body.display_name = req.session.display_name;
+          }
 
 
           console.log('successfully created the users table in musaic.db');
