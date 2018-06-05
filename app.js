@@ -317,11 +317,11 @@ app.get('/callback', function(req, res) {
             console.log('Goes into top artists'); //Test
             console.log(bod); 
             console.log('BELOW IS TOP ARTIST VARIABLE');
-            console.log(bod.items[0].name);
             console.log(bod.items[1].name);
             console.log(bod.items[2].name);
             console.log(bod.items[3].name);
             console.log(bod.items[4].name);
+            console.log(bod.items[5].name);
 
             request.get(topSongs, function(error, response, bo) {
               console.log(bo);
@@ -334,8 +334,8 @@ app.get('/callback', function(req, res) {
                 database.ref('users/' + body.display_name).set({displayName: body.display_name, 
                   image: body.images[0].url, 
 
-                  topArtist: bod.items[0].name, topArtist2: bod.items[1].name, topArtist3: bod.items[2].name,
-                  topArtist4: bod.items[3].name, topArtist5: bod.items[4].name,
+                  topArtist: bod.items[1].name, topArtist2: bod.items[2].name, topArtist3: bod.items[3].name,
+                  topArtist4: bod.items[4].name, topArtist5: bod.items[5].name,
 
                   topSong: bo.items[1].name, topSong2: bo.items[2].name, topSong3: bo.items[3].name,
                   topSong4: bo.items[4].name, topSong5: bo.items[5].name,
@@ -349,8 +349,8 @@ app.get('/callback', function(req, res) {
               }
               catch (e) {
                  database.ref('users/' + body.display_name).set({displayName: body.display_name, image: '' , 
-                  topArtist: bod.items[0].name, topArtist2: bod.items[1].name, topArtist3: bod.items[2].name,
-                  topArtist4: bod.items[3].name, topArtist5: bod.items[4].name,
+                  topArtist: bod.items[1].name, topArtist2: bod.items[2].name, topArtist3: bod.items[3].name,
+                  topArtist4: bod.items[4].name, topArtist5: bod.items[5].name,
                   
                   topSong: bo.items[1].name, topSong2: bo.items[2].name, topSong3: bo.items[3].name,
                   topSong4: bo.items[4].name, topSong5: bo.items[5].name,
