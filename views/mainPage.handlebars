@@ -255,11 +255,75 @@
         $("#topSong-btn").click(() =>{
             console.log("top song button clicked");
 
+              index = 0; //reset index
+
+      // Gets info from the database to fill in the newly created squares
+      Object.keys(users).forEach((name) => {
+
+        //Color changer
+        if (index % 2 === 1) {
+          $('#transparentBoxColor' + index).css("background-color", "#c7374a");
+        }
+
+        $('#userName' + index).html(users[name].displayName);
+        $('#songName' + index).html(users[name].topSong);
+
+
+        //adds variables to each song for when people click on it
+        if(users[name].topSongPrev){
+          $('#songName' + index).attr("data-prev_url", users[name].topSongPrev);
+          $('#songName' + index).attr("data-songName", users[name].topSong);
+          $('#songName' + index).attr("data-topSongArtist", users[name].topSongArtist);
+          $('#songName' + index).attr("data-topSongID", users[name].topSongID);
+          $('#songName' + index).attr("data-topSongCover", users[name].topSongCover);
+          console.log("SONG PREVIEW ADDED");
+          console.log($('#songName' + index).attr("data-prev_url"));
+        }
+
+        $('#artistName' + index).html(users[name].topSongArtist);
+        if (users[name].image) {
+          $('#pic' + index).attr('src', users[name].image);
+        }
+
+        else {
+          $('#pic' + index).attr('src', 'css/ProfilePics/userDefault.png');
+        }
+        //$('#chatText' + index).html(e.chat);
+        //$('#clockText' + index).html(e.time);
+        index = index + 1;
+      });
+
             });
 
         $("#topArtist-btn").click(() =>{
             console.log("top artist button clicked");
+          index = 0; //reset index
 
+      // Gets info from the database to fill in the newly created squares
+      Object.keys(users).forEach((name) => {
+          console.log("entered users key loop");
+        //Color changer
+        if (index % 2 === 1) {
+          $('#transparentBoxColor' + index).css("background-color", "#c7374a");
+        }
+
+        console.log("Display name: "+users[name].displayName);
+
+        $('#userName' + index).html(users[name].displayName);
+        $('#songName' + index).html("1) "+users[name].topArtist);
+        $('#artistName' + index).html("2) "+users[name].topSongArtist2);
+
+        if (users[name].image) {
+          $('#pic' + index).attr('src', users[name].image);
+        }
+
+        else {
+          $('#pic' + index).attr('src', 'css/ProfilePics/userDefault.png');
+        }
+        //$('#chatText' + index).html(e.chat);
+        //$('#clockText' + index).html(e.time);
+        index = index + 1;
+      });
             });
        
         
