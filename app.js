@@ -335,108 +335,143 @@ app.get('/callback', function(req, res) {
                 displayName = "None"
               }
 
+              let image;
+              let topArtist1;
+              let topArtist2;
+              let topArtist3;
+              let topArtist4;
+              let topArtist5;
+              let topSong;
+              let topSong2;
+              let topSong3;
+              let topSong4;
+              let topSong5;
+              let topSongArtist;
+              let topSongArtist2;
+              let topSongArtist3;
+              let topSongArtist4;
+              let topSongArtist5;
+              let topSongPrev;
+              let topSongCover;
+              let topSongID;
+              let topArtisID;
+              let topArtisID2;
+
+
 
               try{
-                let image = body.images[0].url;
+                image = body.images[0].url;
               }catch(e){
                 image = "css/ProfilePics/userDefault.png";
               }
 
               try{
-                  let topArtist = bod.items[1].name;
+                  topArtist = bod.items[1].name;
               }catch(e){
                   topArtist = null;
               }
 
               try{
-                  let topArtist2 = bod.items[2].name;
+                  topArtist2 = bod.items[2].name;
               }catch(e){
                   topArtist2 = null;
               }
 
               try{
-                  let topArtist3 = bod.items[3].name;
+                  topArtist3 = bod.items[3].name;
               }catch(e){
                   topArtist3 = null;
               }
 
               try{
-                  let topArtist4 = bod.items[4].name;
+                  topArtist4 = bod.items[4].name;
               }catch(e){
                   topArtist4 = null;
               }
               try{
-                  let topArtist5 = bod.items[5].name;
+                  topArtist5 = bod.items[5].name;
               }catch(e){
                   topArtist5 = null;
               }
 
               try{
-                  let topSong = bo.items[1].name;
+                  topSong = bo.items[1].name;
               }catch(e){
                   topSong = null;
               }             
               try{
-                  let topSong2 = bo.items[2].name;
+                  topSong2 = bo.items[2].name;
               }catch(e){
                   topSong2 = null;
               }
               try{
-                  let topSong3 = bo.items[3].name;
+                  topSong3 = bo.items[3].name;
               }catch(e){
                   topSong3 = null;
               }
               try{
-                  let topSong4 = bo.items[4].name;
+                  topSong4 = bo.items[4].name;
               }catch(e){
                   topSong4 = null;
               }
               try{
-                  let topSong5 = bo.items[5].name;
+                  topSong5 = bo.items[5].name;
               }catch(e){
                   topSong5 = null;
               }
 
               try{
-                  let topSongArtist = bo.items[1].artists[0].name;
+                  topSongArtist = bo.items[1].artists[0].name;
               }catch(e){
                   topSongArtist = null;
               }
               try{
-                  let topSongArtist2 = bo.items[2].artists[0].name;
+                  topSongArtist2 = bo.items[2].artists[0].name;
               }catch(e){
                   topSongArtist2 = null;
               }
               try{
-                  let topSongArtist3 = bo.items[3].artists[0].name;
+                  topSongArtist3 = bo.items[3].artists[0].name;
               }catch(e){
                   topSongArtist3 = null;
               }
               try{
-                  let topSongArtist4 = bo.items[4].artists[0].name;
+                  topSongArtist4 = bo.items[4].artists[0].name;
               }catch(e){
                   topSongArtist4 = null;
               }
               try{
-                  let topSongArtist5 = bo.items[5].artists[0].name;
+                  topSongArtist5 = bo.items[5].artists[0].name;
               }catch(e){
                   topSongArtist5 = null;
               }
               
               try{
-                 let topSongPrev = bo.items[1].preview_url;
+                 topSongPrev = bo.items[1].preview_url;
               }catch(e){
                   topSongPrev = null;
               }
               try{
-                 let topSongCover = bo.items[1].album.images[2].url;
+                topSongCover = bo.items[1].album.images[2].url;
               }catch(e){
                   topSongCover= null;
               }
               try{
-                 let topSongID = bo.items[1].id;
+                 topSongID = bo.items[1].id;
               }catch(e){
                   topSongID = null;
+              }
+
+              try{
+                topArtistID = bod.items[1].id;
+              }catch(e){
+                topArtistID = null;
+              }
+
+               try{
+                topArtistID2 = bod.items[2].id;
+              }catch(e){
+                topArtistID2 = null;
               }
              
 
@@ -451,6 +486,8 @@ app.get('/callback', function(req, res) {
 
                   topArtist: topArtist, topArtist2: topArtist2, topArtist3: topArtist3,
                   topArtist4: topArtist4, topArtist5: topArtist5,
+
+
 
                   topSong: topSong, topSong2: topSong2, topSong3: topSong3,
                   topSong4: topSong4, topSong5: topSong5,
