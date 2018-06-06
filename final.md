@@ -27,17 +27,18 @@
 - Created musaic logo</br>
 - Worked on initial SQLite database work before Firebase</br>
 - Worked on testing with possible error cases</br>
+
 </br>
 </br>
 </br>
 <h3>list of all source code</h3></br>
 <h4>HTML and handlebars</h4>
--community.handlebars</br>
--login.handlebars</br>
--mainPage.handlebars</br>
--profile.handlebars</br>
--profileAB.handlebars</br>
--selectSong.html</br>
+-community.handlebars-----HTML/handlebars file that populates the layout of our community page</br>
+-login.handlebars-----HTML file that populates layout of our login page</br>
+-mainPage.handlebars-----HTML file that populates layout of our main page once user successfully logins</br>
+-profile.handlebars-----REMEMBER TO DELETE</br>
+-profileAB.handlebars-----REMEMBER TO DELETE</br>
+-selectSong.html-----REMEMBER TO DELETE</br>
 <h4>CSS files</h4>
 -community.css</br>
 -login.css</br>
