@@ -56,17 +56,20 @@
         if (users[name].displayName === "None") {
             console.log("No user name");
             let userName = prompt("You have no display name...please enter one:");
-            database.ref(key + "None").update({displayName: userName});
             while (userName === "") {
               userName = prompt("Name is empty...please enter a name");
             } 
-            database.ref(key + userName).set({displayName: userName, image: users[name].image, topArtist: users[name].topArtist, topArtist2: users[name].topArtist2, topArtist3: users[name].topArtist3, topArtist4: users[name].topArtist4, topArtist5: users[name].topArtist5, topSong: users[name].topSong, topSong2: users[name].topSong2, topSong3: users[name].topSong3, topSong4: users[name].topSong4, topSong5: users[name].topSong5, topSongArtist: users[name].topSongArtist, topSongArtist2: users[name].topSongArtist2, topSongArtist3: users[name].topSongArtist3, topSongArtist4: users[name].topSongArtist4, topSongArtist5: users[name].topSongArtist5, topSongCover: users[name].topSongCover, topSongID: users[name].topSongID, topSongPrev: users[name].topSongPrev});
+            database.ref(key + userName).set({displayName: userName});
+
+            database.ref(key + userName).update({displayName: userName, image: users[name].image, topArtist: users[name].topArtist, topArtist2: users[name].topArtist2, topArtist3: users[name].topArtist3, topArtist4: users[name].topArtist4, topArtist5: users[name].topArtist5, topSong: users[name].topSong, topSong2: users[name].topSong2, topSong3: users[name].topSong3, topSong4: users[name].topSong4, topSong5: users[name].topSong5, topSongArtist: users[name].topSongArtist, topSongArtist2: users[name].topSongArtist2, topSongArtist3: users[name].topSongArtist3, topSongArtist4: users[name].topSongArtist4, topSongArtist5: users[name].topSongArtist5, topSongCover: users[name].topSongCover, topSongID: users[name].topSongID, topSongPrev: users[name].topSongPrev});
             database.ref(key+"None").remove();
             location.reload();
             }
         });              
       
     });
+
+   
 
   $(document).ready(()=>{
    
@@ -316,6 +319,42 @@
         $('#userName' + index).html(users[name].displayName);
         $('#songName' + index).html("1) "+users[name].topArtist);
         $('#artistName' + index).html("2) "+users[name].topSongArtist2);
+
+   //HUNTER'S COMMENTED OUT AJAX CALL FOR TOP ARTISTS TRACKS
+
+    //     $.ajax({
+    //       url: 'https://api.spotify.com/v1/artists/'+id+'/top-tracks',
+    //       type: 'GET',
+    //       headers: {
+    //           'Accept': 'application/json',
+    //           'Content-Type': 'application/json',
+    //           'Authorization': 'Bearer ' + "{{sess_access_token}}"
+    //       },
+    //       data: {
+    //         //user's input
+    //           id:  users[name].topArtistID,
+    //           country: "US"
+    //       },
+
+    //       //response is the data received from spotify
+    //       success: function (response) {
+    //          console.log(response);
+    //          console.log("SUCCESS!");
+
+    //         $('#songName' + index).attr("data-prev_url", users[name].topSongPrev);
+            
+    //       }
+    // });
+
+        //  if(users[name].topSongPrev){
+        //   $('#songName' + index).attr("data-prev_url", users[name].topSongPrev);
+        //   $('#songName' + index).attr("data-songName", users[name].topSong);
+        //   $('#songName' + index).attr("data-topSongArtist", users[name].topSongArtist);
+        //   $('#songName' + index).attr("data-topSongID", users[name].topSongID);
+        //   $('#songName' + index).attr("data-topSongCover", users[name].topSongCover);
+        //   console.log("SONG PREVIEW ADDED");
+        //   console.log($('#songName' + index).attr("data-prev_url"));
+        // }
 
         if (users[name].image) {
           $('#pic' + index).attr('src', users[name].image);

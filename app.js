@@ -302,7 +302,7 @@ app.get('/callback', function(req, res) {
 
         // use the access token to access the Spotify Web API
         request.get(options, function(error, response, body) {
-          console.log(body);
+         /*  console.log(body);
           console.log('BELOW IS EMAIL VARIABLE')
           console.log(body.email);
           console.log("DEBUG:  body.id ="+body.id);
@@ -311,12 +311,12 @@ app.get('/callback', function(req, res) {
 
           console.log(body.display_name);
           console.log('BELOW IS THEIR PROFILE PIC VARIABLE');
-          //console.log(body.images[0].url);
+          //console.log(body.images[0].url); */
 
           request.get(topArtists, function(error, response, bod) {
-            console.log('Goes into top artists'); //Test
+            /* console.log('Goes into top artists'); //Test
             console.log(bod); 
-            console.log('BELOW IS TOP ARTIST VARIABLE');
+            console.log('BELOW IS TOP ARTIST VARIABLE'); */
             // console.log(bod.items[1].name);
             // console.log(bod.items[2].name);
             // console.log(bod.items[3].name);
@@ -324,15 +324,17 @@ app.get('/callback', function(req, res) {
             // console.log(bod.items[5].name);
 
             request.get(topSongs, function(error, response, bo) {
-              console.log(bo);
-              console.log('SHOW ARTIST THE SINGS TOP SONG');
+            /*  console.log(bo);
+              console.log('SHOW ARTIST THE SINGS TOP SONG'); */
               // console.log(bo.items[1].name);
               // console.log(bo.items[2].name);
               // console.log(bo.items[0].artists[0].name); //variable for showing artist that sings top song
 
               let displayName = body.display_name;
+              let id = body.id;
               if(!displayName){
-                displayName = "None"
+                displayName = "None";
+                body.display_name = "None";
               }
 
               let image;
@@ -354,8 +356,17 @@ app.get('/callback', function(req, res) {
               let topSongPrev;
               let topSongCover;
               let topSongID;
-              let topArtisID;
-              let topArtisID2;
+              let topArtistID;
+              let topArtistID2;
+
+
+              try{
+                displayName = body.display_name;
+              }catch(e){
+                displayName = null;
+              }
+
+
 
 
 
@@ -448,8 +459,15 @@ app.get('/callback', function(req, res) {
               
               try{
                  topSongPrev = bo.items[1].preview_url;
+                 if (topSongPrev === null) {
+                  topSongPrev = "None";
+                 }
+                console.log("No top song Prev but in Try");
+                console.log(topSongPrev);
+
               }catch(e){
-                  topSongPrev = null;
+                  topSongPrev = "None";
+                  console.log("No top song Prev");
               }
               try{
                 topSongCover = bo.items[1].album.images[2].url;
@@ -482,7 +500,7 @@ app.get('/callback', function(req, res) {
 
               try { 
                 database.ref('users/' + body.display_name).set({displayName: displayName, 
-                  image: image, 
+                  image: image, id:id,
 
                   topArtist: topArtist, topArtist2: topArtist2, topArtist3: topArtist3,
                   topArtist4: topArtist4, topArtist5: topArtist5,
@@ -497,7 +515,9 @@ app.get('/callback', function(req, res) {
                   topSongArtist5: topSongArtist5,
 
                   topSongPrev: topSongPrev, 
-                  topSongCover: topSongCover, topSongID: topSongID});
+                  topSongCover: topSongCover, topSongID: topSongID,
+                  topArtistID: topArtistID, topArtistID2: topArtistID2 
+                });
               }
               catch (e) {
                  // database.ref('users/' + body.display_name).set({displayName: body.display_name, image: '' , 
@@ -516,7 +536,7 @@ app.get('/callback', function(req, res) {
 
                  console.log("ERROR IN TRY STATEMENT.  RUNNING CATCH");
                  database.ref('users/' + body.display_name).set({displayName: displayName, 
-                  image: image, 
+                  image: image, id: id,
 
                   topArtist: topArtist, topArtist2: topArtist2, topArtist3: topArtist3,
                   topArtist4: topArtist4, topArtist5: topArtist5,
@@ -529,7 +549,8 @@ app.get('/callback', function(req, res) {
                   topSongArtist5: topSongArtist5,
 
                   topSongPrev: topSongPrev, 
-                  topSongCover: topSongCover, topSongID: topSongID});
+                  topSongCover: topSongCover, topSongID: topSongID, 
+                  topArtistID: topArtistID, topArtistID2: topArtistID2 });
               }
             });    
           });
@@ -538,6 +559,7 @@ app.get('/callback', function(req, res) {
 
            req.session.id = body.id;
 
+          console.log("Body display name=  "+body.display_name);
           if(body.display_name)
             req.session.display_name = body.display_name;
           else{
