@@ -342,29 +342,29 @@
 
    //HUNTER'S COMMENTED OUT AJAX CALL FOR TOP ARTISTS TRACKS
 
-    //     $.ajax({
-    //       url: 'https://api.spotify.com/v1/artists/'+id+'/top-tracks',
-    //       type: 'GET',
-    //       headers: {
-    //           'Accept': 'application/json',
-    //           'Content-Type': 'application/json',
-    //           'Authorization': 'Bearer ' + "{{sess_access_token}}"
-    //       },
-    //       data: {
-    //         //user's input
-    //           id:  users[name].topArtistID,
-    //           country: "US"
-    //       },
+        $.ajax({
+          url: 'https://api.spotify.com/v1/artists/'+users[name].topArtistID+'/top-tracks',
+          type: 'GET',
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + "{{sess_access_token}}"
+          },
+          data: {
+            //user's input
+              id:  users[name].topArtistID,
+              country: "US"
+          },
 
-    //       //response is the data received from spotify
-    //       success: function (response) {
-    //          console.log(response);
-    //          console.log("SUCCESS!");
+          //response is the data received from spotify
+          success: function (response) {
+             console.log(response);
+             console.log("SUCCESS!");
 
-    //         $('#songName' + index).attr("data-prev_url", users[name].topSongPrev);
+            $('#songName' + index).attr("data-prev_url", users[name].topSongPrev);
             
-    //       }
-    // });
+          }
+    });
 
         //  if(users[name].topSongPrev){
         //   $('#songName' + index).attr("data-prev_url", users[name].topSongPrev);
