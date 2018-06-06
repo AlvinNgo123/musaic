@@ -122,7 +122,7 @@ top song and top artist according to spotify
 
         //Template for Square Boxes
         // <a href='/profile'> reimplement </a> reimplement by wrapping around image
-        newLi.innerHTML = "<div class='col-sm-4 grow profile profileBeg' id='profile'"+index+"><h3 class='userNameText profileText' id='"+userName+"'></h3><h4 class='songNameText profileText' id='"+songName+"' ></h4><h4 class='artistNameText profileText' id='"+artistName+"'></h4><div class='transparentBox' id='"+transparentBoxColor+"'></div><img class='profilePic col-sm-2' id='"+pic+"'><img class='icon chatBubble' src='css/Icons/chatBubble.png'><h5 class='chatNumber' id='"+chatText+"'></h5><img class='icon clock' src='css/Icons/clock.png'><h5 class='clockNumber' id='"+clockText+"'></h5></div></div>";
+        newLi.innerHTML = "<div class='col-sm-4 grow profile profileBeg' id='profile'"+index+"><h3 class='userNameText profileText' id='"+userName+"'></h3><h4 class='songNameText profileText' id='"+songName+"' ></h4><h4 class='artistNameText profileText' id='"+artistName+"'></h4><div class='transparentBox' id='"+transparentBoxColor+"'></div><img class='profilePic col-sm-2' id='"+pic+"'></div></div>";
 
         toAdd.appendChild(newLi);
         index = index +1;
@@ -272,7 +272,8 @@ top song and top artist according to spotify
 
         
 
-        $("#play-btn").click(() =>{
+        $("#play-btn").click((e) =>{
+          e.preventDefault();
 
           if(playing == false){
               audioObject.play();
