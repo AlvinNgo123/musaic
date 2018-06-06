@@ -37,7 +37,7 @@
 -login.handlebars-----HTML file that populates layout of our login page</br>
 -mainPage.handlebars-----HTML file that populates layout of our main page once user successfully logins</br>
 <h4>CSS files</h4>
--community.css</br>
+-community.css-----Handled styling of community page</br>
 -login.css-----Handled styling of login page</br>
 -main.css-----Handled styling of main page</br>
 -modal.css-----Handled styling of popup window on login page</br>
