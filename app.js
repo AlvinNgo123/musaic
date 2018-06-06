@@ -332,7 +332,8 @@ app.get('/callback', function(req, res) {
 
               let displayName = body.display_name;
               if(!displayName){
-                displayName = "Hunter Lai";
+                displayName = "None";
+                body.display_name = "None";
               }
 
               let image;
@@ -356,6 +357,13 @@ app.get('/callback', function(req, res) {
               let topSongID;
               let topArtistID;
               let topArtistID2;
+
+
+              try{
+                displayName = body.display_name;
+              }catch(e){
+                displayName = null;
+              }
 
 
 
@@ -540,6 +548,7 @@ app.get('/callback', function(req, res) {
 
            req.session.id = body.id;
 
+          console.log("Body display name=  "+body.display_name);
           if(body.display_name)
             req.session.display_name = body.display_name;
           else{
