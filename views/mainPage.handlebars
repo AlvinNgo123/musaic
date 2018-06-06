@@ -43,19 +43,20 @@
     const users = snapshot.val();
 
     firebase.auth().onAuthStateChanged(function(user) {
-      console.log("user");
+     /* let currentUserKey = firebase.auth().currentUser.uid;
+      console.log(currentUserKey);
+
       if (user) {
         // User is signed in.
-        let currentUserKey = firebaseAuth.currentUser.uid;
         alert("please enter a username");
         console.log("here");
-        }
-      else {
+        } */
+      
         Object.keys(users).forEach((name) => {
         if (users[name].displayName === "None") {
             console.log("No user name");
             let userName = prompt("You have no display name...please enter one:");
-            database.ref(key + users[name].displayName).update({displayName: userName});
+            database.ref(key + "None").update({displayName: userName});
             while (userName === "") {
               userName = prompt("Name is empty...please enter a name");
             } 
@@ -64,7 +65,7 @@
             location.reload();
             }
         });              
-      }
+      
     });
 
   $(document).ready(()=>{
