@@ -49,6 +49,9 @@
 -login.js-----Handled route to login page</br>
 -mainPage.js-----Passed access token, refresh token, id, and display name from backend to mainpage.handlebars</br>
 -app.js-----Handled overall app functionality by integrating data Spotify API to Firebase and SQLite3, Also contains try catch error for checking data from Spotify API before passing to database</br> 
+</br>
+</br>
+<h1>Link to Video Demo</h1> </br>
 
 
 
