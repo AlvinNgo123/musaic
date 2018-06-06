@@ -27,3 +27,44 @@
 - Created musaic logo</br>
 - Worked on initial SQLite database work before Firebase</br>
 - Worked on testing with possible error cases</br>
+</br>
+</br>
+</br>
+<h3>list of all source code</h3></br>
+<h4>HTML and handlebars</h4>
+-community.handlebars</br>
+-login.handlebars</br>
+-mainPage.handlebars</br>
+-profile.handlebars</br>
+-profileAB.handlebars</br>
+-selectSong.html</br>
+<h4>CSS files</h4>
+-community.css</br>
+-login.css</br>
+-main.css</br>
+-modal.css</br>
+-navbar.css</br>
+-profile.css</br>
+-profileAB.css</br>
+-search.css</br>
+-searchbar.css</br>
+-selectSong.css</br>
+-util.css</br>
+-hamburgers.css</br>
+<h4>Javascript files</h4>
+-main.js</br>
+-search.js</br>
+-community.js</br>
+-login.js</br>
+-mainPage.js</br>
+-myProfile.js</br>
+-profile.js</br>
+-profileAB.js</br>
+-selectSong.js</br>
+-temp.js</br>
+-app.js</br>
+-create_database.js</br>
+
+
+
+
