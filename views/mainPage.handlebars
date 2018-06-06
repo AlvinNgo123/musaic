@@ -324,6 +324,59 @@
 
             });
 
+// $('.artist2').click((e) => {
+
+//  console.log("Song Name Clicked");
+
+//           let target = e.target;
+//           console.log(target);
+         
+//           console.log("ID: "+target.id);
+//           console.log(target.innerHTML);
+//           console.log("Preview URL = "+target.getAttribute('data-prev_url')); 
+//           console.log("Song Name = "+target.getAttribute('data-songName')); 
+
+
+
+
+//           if (target.classList.contains(playingCssClass)) {
+//               audioObject.pause();
+//               playing=false;
+//           } else {
+//               if (audioObject) {
+//                   audioObject.pause();
+//                   playing = false
+//               }
+
+//           audioObject = new Audio(target.getAttribute('data-prev_url'));
+//           audioObject.play();
+//           playingID = target.getAttribute('data-topSongID');
+//           $("#play-btn").html("<i class='far fa-pause-circle'></i>");
+//           playing = true;
+
+//           target.classList.add(playingCssClass);
+
+          
+
+//           $("#album-cover").attr("src", target.getAttribute('data-topSongCover'));
+//           $("#songTitle" ).html(target.getAttribute('data-songName'));
+//           $("#songArtist").html(target.getAttribute('data-topSongArtist'));
+
+
+//           audioObject.addEventListener('ended', function () {
+//               target.classList.remove(playingCssClass);
+//               playing = false;
+//           });
+//           audioObject.addEventListener('pause', function () {
+//                target.classList.remove(playingCssClass);
+//                playing = false;
+//           });
+
+
+//         }
+//       });
+        
+
         $("#topArtist-btn").click(() =>{
             console.log("top artist button clicked");
           let index = 0; //reset index
@@ -404,125 +457,60 @@
 
 
 
-         $.ajax({
-          url: 'https://api.spotify.com/v1/artists/'+users[name].topArtistID2+'/top-tracks',
-          type: 'GET',
-          headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer ' + "{{sess_access_token}}"
-          },
-          data: {
-            //user's input
-              id:  users[name].topArtistID2,
-              country: "US"
-          },
+    //      $.ajax({
+    //       url: 'https://api.spotify.com/v1/artists/'+users[name].topArtistID2+'/top-tracks',
+    //       type: 'GET',
+    //       headers: {
+    //           'Accept': 'application/json',
+    //           'Content-Type': 'application/json',
+    //           'Authorization': 'Bearer ' + "{{sess_access_token}}"
+    //       },
+    //       data: {
+    //         //user's input
+    //           id:  users[name].topArtistID2,
+    //           country: "US"
+    //       },
 
-          //response is the data received from spotify
-          success: function (response, body) {
+    //       //response is the data received from spotify
+    //       success: function (response, body) {
              
-            
+    //         console.log("success in artist2 ajax call  index2:"+index2);
 
             
 
-            songPreview2 = response.tracks[0].preview_url;
-            songName2 = response.tracks[0].name;
-            songCover2 = response.tracks[0].album.images[2].url;
+    //         songPreview2 = response.tracks[0].preview_url;
+    //         songName2 = response.tracks[0].name;
+    //         songCover2 = response.tracks[0].album.images[2].url;
 
-            $('#artistName' + index2).attr("data-prev_url", songPreview2);
-            $('#artistName' + index2).attr("data-songName", songName2);
-            $('#artistName' + index2).attr("data-topSongArtist", users[name].topArtist2);
-            $('#artistName' + index2).attr("data-topSongCover", songCover2);
+    //         $('#artistName' + index2).attr("data-prev_url", songPreview2);
+    //         $('#artistName' + index2).attr("data-songName", songName2);
+    //         $('#artistName' + index2).attr("data-topSongArtist", users[name].topArtist2);
+    //         $('#artistName' + index2).attr("data-topSongCover", songCover2);
 
-            $('#artistName' + index2).addClass("artist2");
-
-            
-            index2 = index2 + 1;
-
-            //console.log("Top Artist song name "+$('#songName'+index).getAttribute('data-songName'));
-        //   $('#songName' + index).attr("data-topSongArtist", users[name].topSongArtist);
-        //   $('#songName' + index).attr("data-topSongID", users[name].topSongID);
-        //   $('#songName' + index).attr("data-topSongCover", users[name].topSongCover);
+    //         $('#artistName' + index2).addClass("artist2");
 
             
-          }
-    });
+    //         index2 = index2 + 1;
 
 
             
+    //       }
+    // });
 
-           
 
-        //  if(users[name].topSongPrev){
-        //   $('#songName' + index).attr("data-prev_url", users[name].topSongPrev);
-        //   $('#songName' + index).attr("data-songName", users[name].topSong);
-        //   $('#songName' + index).attr("data-topSongArtist", users[name].topSongArtist);
-        //   $('#songName' + index).attr("data-topSongID", users[name].topSongID);
-        //   $('#songName' + index).attr("data-topSongCover", users[name].topSongCover);
-        //   console.log("SONG PREVIEW ADDED");
-        //   console.log($('#songName' + index).attr("data-prev_url"));
-        // }
-
-       
-        //$('#chatText' + index).html(e.chat);
-        //$('#clockText' + index).html(e.time);
+  
         
       });
 
 
 
-$('.artist2').click((e) => {
 
 
 
-          let target = e.target;
-          console.log(target);
-          console.log("Song Name Clicked");
-          console.log("ID: "+target.id);
-          console.log(target.innerHTML);
-          console.log("Preview URL = "+target.getAttribute('data-prev_url')); 
-          console.log("Song Name = "+target.getAttribute('data-songName')); 
-
-
-
-
-          if (target.classList.contains(playingCssClass)) {
-              audioObject.pause();
-              playing=false;
-          } else {
-              if (audioObject) {
-                  audioObject.pause();
-                  playing = false
-              }
-
-          audioObject = new Audio(target.getAttribute('data-prev_url'));
-          audioObject.play();
-          playingID = target.getAttribute('data-topSongID');
-          $("#play-btn").html("<i class='far fa-pause-circle'></i>");
-          playing = true;
-
-          target.classList.add(playingCssClass);
-
-          
-
-          $("#album-cover").attr("src", target.getAttribute('data-topSongCover'));
-          $("#songTitle" ).html(target.getAttribute('data-songName'));
-          $("#songArtist").html(target.getAttribute('data-topSongArtist'));
-
-
-          audioObject.addEventListener('ended', function () {
-              target.classList.remove(playingCssClass);
-              playing = false;
-          });
-          audioObject.addEventListener('pause', function () {
-               target.classList.remove(playingCssClass);
-               playing = false;
-          });
-
-
-        }
-      });
             });
+
+
+
        
         
 
