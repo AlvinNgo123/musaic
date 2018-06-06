@@ -530,13 +530,13 @@ app.get('/callback', function(req, res) {
               try{
                 topSongCover4 = bo.items[4].album.images[2].url;
               }catch(e){
-                  topSongCover= null;
+                  topSongCover4= null;
               }
 
               try{
                 topSongCover5 = bo.items[5].album.images[2].url;
               }catch(e){
-                  topSongCover= null;
+                  topSongCover5= null;
               }
 
              
