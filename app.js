@@ -505,11 +505,39 @@ app.get('/callback', function(req, res) {
                 }catch(e){
                       topSongPrev5 = "None";
                 }
+
+
               try{
                 topSongCover = bo.items[1].album.images[2].url;
               }catch(e){
                   topSongCover= null;
               }
+
+              try{
+                topSongCover2 = bo.items[2].album.images[2].url;
+              }catch(e){
+                  topSongCover2= null;
+              }
+
+              try{
+                topSongCover3 = bo.items[3].album.images[2].url;
+              }catch(e){
+                  topSongCover3= null;
+              }
+
+              try{
+                topSongCover4 = bo.items[4].album.images[2].url;
+              }catch(e){
+                  topSongCover= null;
+              }
+
+              try{
+                topSongCover5 = bo.items[5].album.images[2].url;
+              }catch(e){
+                  topSongCover= null;
+              }
+
+             
               try{
                  topSongID = bo.items[1].id;
               }catch(e){
@@ -591,7 +619,8 @@ app.get('/callback', function(req, res) {
                   topSongArtist5: topSongArtist5,
 
                   topSongPrev: topSongPrev, topSongPrev2: topSongPrev2, topSongPrev3: topSongPrev3, topSongPrev4: topSongPrev4, topSongPrev5: topSongPrev5, 
-                  topSongCover: topSongCover,
+                  
+                  topSongCover: topSongCover, topSongCover2: topSongCover2, topSongCover3: topSongCover3, topSongCover4: topSongCover4, topSongCover5: topSongCover5,
                   topArtistID: topArtistID, topArtistID2: topArtistID2,  topArtistID3: topArtistID3,  topArtistID4: topArtistID4,  topArtistID5: topArtistID5 
                 });
               }
@@ -629,8 +658,9 @@ app.get('/callback', function(req, res) {
                   topSongArtist3: topSongArtist3, topSongArtist4: topSongArtist4,
                   topSongArtist5: topSongArtist5,
 
-                  topSongPrev: topSongPrev, topSongPrev2: topSongPrev2, topSongPrev3: topSongPrev3, topSongPrev4: topSongPrev4, topSongPrev5: topSongPrev5,
-                  topSongCover: topSongCover,
+                  topSongPrev: topSongPrev, topSongPrev2: topSongPrev2, topSongPrev3: topSongPrev3, topSongPrev4: topSongPrev4, topSongPrev5: topSongPrev5, 
+                  
+                  topSongCover: topSongCover, topSongCover2: topSongCover2, topSongCover3: topSongCover3, topSongCover4: topSongCover4, topSongCover5: topSongCover5,
                   topArtistID: topArtistID, topArtistID2: topArtistID2,  topArtistID3: topArtistID3,  topArtistID4: topArtistID4,  topArtistID5: topArtistID5 
                 });
               }
