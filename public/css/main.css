@@ -11,6 +11,12 @@ h1, h2, h3, h4, h5 {
 	font-family: Poppins-Regular, sans-serif;
 }
 
+.menuText {
+	color: black;
+	margin-top: 12%;
+	margin-bottom: 12%;
+}
+
 body {
 	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(https://i.pinimg.com/originals/ff/2b/02/ff2b024eb639157f808a53d93f5affb8.jpg); background-size: 100% 100%;
   	background-repeat: no-repeat;

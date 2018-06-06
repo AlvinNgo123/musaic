@@ -80,6 +80,12 @@
               if (!users[name].image) {
                 $('#pic' + index).attr('src', 'css/ProfilePics/userDefault.png');
               }
+
+              // Populate menu bar profile
+              if ("{{sess_display_name}}" === users[name].displayName) {
+                console.log("MATCH");
+                $('#menuProfile').attr('src', users[name].image);
+              }
     					index = index + 1;
     				});
     			}
@@ -195,8 +201,11 @@
   	  		<span></span>
    	  		<ul id="menu">
             
-            <img class="profilePic img-responsive center-block" id="menuProfile" src="{{sess_image}}">
-            <h4 id="menuWelcome">Welcome {{sess_display_name}} {{sess_image}}</h4>
+            <img class="profilePic img-responsive center-block" id="menuProfile">
+            <div class="menuText">
+              <h4 class="text-center" id="menuWelcome">Welcome</h4>
+              <h4 class="text-center">{{sess_display_name}}</h4>\
+            </div>
    	   			<a href="mainPage"><li>Home</li></a>
    	   			<a href="#" id="active"><li>Community</li></a>
   	    		<!-- <a href="#"><li>My Profile</li></a> -->

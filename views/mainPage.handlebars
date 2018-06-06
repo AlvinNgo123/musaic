@@ -156,6 +156,11 @@
           $('#pic' + index).attr('src', users[name].image);
         }
 
+        // Populate menu bar profile
+        if ("{{sess_display_name}}" === users[name].displayName) {
+          $('#menuProfile').attr('src', users[name].image);
+        }
+
         else {
           $('#pic' + index).attr('src', 'css/ProfilePics/userDefault.png');
         }
@@ -397,7 +402,6 @@
 
 <body>
 
-<h1> Welcome {{sess_display_name}} </h1>
   <!-- Hamburger Menu -->
 	<nav role="navigation">
 		<div id="menuToggle">
@@ -410,6 +414,11 @@
   	  		<span></span>
   	  		<span></span>
    	  		<ul id="menu">
+            <img class="profilePic img-responsive center-block" id="menuProfile">
+            <div class="menuText">
+              <h4 class="text-center" id="menuWelcome">Welcome</h4>
+              <h4 class="text-center">{{sess_display_name}}</h4>
+            </div>
    	   			<a href="#" id="active"><li>Home</li></a>
    	   			<a href="community"><li>Community</li></a>
   	    		<!-- <a href="myProfile"><li>My Profile</li></a> -->
