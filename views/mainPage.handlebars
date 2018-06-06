@@ -1,3 +1,9 @@
+<!--  
+DESCRIPTION OF THE CODE:
+This code contains will display two types of data from each user: their
+top song and top artist according to spotify
+-->
+
 <html>
 <head>
 	<meta charset="utf-8">
@@ -45,11 +51,9 @@
 
     firebase.auth().onAuthStateChanged(function(user) {
 
+        // Loop through all the users
         Object.keys(users).forEach((name) => {
           
-
-          
-
             if (users[name].displayName === "None") {
               
               if ("{{sess_user_id}}" != users[name].id ) {
@@ -284,6 +288,7 @@
 
         $("#add-btn").click((e) => {
           e.preventDefault();
+          alert("Song Added to your library Song in Spotify");
           console.log("PLAYING ID: "+playingID);
 
           $.ajax({
