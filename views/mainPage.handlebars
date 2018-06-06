@@ -397,7 +397,9 @@
         
 
         $("#topArtist-btn").click(() =>{
-            console.log("top artist button clicked");
+
+
+          console.log("top artist button clicked");
           let index = 0; //reset index
           let index2 = 0;
           let audioObject = null;
@@ -442,8 +444,10 @@
              console.log("SUCCESS!   index="+index);
 
           $('#userName' + index).html(users[name].displayName);
-         $('#songName' + index).html(+users[name].topArtist);
-         //$('#artistName' + index).html("");
+
+          console.log("top artist name: "+users[name].topArtist);
+          $('#songName' + index).html(users[name].topArtist);
+         $('#artistName' + index).html("");
 
             
 
