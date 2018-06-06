@@ -147,7 +147,7 @@
         }
 
         $('#userName' + index).html(users[name].displayName);
-        $('#songName' + index).html(users[name].topSong);
+        $('#songName' + index).html("<i class='far fa-play-circle'></i> "+users[name].topSong);
 
 
         //adds variables to each song for when people click on it
@@ -191,21 +191,30 @@
         });
 
         //Overflow check
-        $('.songNameText').hover(() => {
-        /*  console.log($(this).attr('id'));
-          //$('.songNameText').css("background-color", "#4388ff");
-
-          console.log("hover");
-          console.log(document.getElementsByClassName('songNameText')[0].scrollWidth);
-          console.log(document.getElementsByClassName('songNameText')[0].offsetWidth);
-
-          console.log(document.getElementsByClassName('transparentBox')[0].offsetWidth); */
+        $('.songNameText').hover((e) => {
+          console.log("hovering over song text");
+          let target = e.target;
+          // target.style.textDecoration ='underline';
+          // target.style.marginBottom = "5px";
+          target.style.fontSize = '25px';
+        
         });
+
+         $('.songNameText').mouseleave((e) => {
+          
+          let target = e.target;
+          target.style.textDecoration ='none';
+          target.style.fontSize = '20px';
+        
+        });
+
+
 
         let playingCssClass = 'playing';
         let audioObject = null;
         let playing = false;
         let playingID = null;
+
         $('.songNameText').click((e) => {
 
 
@@ -316,7 +325,7 @@
         }
 
         $('#userName' + index).html(users[name].displayName);
-        $('#songName' + index).html(users[name].topSong);
+        $('#songName' + index).html("<i class='far fa-play-circle'></i> "+users[name].topSong);
 
 
         //adds variables to each song for when people click on it
@@ -446,7 +455,7 @@
           $('#userName' + index).html(users[name].displayName);
 
           console.log("top artist name: "+users[name].topArtist);
-          $('#songName' + index).html(users[name].topArtist);
+          $('#songName' + index).html("<i class='far fa-play-circle'></i> "+users[name].topArtist);
          $('#artistName' + index).html("");
 
             

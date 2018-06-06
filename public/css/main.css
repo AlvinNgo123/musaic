@@ -62,6 +62,7 @@ body {
 	z-index: -2;
 	position: relative;
 	margin-top: 20px;
+
 }
 
 .userNameText {
@@ -70,6 +71,7 @@ body {
 	width: 43%;
 	left: 0px;
 	top: 10px;
+	text-decoration: underline;
 }
 
 .songNameText {
@@ -78,7 +80,8 @@ body {
 	left: 0px;
 	top: 65px;
 	font-size: 20px;
-	text-decoration: underline;
+	/*text-decoration: underline;*/
+	font-weight: bold;
 }
 
 .artistNameText {
@@ -86,8 +89,8 @@ body {
 	width: 43%;
 	left: 0px;
 	top: 100px;
-	text-decoration: underline;
-	font-size: 16px;
+	/*text-decoration: underline;*/
+	font-size: 14px;
 }
 
  .transparentBox {

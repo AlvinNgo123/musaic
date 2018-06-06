@@ -612,7 +612,7 @@ app.get('/callback', function(req, res) {
             });    
           });
 
-          id_global = body.id;
+          // id_global = body.id;
           console.log("Here: " + id_global);
           req.session.user_id = id_global;
 
