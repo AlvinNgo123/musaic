@@ -272,8 +272,11 @@
     });
         });
 
-        $("#topSong-btn").click(() =>{
+        $(".topSong-btn").click(() =>{
             console.log("top song button clicked");
+
+            $('.dropbtn').html('Top Songs');
+
 
               index = 0; //reset index
 
@@ -311,11 +314,13 @@
 
             });
         
-        $("#topArtist-btn").click(() =>{
+        $(".topArtist-btn").click(() =>{
 
+          $('.dropbtn').html('Top Artists');
 
           console.log("top artist button clicked");
-          let index = 0; //reset index
+
+          let index = 0; //reset index2
           let index2 = 0;
           let audioObject = null;
 
@@ -418,8 +423,18 @@
 
     <h3 class="text-center">Music Tastes</h3>
 
-    <h2 class="text-center underline" id="topSong-btn">Top Songs</h2>
-    <h2 class="text-center underline" id="topArtist-btn">Top Artists</h2>
+
+
+<!-- Dropdown menu -->
+<div class="text-center">
+    <div class="dropdown ">
+      <button class="dropbtn">Top Songs</button>
+      <div class="dropdown-content">
+      <a href="#" class="topSong-btn">Top Songs</a>
+      <a href="#" class="topArtist-btn">Top Artists</a>
+    </div>
+  </div>
+</div>
 
     <!-- Div that holds all the profiles in the beginning -->
     <div class="container-fluid" id="allProfiles">
