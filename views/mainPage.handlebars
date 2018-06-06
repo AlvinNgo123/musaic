@@ -426,13 +426,13 @@
           },
 
           //response is the data received from spotify
-          success: function (response, body) {
+          success: function (response, body) {  
              
              console.log("SUCCESS!   index="+index);
 
           $('#userName' + index).html(users[name].displayName);
-         $('#songName' + index).html("1) "+users[name].topArtist);
-         $('#artistName' + index).html("2) "+users[name].topArtist2);
+         $('#songName' + index).html(+users[name].topArtist);
+         //$('#artistName' + index).html("");
 
             
 
