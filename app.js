@@ -332,7 +332,7 @@ app.get('/callback', function(req, res) {
 
               let displayName = body.display_name;
               if(!displayName){
-                displayName = "Hunter Lai"
+                displayName = "Hunter Lai";
               }
 
               let image;
