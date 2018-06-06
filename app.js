@@ -552,12 +552,15 @@ app.get('/callback', function(req, res) {
                   topSongCover: topSongCover, topSongID: topSongID, 
                   topArtistID: topArtistID, topArtistID2: topArtistID2 });
               }
+
+              req.session.image = image;
+
             });    
           });
 
           id_global = body.id;
 
-           req.session.id = body.id;
+          req.session.id = body.id;
 
           console.log("Body display name=  "+body.display_name);
           if(body.display_name)
