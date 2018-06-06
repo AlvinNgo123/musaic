@@ -1,10 +1,8 @@
-/*!
- * Hamburgers
- * @description Tasty CSS-animated hamburgers
- * @author Jonathan Suh @jonsuh
- * @site https://jonsuh.com/hamburgers
- * @link https://github.com/jonsuh/hamburgers
- */
+/*
+DESCRIPTION OF CODE:
+This is the css styling for the hamburger menu that slides out in the left upper corner of the app. 
+The code contains the sizing, transition, and exact timing of the menu.  
+*/
 .hamburger {
   padding: 15px 15px;
   display: inline-block;

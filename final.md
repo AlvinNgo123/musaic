@@ -42,8 +42,7 @@
 -main.css-----Handled styling of main page</br>
 -modal.css-----Handled styling of popup window on login page</br>
 -navbar.css-----Handled styling of navigation bar on main page</br>
--search.css-----Handled styling of search bar on main page</br>
--searchbar.css------Handled styling of login page</br>
+-searchbar.css------Handled styling of search bar on main page</br>
 -hamburgers.css-----Handled styling of hamburger pull out menu</br>
 <h4>Javascript files</h4>
 -community.js-----Passed access token, refresh token, id, image, and display name from backend to community.handlebars</br>
