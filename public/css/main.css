@@ -215,8 +215,10 @@ body {
     overflow: hidden;
     position: fixed;
     bottom: 0;
-    width: 100%;
+    width: 50%;
     margin-bottom: 0;
+    margin-left: 25%;
+    margin-top: 10%;
 }
 
 /* Style the links inside the navigation bar */
@@ -261,5 +263,18 @@ body {
 #add-btn{
 	font-size: 25px;
 }
+
+#songTitle, #songArtist {
+	padding-top: 21px;
+}
+
+#play-btn {
+	margin-top: 5px;
+}
+
+#add-btn {
+	margin-top: 6px;
+}
+
 
 
