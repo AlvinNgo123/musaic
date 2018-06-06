@@ -332,7 +332,7 @@ app.get('/callback', function(req, res) {
 
               let displayName = body.display_name;
               if(!displayName){
-                displayName = "None"
+                displayName = "Hunter Lai"
               }
 
               let image;
@@ -354,8 +354,8 @@ app.get('/callback', function(req, res) {
               let topSongPrev;
               let topSongCover;
               let topSongID;
-              let topArtisID;
-              let topArtisID2;
+              let topArtistID;
+              let topArtistID2;
 
 
 
@@ -497,7 +497,9 @@ app.get('/callback', function(req, res) {
                   topSongArtist5: topSongArtist5,
 
                   topSongPrev: topSongPrev, 
-                  topSongCover: topSongCover, topSongID: topSongID});
+                  topSongCover: topSongCover, topSongID: topSongID,
+                  topArtistID: topArtistID, topArtistID2: topArtistID2 
+                });
               }
               catch (e) {
                  // database.ref('users/' + body.display_name).set({displayName: body.display_name, image: '' , 
@@ -529,7 +531,7 @@ app.get('/callback', function(req, res) {
                   topSongArtist5: topSongArtist5,
 
                   topSongPrev: topSongPrev, 
-                  topSongCover: topSongCover, topSongID: topSongID});
+                  topSongCover: topSongCover, topSongID: topSongID, topArtistID: topArtistID, topArtistID2: topArtistID2 });
               }
             });    
           });
