@@ -1,7 +1,8 @@
 <!--  
 DESCRIPTION OF THE CODE:
 This code contains will display two types of data from each user: their
-top song and top artist according to spotify
+top song and top artist according to spotify. Users can click on songs and choose to add them to 
+their playlists if they please 
 -->
 
 <html>
@@ -20,10 +21,6 @@ top song and top artist according to spotify
 
  
   <script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
-  <script>
-  // Initialize Firebase
-  
-</script>
 
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="/js/bootstrap.js"></script>
@@ -45,28 +42,31 @@ top song and top artist according to spotify
 
     const key = 'users/'; // Gets all users
 
+   // Get value of the users in the database
    database.ref(key).once('value', (snapshot) => {
-    const users = snapshot.val();
+    const users = snapshot.val(); // Stores value in a const
 
-
+    // Checks to see if login has changed
     firebase.auth().onAuthStateChanged(function(user) {
 
         // Loop through all the users
         Object.keys(users).forEach((name) => {
           
+            // Checks to see if the display name is none.
             if (users[name].displayName === "None") {
               
               if ("{{sess_user_id}}" != users[name].id ) {
 
-              console.log("No user name");
+              // Prompts the user to choose one
               let userName = prompt("You have no display name...please enter one:");
               while (userName === "") {
                 userName = prompt("Name is empty...please enter a name");
               } 
 
-
+              // Creates new node in database
               database.ref(key + userName).set({displayName: userName});
 
+              // Updates the new node with info
               database.ref(key + userName).update({displayName: userName, image: users[name].image, topArtist: users[name].topArtist, topArtist2: users[name].topArtist2, topArtist3: users[name].topArtist3, topArtist4: users[name].topArtist4, topArtist5: users[name].topArtist5, 
 
                 topSong: users[name].topSong, topSong2: users[name].topSong2, topSong3: users[name].topSong3, topSong4: users[name].topSong4, topSong5: users[name].topSong5, 
@@ -87,6 +87,7 @@ top song and top artist according to spotify
                 id: users[name].id
 
               });
+              // Deletes node that had a key of none
               database.ref(key+"None").remove();
               location.reload();
             }
@@ -100,9 +101,7 @@ top song and top artist according to spotify
 
   $(document).ready(()=>{
    
-    console.log(users);
-    console.log(users.topSong);
-
+    // Creates a fragment to be added upon.
     const toAdd = document.createDocumentFragment();
     let index = 0;
 
@@ -121,13 +120,12 @@ top song and top artist according to spotify
         
 
         //Template for Square Boxes
-        // <a href='/profile'> reimplement </a> reimplement by wrapping around image
         newLi.innerHTML = "<div class='col-sm-4 grow profile profileBeg' id='profile'"+index+"><h3 class='userNameText profileText' id='"+userName+"'></h3><h4 class='songNameText profileText' id='"+songName+"' ></h4><h4 class='artistNameText profileText' id='"+artistName+"'></h4><div class='transparentBox' id='"+transparentBoxColor+"'></div><img class='profilePic col-sm-2' id='"+pic+"'></div></div>";
 
-        toAdd.appendChild(newLi);
+        // Appends the template to be added later
+        toAdd.appendChild(newLi); 
         index = index +1;
 
-        console.log(users[name].topSong);
       });
 
       // Adds all the squares into the HTML
@@ -143,6 +141,7 @@ top song and top artist according to spotify
           $('#transparentBoxColor' + index).css("background-color", "#c7374a");
         }
 
+        // Displays the users top song and display name
         $('#userName' + index).html(users[name].displayName);
         $('#songName' + index).html(users[name].topSong);
 
@@ -154,15 +153,17 @@ top song and top artist according to spotify
           $('#songName' + index).attr("data-topSongArtist", users[name].topSongArtist);
           $('#songName' + index).attr("data-topSongID", users[name].topSongID);
           $('#songName' + index).attr("data-topSongCover", users[name].topSongCover);
-          console.log("SONG PREVIEW ADDED");
-          console.log($('#songName' + index).attr("data-prev_url"));
         }
 
+        // Displays artist name
         $('#artistName' + index).html(users[name].topSongArtist);
+
+        // If the user has an image, set it
         if (users[name].image) {
           $('#pic' + index).attr('src', users[name].image);
         }
 
+        // Otherwise set the standard image
         else {
           $('#pic' + index).attr('src', 'css/ProfilePics/userDefault.png');
         }
@@ -170,33 +171,14 @@ top song and top artist according to spotify
         // Populate menu bar profile
         if ("{{sess_display_name}}" === users[name].displayName) {
           $('#menuProfile').attr('src', users[name].image);
-                  console.log("Firebase ID: " + "{{sess_user_id}}");
-                  console.log("Username: " + "{{sess_display_name}}");
-
         }
-
-        //$('#chatText' + index).html(e.chat);
-        //$('#clockText' + index).html(e.time);
         index = index + 1;
       });
     }
 
    });
-      
-        $('.userNameText').click(() => {
-          console.log("Hi");
-        });
 
-        //Overflow check
-        $('.songNameText').hover((e) => {
-          console.log("hovering over song text");
-          let target = e.target;
-          // target.style.textDecoration ='underline';
-          // target.style.marginBottom = "5px";
-          target.style.fontSize = '25px';
-        
-        });
-
+         // Shrinks the mouse over 
          $('.songNameText').mouseleave((e) => {
           
           let target = e.target;
@@ -206,27 +188,18 @@ top song and top artist according to spotify
         });
 
 
-
+         // Playing variables for music
         let playingCssClass = 'playing';
         let audioObject = null;
         let playing = false;
         let playingID = null;
 
+        // When clicking on the text of a song, play that music
         $('.songNameText').click((e) => {
 
+          let target = e.target; 
 
-
-          let target = e.target;
-          console.log(target);
-          console.log("Song Name Clicked");
-          console.log("ID: "+target.id);
-          console.log(target.innerHTML);
-          console.log("Preview URL = "+target.getAttribute('data-prev_url')); 
-          console.log("Song Name = "+target.getAttribute('data-songName')); 
-
-
-
-
+          // Playing the song and pausing
           if (target.classList.contains(playingCssClass)) {
               audioObject.pause();
               playing=false;
@@ -235,31 +208,31 @@ top song and top artist according to spotify
                   audioObject.pause();
                   playing = false;
               }
-
+          // If no preview available, alert user 
           if((target.getAttribute('data-prev_url'))=="None"){
             alert("Preview Unavailable For This Song");
           }else{
 
-          audioObject = new Audio(target.getAttribute('data-prev_url'));
-          audioObject.play();
-          playingID = target.getAttribute('data-topSongID');
-          $("#play-btn").html("<i class='far fa-pause-circle'></i>");
-          playing = true;
+            audioObject = new Audio(target.getAttribute('data-prev_url'));
+            audioObject.play();
+            playingID = target.getAttribute('data-topSongID');
+            $("#play-btn").html("<i class='far fa-pause-circle'></i>");
+            playing = true;
 
-          target.classList.add(playingCssClass);
+            target.classList.add(playingCssClass);
 
-          console.log(target.getAttribute('data-songName'));
-          console.log(target.getAttribute('data-topSongArtist'));
+            // Populates playing bar with info about song
+            $("#album-cover").attr("src", target.getAttribute('data-topSongCover'));
+            $("#songTitle" ).html(target.getAttribute('data-songName'));
+            $("#songArtist").html(target.getAttribute('data-topSongArtist'));
 
-          $("#album-cover").attr("src", target.getAttribute('data-topSongCover'));
-          $("#songTitle" ).html(target.getAttribute('data-songName'));
-          $("#songArtist").html(target.getAttribute('data-topSongArtist'));
-
-
+          // Checks to see if audio ended
           audioObject.addEventListener('ended', function () {
               target.classList.remove(playingCssClass);
               playing = false;
           });
+
+          // Checks if paused is clicked
           audioObject.addEventListener('pause', function () {
                target.classList.remove(playingCssClass);
                playing = false;
@@ -269,9 +242,7 @@ top song and top artist according to spotify
         }
       });
 
-
-        
-
+        // Checks to see fi play button was clicked
         $("#play-btn").click((e) =>{
           e.preventDefault();
 
@@ -287,6 +258,7 @@ top song and top artist according to spotify
             }
         });
 
+        // Adds current song to the playlist on Spotify
         $("#add-btn").click((e) => {
           e.preventDefault();
           alert("Song Added to your library Song in Spotify");
@@ -314,9 +286,10 @@ top song and top artist according to spotify
     });
         });
 
+        // Changes Top Songs to be displayed to the user
         $(".topSong-btn").click(() =>{
-            console.log("top song button clicked");
 
+            // Changes html of the dropdown bar
             $('.dropbtn').html('Top Songs');
 
 
@@ -358,12 +331,11 @@ top song and top artist according to spotify
             });
 
 
+        // Changes top artists to be displayed in the homepage
         $(".topArtist-btn").click(() =>{
 
-
+          // Changes dropdown text to Top Artists
           $('.dropbtn').html('Top Artists');
-
-          console.log("top artist button clicked");
 
           let index = 0; //reset index2
           let index2 = 0;
@@ -371,24 +343,19 @@ top song and top artist according to spotify
 
       // Gets info from the database to fill in the newly created squares
       Object.keys(users).forEach((name) => {
-          console.log("entered users key loop");
         //Color changer
         if (index % 2 === 1) {
           $('#transparentBoxColor' + index).css("background-color", "#c7374a");
-        }
+        }       
 
-        console.log("Display name: "+users[name].displayName);
-
-       
-
-   //HUNTER'S COMMENTED OUT AJAX CALL FOR TOP ARTISTS TRACKS
-
+        // Song preview variables
         let songPreview;
         let songName;
-         let songPreview2;
+        let songPreview2;
         let songName2;
        
 
+        // Gets users topArtist and allows them to be played
         $.ajax({
           url: 'https://api.spotify.com/v1/artists/'+users[name].topArtistID+'/top-tracks',
           type: 'GET',
@@ -398,7 +365,7 @@ top song and top artist according to spotify
               'Authorization': 'Bearer ' + "{{sess_access_token}}"
           },
           data: {
-            //user's input
+              //user's input
               id:  users[name].topArtistID,
               country: "US"
           },
@@ -406,16 +373,14 @@ top song and top artist according to spotify
           //response is the data received from spotify
           success: function (response, body) {  
              
-             console.log("SUCCESS!   index="+index);
-
           $('#userName' + index).html(users[name].displayName);
 
           console.log("top artist name: "+users[name].topArtist);
           $('#songName' + index).html(users[name].topArtist);
-         $('#artistName' + index).html("");
+          $('#artistName' + index).html("");
 
             
-
+            // Setting song previews
             songPreview = response.tracks[0].preview_url;
             songName = response.tracks[0].name;
             songCover = response.tracks[0].album.images[2].url;
@@ -425,16 +390,18 @@ top song and top artist according to spotify
             $('#songName' + index).attr("data-topSongArtist", users[name].topArtist);
             $('#songName' + index).attr("data-topSongCover", songCover);
 
+            // Use pic of user to display
             if (users[name].image) {
-          $('#pic' + index).attr('src', users[name].image);
-        }
+              $('#pic' + index).attr('src', users[name].image);
+            } 
 
-        else {
-          $('#pic' + index).attr('src', 'css/ProfilePics/userDefault.png');
-        }
+            // Otherwise use defaukt image
+            else {
+              $('#pic' + index).attr('src', 'css/ProfilePics/userDefault.png');
+            }
             index = index + 1;
           }
-    });
+        });
           
       });
 
@@ -496,6 +463,7 @@ top song and top artist according to spotify
     </div>
 
 
+  <!-- Bar to play music -->
   <div class="navbar">
     <img id="album-cover" src="css/icons/music_note.png"></img>
     <a href="#" id="play-btn"><i class="far fa-play-circle"></i></a>
