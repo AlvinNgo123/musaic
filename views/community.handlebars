@@ -42,8 +42,6 @@
     		const users = snapshot.val();
 
     		$(document).ready(() => {
-
-          $()
           
     			console.log(users);
     			const toAdd = document.createDocumentFragment();
@@ -176,28 +174,6 @@
             }
           });
 
-          $.ajax({
-            url: 'https://api.spotify.com/v1/me/tracks?ids='+playingID,
-            type: 'PUT',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer ' + "{{sess_access_token}}"
-            },
-            data: {
-              //user's input
-                ids:  playingID,
-            },
-
-            //response is the data received from spotify
-            success: function (response) {
-             
-              console.log("Song added!");
-              $("#add-btn").html("<i class='fas fa-check'></i>");
-            }
-          });
-
-
     		});
     	});
 
@@ -220,7 +196,7 @@
    	  		<ul id="menu">
             
             <img class="profilePic img-responsive center-block" id="menuProfile" src="{{sess_image}}">
-            <h4 id="menuWelcome">Welcome {{sess_display_name}}</h4>
+            <h4 id="menuWelcome">Welcome {{sess_display_name}} {{sess_image}}</h4>
    	   			<a href="mainPage"><li>Home</li></a>
    	   			<a href="#" id="active"><li>Community</li></a>
   	    		<!-- <a href="#"><li>My Profile</li></a> -->
