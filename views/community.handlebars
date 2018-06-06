@@ -1,3 +1,9 @@
+<!-- Community Page -->
+
+<!-- Shows list of all users in the Musaic Community and allows people to open profiles showing everyone's favorite 
+artists and songs.  Also allows you to search for a user -->
+
+
 
 <html>
 <head>
@@ -21,6 +27,8 @@
 
 	<script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
   
+
+  <!-- Firebase script -->
  	<script type="text/javascript">
   		// Firebase
      	var config = {
@@ -33,11 +41,15 @@
     	};
     	firebase.initializeApp(config);
 
+
+
     	const database = firebase.database();
 
     	const key = 'users/'; // Gets all users
 
       
+
+
 
     	database.ref(key).once('value', (snapshot) => {
     		const users = snapshot.val();

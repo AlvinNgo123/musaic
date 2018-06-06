@@ -1,5 +1,5 @@
-/**
- * Module dependencies.
+/*
+  app.js contains routes to each page, calls to spotify API, gets data from spotify and stores in database
  */
 
 /* Firebase Code */
@@ -19,6 +19,8 @@ firebase.initializeApp(config);
 const database = firebase.database();
 // ------- //
 
+
+//packages
 var express = require('express');
 var expressSession = require('express-session');
 var http = require('http');
@@ -28,18 +30,19 @@ var request = require('request'); // "Request" library
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 
+
+//SQLite
 const sqlite3 = require('sqlite3');
 const db = new sqlite3.Database('friends.db');
 
 const bodyParser = require('body-parser');
 
 
-
+//routes
 var login = require('./routes/login');
 var mainPage = require('./routes/mainPage');
 var community = require('./routes/community');
-// Example route
-// var user = require('./routes/user');
+
 
 
 
@@ -69,7 +72,7 @@ var generateRandomString = function(length) {
 var stateKey = 'spotify_auth_state';
 
 var app = express();
-//var data = require("./data.json");
+
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -98,6 +101,8 @@ if ('development' == app.get('env')) {
 
 
 app.use(bodyParser.urlencoded({extended: true})); 
+
+//set up express session
 app.use(expressSession({secret: "npminstall", saveUninitialized: false, resave: false}));
 
 app.get('/', login.view);
@@ -123,7 +128,7 @@ app.get('/friend', (req, res) => {
 });
 
 
-//AJAX call
+//AJAX call:  returns name of friends
 app.get('/friend/:name', (req, res) => {
   console.log("running get request");
   const nameToLookup = req.params.name; // matches ':userid' above
@@ -144,52 +149,18 @@ app.get('/friend/:name', (req, res) => {
   )
 
 
-  //const val = data[nameToLookup];
-  //console.log(nameToLookup, '->', val); // for debugging
-  //if (val) {
-    //res.send(val);
-  //} else {
-    //res.send({}); // failed, so return an empty object instead of undefined
-  //}
-});
-
-/*
-// Gets all the users
-app.get('/users', (req, res) => {
-  db.all('SELECT id FROM accounts', (err, rows) => {
-    console.log(rows);
-    const allUsernames = rows.map(e => e.name);
-    res.send(allUsernames);
-  });
+  
 });
 
 
 // GET Profile data for a user
-app.get('/users/:userid', (req, res) => {
-  const nameToLookup = req.params.userid; // matches ':userid' above
 
-  db.all(
-    'SELECT * FROM users WHERE name=$name',
-    {
-      $name: nameToLookup,
-    }, 
-    (err, rows) => {
-      console.log(rows);
-      if (rows.length > 0) {
-        res.send(rows);
-      }
-      else {
-        res.send({});
-      }
-    });
-});
-*/
 
 
 app.get('/community', community.view);
 
 
-//Spotify Login Button
+//Spotify Login Button.  will run /callback after this
 app.get('/login', function(req, res) {
 
   var state = generateRandomString(16);
@@ -211,6 +182,8 @@ app.get('/login', function(req, res) {
 let id_global = "";
 
 
+
+//runs after login.  Gets data from spotify and stores in Firebase
 app.get('/callback', function(req, res) {
 
   // your application requests refresh and access tokens
@@ -219,6 +192,8 @@ app.get('/callback', function(req, res) {
   var code = req.query.code || null;
   var state = req.query.state || null;
   var storedState = req.cookies ? req.cookies[stateKey] : null;
+
+
 
   if (state === null || state !== storedState) {
     res.redirect('/#' +
@@ -250,10 +225,13 @@ app.get('/callback', function(req, res) {
         var access_token = body.access_token,
             refresh_token = body.refresh_token;
 
+
+        //Stores access tokens in session variables
         req.session.access_token = access_token;
         req.session.refresh_token = refresh_token;
 
 
+        //gets recently played songs
         var recentSong = {
           url: 'https://api.spotify.com/v1/me/player/recently-played?before=1525928815663&limit=1',
           headers: { 'Authorization': 'Bearer ' + access_token },
@@ -267,17 +245,22 @@ app.get('/callback', function(req, res) {
           //console.log(body.items[0].track.name);
         });
 
+
+          //spotify top artists
         var topArtists = {
           url: 'https://api.spotify.com/v1/me/top/artists?limit=6&offset=20',
           headers: { 'Authorization': 'Bearer ' + access_token },
           json: true
         };
 
+
+          //spotify top songs
         var topSongs = {
           url: 'https://api.spotify.com/v1/me/top/tracks?limit=6&offset=20',
           headers: { 'Authorization': 'Bearer ' + access_token },
           json: true
         };
+
 
 
         var options = {
@@ -288,35 +271,14 @@ app.get('/callback', function(req, res) {
 
         // use the access token to access the Spotify Web API
         request.get(options, function(error, response, body) {
-         /*  console.log(body);
-          console.log('BELOW IS EMAIL VARIABLE')
-          console.log(body.email);
-          console.log("DEBUG:  body.id ="+body.id);
-          console.log('BELOW IS NAME OF USER VARIABLE');
-
-
-
-          console.log(body.display_name);
-          console.log('BELOW IS THEIR PROFILE PIC VARIABLE');
-          //console.log(body.images[0].url); */
+        
 
 
           request.get(topArtists, function(error, response, bod) {
-            /* console.log('Goes into top artists'); //Test
-            console.log(bod); 
-            console.log('BELOW IS TOP ARTIST VARIABLE'); */
-            // console.log(bod.items[1].name);
-            // console.log(bod.items[2].name);
-            // console.log(bod.items[3].name);
-            // console.log(bod.items[4].name);
-            // console.log(bod.items[5].name);
+            
 
             request.get(topSongs, function(error, response, bo) {
-            /*  console.log(bo);
-              console.log('SHOW ARTIST THE SINGS TOP SONG'); */
-              // console.log(bo.items[1].name);
-              // console.log(bo.items[2].name);
-              // console.log(bo.items[0].artists[0].name); //variable for showing artist that sings top song
+            
 
               let displayName = body.display_name;
               let userId = "Placeholder";
@@ -325,6 +287,7 @@ app.get('/callback', function(req, res) {
                 body.display_name = "None";
               }
 
+                //All variables stored in database
               let image;
               let topArtist1;
               let topArtist2;
@@ -348,6 +311,9 @@ app.get('/callback', function(req, res) {
               let topArtistID2;
 
 
+
+
+              //checking for invalid values because of Spotify API bugs
               try{
                 displayName = body.display_name;
               }catch(e){
@@ -587,7 +553,7 @@ app.get('/callback', function(req, res) {
 
 
 
-
+              //code to store info in database under users name
 
               try { 
                 database.ref('users/' + body.display_name).set({displayName: displayName, 
@@ -615,19 +581,7 @@ app.get('/callback', function(req, res) {
                 });
               }
               catch (e) {
-                 // database.ref('users/' + body.display_name).set({displayName: body.display_name, image: '' , 
-                 //  topArtist: bod.items[1].name, topArtist2: bod.items[2].name, topArtist3: bod.items[3].name,
-                 //  topArtist4: bod.items[4].name, topArtist5: bod.items[5].name,
-                  
-                 //  topSong: bo.items[1].name, topSong2: bo.items[2].name, topSong3: bo.items[3].name,
-                 //  topSong4: bo.items[4].name, topSong5: bo.items[5].name,
-
-                 //  topSongArtist: bo.items[1].artists[0].name, topSongArtist2: bo.items[2].artists[0].name, 
-                 //  topSongArtist3: bo.items[3].artists[0].name, topSongArtist4: bo.items[4].artists[0].name,
-                 //  topSongArtist5: bo.items[5].artists[0].name,
-
-                 //  topSongPrev: bo.items[1].preview_url, 
-                 //  topSongCover: bo.items[1].album.images[2].url, topSongID: bo.items[1].id});
+                 
 
                  console.log("ERROR IN TRY STATEMENT.  RUNNING CATCH");
                  database.ref('users/' + body.display_name).set({displayName: displayName, 
@@ -689,14 +643,11 @@ app.get('/callback', function(req, res) {
     (err, rows)=> {
       if(rows.length > 0){
         //ID already found so login as that user
-        console.log("DEBUG: user id found in database");
-        //res.redirect("/mainPage/"+body.id);
-
-        console.log("\nLOGGING IN AS A RETURNING USER.  ID="+body.id+" EMAIL="+body.email+"\n");
+        
         res.redirect("/mainPage");
       }else{
         //ID not found so add it to database
-        console.log("DEBUG: user id NOT found in database. You should not be seeing this message");
+        
 
 
         db.run(
@@ -732,18 +683,7 @@ app.get('/callback', function(req, res) {
       )
         });
 
-        // we can also pass the token to the browser to make requests from there
-        
-
-        //DO NOT DELETE THIS CODE.  I AM JUST COMMENTING IT OUT BC I DONT WANT TO DEAL W TOKENS RN. THANK YOU
-        // res.redirect('/#' +
-        //   querystring.stringify({
-        //     access_token: access_token,
-        //     refresh_token: refresh_token
-        //   }));
-
- 
-    //res.redirect("/mainPage/"+id_global);
+      
 
 
 
@@ -762,7 +702,6 @@ app.get('/callback', function(req, res) {
 app.post('/callback', (req, res) => {
 console.log("Running /callback post request");
 
-console.log("DEBUG: global_body.id"+id);
    db.run(
           "INSERT INTO accounts VALUES ($id, $display_name, $external_urls, $href, $email, $images)",
             {
@@ -787,6 +726,8 @@ console.log("DEBUG: global_body.id"+id);
 
 
 });
+
+
 
 app.get('/refresh_token', function(req, res) {
 
