@@ -335,7 +335,7 @@ app.get('/callback', function(req, res) {
               // console.log(bo.items[0].artists[0].name); //variable for showing artist that sings top song
 
               let displayName = body.display_name;
-              let userId = body.id;
+              let userId = "Placeholder";
               if(!displayName){
                 displayName = "None";
                 body.display_name = "None";
