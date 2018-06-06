@@ -42,16 +42,17 @@
    database.ref(key).once('value', (snapshot) => {
     const users = snapshot.val();
 
+
     firebase.auth().onAuthStateChanged(function(user) {
      /* let currentUserKey = firebase.auth().currentUser.uid;
       console.log(currentUserKey);
-
+    
       if (user) {
         // User is signed in.
         alert("please enter a username");
         console.log("here");
         } */
-      
+        console.log("Firebase ID: " + user);
         Object.keys(users).forEach((name) => {
         if (users[name].displayName === "None") {
             console.log("No user name");
