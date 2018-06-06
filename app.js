@@ -331,6 +331,7 @@ app.get('/callback', function(req, res) {
               // console.log(bo.items[0].artists[0].name); //variable for showing artist that sings top song
 
               let displayName = body.display_name;
+              let id = body.id;
               if(!displayName){
                 displayName = "None";
                 body.display_name = "None";
@@ -364,6 +365,8 @@ app.get('/callback', function(req, res) {
               }catch(e){
                 displayName = null;
               }
+
+
 
 
 
@@ -490,7 +493,7 @@ app.get('/callback', function(req, res) {
 
               try { 
                 database.ref('users/' + body.display_name).set({displayName: displayName, 
-                  image: image, 
+                  image: image, id:id,
 
                   topArtist: topArtist, topArtist2: topArtist2, topArtist3: topArtist3,
                   topArtist4: topArtist4, topArtist5: topArtist5,
@@ -526,7 +529,7 @@ app.get('/callback', function(req, res) {
 
                  console.log("ERROR IN TRY STATEMENT.  RUNNING CATCH");
                  database.ref('users/' + body.display_name).set({displayName: displayName, 
-                  image: image, 
+                  image: image, id: id,
 
                   topArtist: topArtist, topArtist2: topArtist2, topArtist3: topArtist3,
                   topArtist4: topArtist4, topArtist5: topArtist5,
