@@ -37,10 +37,7 @@ const bodyParser = require('body-parser');
 
 var login = require('./routes/login');
 var mainPage = require('./routes/mainPage');
-var profile = require('./routes/profile');
 var community = require('./routes/community');
-var myProfile = require('./routes/myProfile');
-var selectSong = require('./routes/selectSong');
 // Example route
 // var user = require('./routes/user');
 
@@ -188,21 +185,8 @@ app.get('/users/:userid', (req, res) => {
 });
 */
 
-app.get('/profile', profile.view);
+
 app.get('/community', community.view);
-app.get('/myProfile', myProfile.view);
-
-app.get('/selectSong', function(req, res){
-  //res.sendfile(path.join(__dirname+'/views/yourProfile.html'));
-  res.render("selectSong.html", { 
-    sess_access_token: req.session.access_token,
-    sess_refresh_token: req.session.refresh_token,
-    sess_display_name: req.session.display_name,
-    sess_user_id: req.session.user_id
-
-  });
-});
-
 
 
 //Spotify Login Button
@@ -335,7 +319,7 @@ app.get('/callback', function(req, res) {
               // console.log(bo.items[0].artists[0].name); //variable for showing artist that sings top song
 
               let displayName = body.display_name;
-              let userId = body.id;
+              let userId = "Placeholder";
               if(!displayName){
                 displayName = "None";
                 body.display_name = "None";
