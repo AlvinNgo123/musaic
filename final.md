@@ -36,35 +36,34 @@
 -community.handlebars-----HTML/handlebars file that populates the layout of our community page</br>
 -login.handlebars-----HTML file that populates layout of our login page</br>
 -mainPage.handlebars-----HTML file that populates layout of our main page once user successfully logins</br>
--profile.handlebars-----REMEMBER TO DELETE</br>
--profileAB.handlebars-----REMEMBER TO DELETE</br>
--selectSong.html-----REMEMBER TO DELETE</br>
+-profile.handlebars-----DELETE</br>
+-profileAB.handlebars-----DELETE</br>
+-selectSong.html-----DELETE</br>
 <h4>CSS files</h4>
 -community.css</br>
--login.css</br>
--main.css</br>
--modal.css</br>
--navbar.css</br>
--profile.css</br>
--profileAB.css</br>
--search.css</br>
--searchbar.css</br>
--selectSong.css</br>
--util.css</br>
--hamburgers.css</br>
+-login.css-----Handled styling of login page</br>
+-main.css-----Handled styling of main page</br>
+-modal.css-----Handled styling of popup window on login page</br>
+-navbar.css-----Handled styling of navigation bar on main page</br>
+-profile.css-----DELETE</br>
+-profileAB.css-----DELETE</br>
+-search.css-----Handled styling of search bar on main page</br>
+-searchbar.css------Handled styling of login page</br>
+-selectSong.css-----DELETE</br>
+-hamburgers.css-----Handled styling of hamburger pull out menu</br>
 <h4>Javascript files</h4>
--main.js</br>
--search.js</br>
--community.js</br>
--login.js</br>
--mainPage.js</br>
--myProfile.js</br>
--profile.js</br>
--profileAB.js</br>
--selectSong.js</br>
--temp.js</br>
--app.js</br>
--create_database.js</br>
+-main.js-----DELETE</br>
+-search.js-----DELETE</br>
+-community.js-----Passed access token, refresh token, id, image, and display name from backend to community.handlebars</br>
+-login.js-----Handled route to login page</br>
+-mainPage.js-----Passed access token, refresh token, id, and display name from backend to mainpage.handlebars</br>
+-myProfile.js-----DELETE</br>
+-profile.js-----DELETE</br>
+-profileAB.js-----DELETE</br>
+-selectSong.js-----DELETE</br>
+-temp.js-----DELETE</br>
+-app.js-----Handled overall app functionality by integrating data Spotify API to Firebase and SQLite3, Also contains try catch error for checking data from Spotify API before passing to database</br>
+-create_database.js-----DELETE</br>
 
 
 
