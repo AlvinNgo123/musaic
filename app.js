@@ -302,7 +302,7 @@ app.get('/callback', function(req, res) {
 
         // use the access token to access the Spotify Web API
         request.get(options, function(error, response, body) {
-          console.log(body);
+         /*  console.log(body);
           console.log('BELOW IS EMAIL VARIABLE')
           console.log(body.email);
           console.log("DEBUG:  body.id ="+body.id);
@@ -311,12 +311,12 @@ app.get('/callback', function(req, res) {
 
           console.log(body.display_name);
           console.log('BELOW IS THEIR PROFILE PIC VARIABLE');
-          //console.log(body.images[0].url);
+          //console.log(body.images[0].url); */
 
           request.get(topArtists, function(error, response, bod) {
-            console.log('Goes into top artists'); //Test
+            /* console.log('Goes into top artists'); //Test
             console.log(bod); 
-            console.log('BELOW IS TOP ARTIST VARIABLE');
+            console.log('BELOW IS TOP ARTIST VARIABLE'); */
             // console.log(bod.items[1].name);
             // console.log(bod.items[2].name);
             // console.log(bod.items[3].name);
@@ -324,8 +324,8 @@ app.get('/callback', function(req, res) {
             // console.log(bod.items[5].name);
 
             request.get(topSongs, function(error, response, bo) {
-              console.log(bo);
-              console.log('SHOW ARTIST THE SINGS TOP SONG');
+            /*  console.log(bo);
+              console.log('SHOW ARTIST THE SINGS TOP SONG'); */
               // console.log(bo.items[1].name);
               // console.log(bo.items[2].name);
               // console.log(bo.items[0].artists[0].name); //variable for showing artist that sings top song
@@ -459,8 +459,15 @@ app.get('/callback', function(req, res) {
               
               try{
                  topSongPrev = bo.items[1].preview_url;
+                 if (topSongPrev === null) {
+                  topSongPrev = "None";
+                 }
+                console.log("No top song Prev but in Try");
+                console.log(topSongPrev);
+
               }catch(e){
-                  topSongPrev = null;
+                  topSongPrev = "None";
+                  console.log("No top song Prev");
               }
               try{
                 topSongCover = bo.items[1].album.images[2].url;
@@ -542,7 +549,8 @@ app.get('/callback', function(req, res) {
                   topSongArtist5: topSongArtist5,
 
                   topSongPrev: topSongPrev, 
-                  topSongCover: topSongCover, topSongID: topSongID, topArtistID: topArtistID, topArtistID2: topArtistID2 });
+                  topSongCover: topSongCover, topSongID: topSongID, 
+                  topArtistID: topArtistID, topArtistID2: topArtistID2 });
               }
             });    
           });
