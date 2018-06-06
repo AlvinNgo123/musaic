@@ -266,6 +266,8 @@ window.onclick = function(event) {
               refresh_token: refresh_token
             });
 
+
+            //Once, the user logins, Spotify will give you an access token 
             $.ajax({
                 url: 'https://api.spotify.com/v1/me',
                 headers: {
