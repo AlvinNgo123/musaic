@@ -1,4 +1,8 @@
-
+/*
+DESCRIPTION OF CODE:
+This is the css styling for the searchbar on our homepage. This code contains the sizing, color, and basic visual functionality
+of the bar. 
+*/
 
 .active-pink-2 input[type=text]:focus:not([readonly]) {
     border-bottom: 1px solid #f48fb1;
