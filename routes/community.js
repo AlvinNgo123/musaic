@@ -1,3 +1,5 @@
+//Javascript file for community page it runs a request and respond that pass the accesstonken refresh
+//token, display name and user id to the community page from the spotify API
 exports.view = function(req, res){
   res.render('community', {
     sess_access_token: req.session.access_token,

@@ -1,3 +1,5 @@
+//Javascript file for mainpage it runs a request and respond that pass the accesstonken refresh
+//token, display name and user_id to the community page from the spotify API
 exports.view = function(req, res){
   res.render('mainPage', {
     sess_access_token: req.session.access_token,
@@ -7,11 +9,3 @@ exports.view = function(req, res){
   });
 };
 
-// exports.viewID = function(req,res){
-// 	console.log("Running viewID route");
-// 	console.log("User ID = "+req.params.id);
-
-// 	res.render('mainPage', {
-// 		"userID": req.params.id
-// 	});
-// };
