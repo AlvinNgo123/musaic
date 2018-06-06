@@ -350,11 +350,8 @@ iframe {
   z-index: -1;
   width: 300%;
   height: 100%;
-  background: #a64bf4;
-  background: -webkit-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
-  background: -o-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
-  background: -moz-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
-  background: linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
+  background: rgba(21,7,22,.7);
+
   top: 0;
   left: -100%;
 
@@ -382,6 +379,11 @@ iframe {
   padding: 0 30px;
   width: 100%;
   height: 50px;
+}
+
+.fa-spotify {
+  font-size: 26px; 
+  margin-right: 10px;
 }
 
 .wrap-login100-form-btn:hover .login100-form-bgbtn {

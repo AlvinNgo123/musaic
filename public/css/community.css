@@ -6,12 +6,13 @@
   src: url('../fonts/poppins/Poppins-Regular.ttf'); 
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3,  {
 	font-family: Poppins-Regular, sans-serif;
 	color: white;
 }
 
-.menuText {
+.menuText, h4 {
+	font-family: Poppins-Regular, sans-serif;
 	margin-top: 12%;
 	margin-bottom: 12%;
 	color: black;
