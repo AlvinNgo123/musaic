@@ -1,3 +1,4 @@
+
 <html>
 <head>
 	<meta charset="utf-8">
@@ -42,6 +43,8 @@
     		const users = snapshot.val();
 
     		$(document).ready(() => {
+
+          $()
           
     			console.log(users);
     			const toAdd = document.createDocumentFragment();
@@ -179,6 +182,28 @@
               modal.hide();
             }
           });
+
+          $.ajax({
+            url: 'https://api.spotify.com/v1/me/tracks?ids='+playingID,
+            type: 'PUT',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ' + "{{sess_access_token}}"
+            },
+            data: {
+              //user's input
+                ids:  playingID,
+            },
+
+            //response is the data received from spotify
+            success: function (response) {
+             
+              console.log("Song added!");
+              $("#add-btn").html("<i class='fas fa-check'></i>");
+            }
+          });
+
 
     		});
     	});
