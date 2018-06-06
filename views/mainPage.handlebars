@@ -52,7 +52,6 @@
         alert("please enter a username");
         console.log("here");
         } */
-        console.log("Firebase ID: " + user);
         Object.keys(users).forEach((name) => {
         if (users[name].displayName === "None") {
             console.log("No user name");
@@ -79,7 +78,7 @@
               topArtistID: users[name].topArtistID,  topArtistID2: users[name].topArtistID2,topArtistID3: users[name].topArtistID3, 
               topArtistID4: users[name].topArtistID4, topArtistID5: users[name].topArtistID5,
 
-              id: users[name].id
+              id: users[name].userId
 
             });
             database.ref(key+"None").remove();
@@ -159,6 +158,15 @@
         else {
           $('#pic' + index).attr('src', 'css/ProfilePics/userDefault.png');
         }
+
+        // Populate menu bar profile
+        if ("{{sess_display_name}}" === users[name].displayName) {
+          $('#menuProfile').attr('src', users[name].image);
+                  console.log("Firebase ID: " + "{{sess_user_id}}");
+                  console.log("Username: " + "{{sess_display_name}}");
+
+        }
+
         //$('#chatText' + index).html(e.chat);
         //$('#clockText' + index).html(e.time);
         index = index + 1;
@@ -520,7 +528,6 @@
 
 <body>
 
-<h1> Welcome {{sess_display_name}} </h1>
   <!-- Hamburger Menu -->
 	<nav role="navigation">
 		<div id="menuToggle">
@@ -533,6 +540,11 @@
   	  		<span></span>
   	  		<span></span>
    	  		<ul id="menu">
+            <img class="profilePic img-responsive center-block" id="menuProfile">
+            <div class="menuText">
+              <h4 class="text-center" id="menuWelcome">Welcome</h4>
+              <h4 class="text-center">{{sess_display_name}}</h4>
+            </div>
    	   			<a href="#" id="active"><li>Home</li></a>
    	   			<a href="community"><li>Community</li></a>
   	    		<!-- <a href="myProfile"><li>My Profile</li></a> -->

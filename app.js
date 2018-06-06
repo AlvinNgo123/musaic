@@ -195,10 +195,11 @@ app.get('/myProfile', myProfile.view);
 app.get('/selectSong', function(req, res){
   //res.sendfile(path.join(__dirname+'/views/yourProfile.html'));
   res.render("selectSong.html", { 
-    sess_id: req.session.id,
     sess_access_token: req.session.access_token,
     sess_refresh_token: req.session.refresh_token,
-    sess_display_name: req.session.display_name
+    sess_display_name: req.session.display_name,
+    sess_user_id: req.session.user_id
+
   });
 });
 
@@ -223,7 +224,7 @@ app.get('/login', function(req, res) {
 });
 
 
-var id_global = "";
+let id_global = "";
 
 
 app.get('/callback', function(req, res) {
@@ -257,6 +258,7 @@ app.get('/callback', function(req, res) {
     };
 
     request.post(authOptions, function(error, response, body) {
+
       if (!error && response.statusCode === 200) {
 
 
@@ -309,9 +311,11 @@ app.get('/callback', function(req, res) {
           console.log('BELOW IS NAME OF USER VARIABLE');
 
 
+
           console.log(body.display_name);
           console.log('BELOW IS THEIR PROFILE PIC VARIABLE');
           //console.log(body.images[0].url); */
+
 
           request.get(topArtists, function(error, response, bod) {
             /* console.log('Goes into top artists'); //Test
@@ -331,7 +335,7 @@ app.get('/callback', function(req, res) {
               // console.log(bo.items[0].artists[0].name); //variable for showing artist that sings top song
 
               let displayName = body.display_name;
-              let id = body.id;
+              let userId = body.id;
               if(!displayName){
                 displayName = "None";
                 body.display_name = "None";
@@ -603,7 +607,7 @@ app.get('/callback', function(req, res) {
 
               try { 
                 database.ref('users/' + body.display_name).set({displayName: displayName, 
-                  image: image, id:id,
+                  image: image, id:userId,
 
                   topArtist: topArtist, topArtist2: topArtist2, topArtist3: topArtist3,
                   topArtist4: topArtist4, topArtist5: topArtist5,
@@ -643,7 +647,7 @@ app.get('/callback', function(req, res) {
 
                  console.log("ERROR IN TRY STATEMENT.  RUNNING CATCH");
                  database.ref('users/' + body.display_name).set({displayName: displayName, 
-                  image: image, id:id,
+                  image: image, id:userId,
 
                   topArtist: topArtist, topArtist2: topArtist2, topArtist3: topArtist3,
                   topArtist4: topArtist4, topArtist5: topArtist5,
@@ -666,12 +670,14 @@ app.get('/callback', function(req, res) {
                   topArtistID: topArtistID, topArtistID2: topArtistID2,  topArtistID3: topArtistID3,  topArtistID4: topArtistID4,  topArtistID5: topArtistID5 
                 });
               }
+
             });    
           });
 
           id_global = body.id;
+          console.log("Here: " + id_global);
+          req.session.user_id = id_global;
 
-          req.session.id = body.id;
           
 
           console.log("Body display name=  "+body.display_name);

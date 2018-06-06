@@ -6,8 +6,15 @@
   src: url('../fonts/poppins/Poppins-Regular.ttf'); 
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
 	font-family: Poppins-Regular, sans-serif;
+	color: white;
+}
+
+.menuText {
+	margin-top: 12%;
+	margin-bottom: 12%;
+	color: black;
 }
 
 body {
@@ -35,3 +42,9 @@ body {
 	transition: all .2s ease-in-out
 }
 
+#menuProfile {
+	width: 225px;
+	height: 200px;
+	border-radius: 50%;
+}
+}
