@@ -62,7 +62,26 @@
             } 
             database.ref(key + userName).set({displayName: userName});
 
-            database.ref(key + userName).update({displayName: userName, image: users[name].image, topArtist: users[name].topArtist, topArtist2: users[name].topArtist2, topArtist3: users[name].topArtist3, topArtist4: users[name].topArtist4, topArtist5: users[name].topArtist5, topSong: users[name].topSong, topSong2: users[name].topSong2, topSong3: users[name].topSong3, topSong4: users[name].topSong4, topSong5: users[name].topSong5, topSongArtist: users[name].topSongArtist, topSongArtist2: users[name].topSongArtist2, topSongArtist3: users[name].topSongArtist3, topSongArtist4: users[name].topSongArtist4, topSongArtist5: users[name].topSongArtist5, topSongCover: users[name].topSongCover, topSongID: users[name].topSongID, topSongPrev: users[name].topSongPrev, topArtistID: users[name].topArtistID,  topArtistID2: users[name].topArtistID2, id: users[name].id});
+            database.ref(key + userName).update({displayName: userName, image: users[name].image, topArtist: users[name].topArtist, topArtist2: users[name].topArtist2, topArtist3: users[name].topArtist3, topArtist4: users[name].topArtist4, topArtist5: users[name].topArtist5, 
+
+              topSong: users[name].topSong, topSong2: users[name].topSong2, topSong3: users[name].topSong3, topSong4: users[name].topSong4, topSong5: users[name].topSong5, 
+
+              topSongID: users[name].topSongID, topSongID2: users[name].topSongID2, topSongID3: users[name].topSongID3, topSongID4: users[name].topSongID4, topSongID5: users[name].topSongID5, 
+
+
+              topSongArtist: users[name].topSongArtist, topSongArtist2: users[name].topSongArtist2, topSongArtist3: users[name].topSongArtist3, topSongArtist4: users[name].topSongArtist4, topSongArtist5: users[name].topSongArtist5, 
+
+              topSongCover: users[name].topSongCover, topSongCover2: users[name].topSongCover2, topSongCover3: users[name].topSongCover3,  
+              topSongCover4: users[name].topSongCover4,  topSongCover5: users[name].topSongCover5,  
+
+              topSongPrev: users[name].topSongPrev, topSongPrev2: users[name].topSongPrev2, topSongPrev3: users[name].topSongPrev3, topSongPrev4: users[name].topSongPrev4, topSongPrev5: users[name].topSongPrev5, 
+
+              topArtistID: users[name].topArtistID,  topArtistID2: users[name].topArtistID2,topArtistID3: users[name].topArtistID3, 
+              topArtistID4: users[name].topArtistID4, topArtistID5: users[name].topArtistID5,
+
+              id: users[name].id
+
+            });
             database.ref(key+"None").remove();
             location.reload();
             }

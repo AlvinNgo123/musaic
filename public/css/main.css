@@ -9,7 +9,7 @@ h1, h2, h3, h4, h5 {
 }
 
 body {
-	background-image: url("/css/Backgrounds/bg-01.jpg");
+	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(https://i.pinimg.com/originals/ff/2b/02/ff2b024eb639157f808a53d93f5affb8.jpg); background-size: 100% 100%;
   	background-repeat: no-repeat;
   	background-position: center;
   	background-size: cover;
