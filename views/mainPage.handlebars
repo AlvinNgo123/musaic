@@ -42,6 +42,7 @@
    database.ref(key).once('value', (snapshot) => {
     const users = snapshot.val();
 
+<<<<<<< HEAD
     // firebase.auth().onAuthStateChanged(function(user) {
     //   console.log("user");
     //   if (user) {
@@ -63,6 +64,32 @@
     //     });              
     //   }
     // });
+=======
+    firebase.auth().onAuthStateChanged(function(user) {
+      console.log("user");
+      if (user) {
+        // User is signed in.
+        let currentUserKey = firebaseAuth.currentUser.uid;
+        alert("please enter a username");
+        console.log("here");
+        }
+      else {
+        Object.keys(users).forEach((name) => {
+        if (users[name].displayName === "None") {
+            console.log("No user name");
+            let userName = prompt("You have no display name...please enter one:");
+            database.ref(key + users[name].displayName).update({displayName: userName});
+            while (userName === "") {
+              userName = prompt("Name is empty...please enter a name");
+            } 
+            database.ref(key + userName).set({displayName: userName, image: users[name].image, topArtist: users[name].topArtist, topArtist2: users[name].topArtist2, topArtist3: users[name].topArtist3, topArtist4: users[name].topArtist4, topArtist5: users[name].topArtist5, topSong: users[name].topSong, topSong2: users[name].topSong2, topSong3: users[name].topSong3, topSong4: users[name].topSong4, topSong5: users[name].topSong5, topSongArtist: users[name].topSongArtist, topSongArtist2: users[name].topSongArtist2, topSongArtist3: users[name].topSongArtist3, topSongArtist4: users[name].topSongArtist4, topSongArtist5: users[name].topSongArtist5, topSongCover: users[name].topSongCover, topSongID: users[name].topSongID, topSongPrev: users[name].topSongPrev});
+            database.ref(key+"None").remove();
+            location.reload();
+            }
+        });              
+      }
+    });
+>>>>>>> f4df43bf9947838399e52df48c1d1606057f2eaa
 
   $(document).ready(()=>{
    
