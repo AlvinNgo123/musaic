@@ -44,6 +44,14 @@
 
 
     firebase.auth().onAuthStateChanged(function(user) {
+     /* let currentUserKey = firebase.auth().currentUser.uid;
+      console.log(currentUserKey);
+    
+      if (user) {
+        // User is signed in.
+        alert("please enter a username");
+        console.log("here");
+        } */
         Object.keys(users).forEach((name) => {
           
 
@@ -116,7 +124,8 @@
         
 
         //Template for Square Boxes
-        newLi.innerHTML = "<div class='col-sm-4 grow profile profileBeg' id='profile'"+index+"><h3 class='userNameText profileText' id='"+userName+"'></h3><h4 class='songNameText profileText' id='"+songName+"' ></h4><h4 class='artistNameText profileText' id='"+artistName+"'></h4><div class='transparentBox' id='"+transparentBoxColor+"'></div><img class='profilePic col-sm-2' id='"+pic+"'></div></div>";
+        // <a href='/profile'> reimplement </a> reimplement by wrapping around image
+        newLi.innerHTML = "<div class='col-sm-4 grow profile profileBeg' id='profile'"+index+"><h3 class='userNameText profileText' id='"+userName+"'></h3><h4 class='songNameText profileText' id='"+songName+"' ></h4><h4 class='artistNameText profileText' id='"+artistName+"'></h4><div class='transparentBox' id='"+transparentBoxColor+"'></div><img class='profilePic col-sm-2' id='"+pic+"'><img class='icon chatBubble' src='css/Icons/chatBubble.png'><h5 class='chatNumber' id='"+chatText+"'></h5><img class='icon clock' src='css/Icons/clock.png'><h5 class='clockNumber' id='"+clockText+"'></h5></div></div>";
 
         toAdd.appendChild(newLi);
         index = index +1;
@@ -138,7 +147,7 @@
         }
 
         $('#userName' + index).html(users[name].displayName);
-        $('#songName' + index).html("<i class='far fa-play-circle'></i> "+users[name].topSong);
+        $('#songName' + index).html(users[name].topSong);
 
 
         //adds variables to each song for when people click on it
@@ -168,13 +177,15 @@
                   console.log("Username: " + "{{sess_display_name}}");
 
         }
+
+        //$('#chatText' + index).html(e.chat);
+        //$('#clockText' + index).html(e.time);
         index = index + 1;
       });
     }
 
    });
       
-
         $('.userNameText').click(() => {
           console.log("Hi");
         });
@@ -196,7 +207,6 @@
           target.style.fontSize = '20px';
         
         });
-
 
 
 
@@ -226,8 +236,12 @@
           } else {
               if (audioObject) {
                   audioObject.pause();
-                  playing = false
+                  playing = false;
               }
+
+          if((target.getAttribute('data-prev_url'))=="None"){
+            alert("Preview Unavailable For This Song");
+          }else{
 
           audioObject = new Audio(target.getAttribute('data-prev_url'));
           audioObject.play();
@@ -253,10 +267,13 @@
                target.classList.remove(playingCssClass);
                playing = false;
           });
-
+          }
 
         }
       });
+
+
+        
 
         $("#play-btn").click(() =>{
 
@@ -312,7 +329,7 @@
         }
 
         $('#userName' + index).html(users[name].displayName);
-        $('#songName' + index).html("<i class='far fa-play-circle'></i> "+users[name].topSong);
+        $('#songName' + index).html(users[name].topSong);
 
 
         //adds variables to each song for when people click on it
@@ -332,11 +349,66 @@
         else {
           $('#pic' + index).attr('src', 'css/ProfilePics/userDefault.png');
         }
+        //$('#chatText' + index).html(e.chat);
+        //$('#clockText' + index).html(e.time);
         index = index + 1;
       });
 
             });
+
+// $('.artist2').click((e) => {
+
+//  console.log("Song Name Clicked");
+
+//           let target = e.target;
+//           console.log(target);
+         
+//           console.log("ID: "+target.id);
+//           console.log(target.innerHTML);
+//           console.log("Preview URL = "+target.getAttribute('data-prev_url')); 
+//           console.log("Song Name = "+target.getAttribute('data-songName')); 
+
+
+
+
+//           if (target.classList.contains(playingCssClass)) {
+//               audioObject.pause();
+//               playing=false;
+//           } else {
+//               if (audioObject) {
+//                   audioObject.pause();
+//                   playing = false
+//               }
+
+//           audioObject = new Audio(target.getAttribute('data-prev_url'));
+//           audioObject.play();
+//           playingID = target.getAttribute('data-topSongID');
+//           $("#play-btn").html("<i class='far fa-pause-circle'></i>");
+//           playing = true;
+
+//           target.classList.add(playingCssClass);
+
+          
+
+//           $("#album-cover").attr("src", target.getAttribute('data-topSongCover'));
+//           $("#songTitle" ).html(target.getAttribute('data-songName'));
+//           $("#songArtist").html(target.getAttribute('data-topSongArtist'));
+
+
+//           audioObject.addEventListener('ended', function () {
+//               target.classList.remove(playingCssClass);
+//               playing = false;
+//           });
+//           audioObject.addEventListener('pause', function () {
+//                target.classList.remove(playingCssClass);
+//                playing = false;
+//           });
+
+
+//         }
+//       });
         
+
         $("#topArtist-btn").click(() =>{
 
 
@@ -356,9 +428,12 @@
         console.log("Display name: "+users[name].displayName);
 
        
+
+   //HUNTER'S COMMENTED OUT AJAX CALL FOR TOP ARTISTS TRACKS
+
         let songPreview;
         let songName;
-        let songPreview2;
+         let songPreview2;
         let songName2;
        
 
@@ -384,7 +459,7 @@
           $('#userName' + index).html(users[name].displayName);
 
           console.log("top artist name: "+users[name].topArtist);
-          $('#songName' + index).html("<i class='far fa-play-circle'></i> "+users[name].topArtist);
+          $('#songName' + index).html(users[name].topArtist);
          $('#artistName' + index).html("");
 
             
@@ -406,10 +481,75 @@
           $('#pic' + index).attr('src', 'css/ProfilePics/userDefault.png');
         }
             index = index + 1;
-        }
+
+            //console.log("Top Artist song name "+$('#songName'+index).getAttribute('data-songName'));
+        //   $('#songName' + index).attr("data-topSongArtist", users[name].topSongArtist);
+        //   $('#songName' + index).attr("data-topSongID", users[name].topSongID);
+        //   $('#songName' + index).attr("data-topSongCover", users[name].topSongCover);
+
+            
+          }
+    });
+
+
+
+    //      $.ajax({
+    //       url: 'https://api.spotify.com/v1/artists/'+users[name].topArtistID2+'/top-tracks',
+    //       type: 'GET',
+    //       headers: {
+    //           'Accept': 'application/json',
+    //           'Content-Type': 'application/json',
+    //           'Authorization': 'Bearer ' + "{{sess_access_token}}"
+    //       },
+    //       data: {
+    //         //user's input
+    //           id:  users[name].topArtistID2,
+    //           country: "US"
+    //       },
+
+    //       //response is the data received from spotify
+    //       success: function (response, body) {
+             
+    //         console.log("success in artist2 ajax call  index2:"+index2);
+
+            
+
+    //         songPreview2 = response.tracks[0].preview_url;
+    //         songName2 = response.tracks[0].name;
+    //         songCover2 = response.tracks[0].album.images[2].url;
+
+    //         $('#artistName' + index2).attr("data-prev_url", songPreview2);
+    //         $('#artistName' + index2).attr("data-songName", songName2);
+    //         $('#artistName' + index2).attr("data-topSongArtist", users[name].topArtist2);
+    //         $('#artistName' + index2).attr("data-topSongCover", songCover2);
+
+    //         $('#artistName' + index2).addClass("artist2");
+
+            
+    //         index2 = index2 + 1;
+
+
+            
+    //       }
+    // });
+
+
+  
+        
       });
-      });
-     });
+
+
+
+
+
+
+            });
+
+
+
+       
+        
+
     }); 
   </script>
 </head>
@@ -435,6 +575,8 @@
             </div>
    	   			<a href="#" id="active"><li>Home</li></a>
    	   			<a href="community"><li>Community</li></a>
+  	    		<!-- <a href="myProfile"><li>My Profile</li></a> -->
+  	    		<!-- <a href="#"><li>Settings</li></a> -->
             <a href="/"><li>Sign Out</li></a>
    			</ul>
   		</div>
