@@ -664,12 +664,15 @@ app.get('/callback', function(req, res) {
                   topArtistID: topArtistID, topArtistID2: topArtistID2,  topArtistID3: topArtistID3,  topArtistID4: topArtistID4,  topArtistID5: topArtistID5 
                 });
               }
+
+              req.session.image = image;
+
             });    
           });
 
           id_global = body.id;
 
-           req.session.id = body.id;
+          req.session.id = body.id;
 
           console.log("Body display name=  "+body.display_name);
           if(body.display_name)
