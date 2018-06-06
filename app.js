@@ -469,6 +469,42 @@ app.get('/callback', function(req, res) {
                   topSongPrev = "None";
                   console.log("No top song Prev");
               }
+
+               try{
+                 topSongPrev2 = bo.items[2].preview_url;
+                      if (topSongPrev2 === null) {
+                            topSongPrev2 = "None";
+                      }                
+                }catch(e){
+                      topSongPrev2 = "None";
+                }
+
+                 try{
+                 topSongPrev3 = bo.items[3].preview_url;
+                      if (topSongPrev3 === null) {
+                            topSongPrev3 = "None";
+                      }                
+                }catch(e){
+                      topSongPrev3 = "None";
+                }
+
+                 try{
+                 topSongPrev4 = bo.items[4].preview_url;
+                      if (topSongPrev4 === null) {
+                            topSongPrev4 = "None";
+                      }                
+                }catch(e){
+                      topSongPrev4 = "None";
+                }
+
+                 try{
+                 topSongPrev5 = bo.items[5].preview_url;
+                      if (topSongPrev5 === null) {
+                            topSongPrev5 = "None";
+                      }                
+                }catch(e){
+                      topSongPrev5 = "None";
+                }
               try{
                 topSongCover = bo.items[1].album.images[2].url;
               }catch(e){
@@ -478,6 +514,28 @@ app.get('/callback', function(req, res) {
                  topSongID = bo.items[1].id;
               }catch(e){
                   topSongID = null;
+              }
+
+             
+              try{
+                 topSongID2 = bo.items[2].id;
+              }catch(e){
+                  topSongID2 = null;
+              }
+              try{
+                 topSongID3= bo.items[3].id;
+              }catch(e){
+                  topSongID3 = null;
+              }
+              try{
+                 topSongID4 = bo.items[4].id;
+              }catch(e){
+                  topSongID4 = null;
+              }
+               try{
+                 topSongID5= bo.items[5].id;
+              }catch(e){
+                  topSongID5 = null;
               }
 
               try{
@@ -490,6 +548,21 @@ app.get('/callback', function(req, res) {
                 topArtistID2 = bod.items[2].id;
               }catch(e){
                 topArtistID2 = null;
+              }
+              try{
+                topArtistID3 = bod.items[3].id;
+              }catch(e){
+                topArtistID3 = null;
+              }
+              try{
+                topArtistID4 = bod.items[4].id;
+              }catch(e){
+                topArtistID4 = null;
+              }
+              try{
+                topArtistID5 = bod.items[5].id;
+              }catch(e){
+                topArtistID5 = null;
               }
              
 
@@ -510,13 +583,16 @@ app.get('/callback', function(req, res) {
                   topSong: topSong, topSong2: topSong2, topSong3: topSong3,
                   topSong4: topSong4, topSong5: topSong5,
 
+                  topSongID: topSongID, topSongID2: topSongID2, topSongID3: topSongID3,
+                  topSongID4: topSongID4, topSongID5: topSongID5,
+
                   topSongArtist: topSongArtist, topSongArtist2: topSongArtist2, 
                   topSongArtist3: topSongArtist3, topSongArtist4: topSongArtist4,
                   topSongArtist5: topSongArtist5,
 
-                  topSongPrev: topSongPrev, 
-                  topSongCover: topSongCover, topSongID: topSongID,
-                  topArtistID: topArtistID, topArtistID2: topArtistID2 
+                  topSongPrev: topSongPrev, topSongPrev2: topSongPrev2, topSongPrev3: topSongPrev3, topSongPrev4: topSongPrev4, topSongPrev5: topSongPrev5, 
+                  topSongCover: topSongCover,
+                  topArtistID: topArtistID, topArtistID2: topArtistID2,  topArtistID3: topArtistID3,  topArtistID4: topArtistID4,  topArtistID5: topArtistID5 
                 });
               }
               catch (e) {
@@ -536,21 +612,27 @@ app.get('/callback', function(req, res) {
 
                  console.log("ERROR IN TRY STATEMENT.  RUNNING CATCH");
                  database.ref('users/' + body.display_name).set({displayName: displayName, 
-                  image: image, id: id,
+                  image: image, id:id,
 
                   topArtist: topArtist, topArtist2: topArtist2, topArtist3: topArtist3,
                   topArtist4: topArtist4, topArtist5: topArtist5,
 
+
+
                   topSong: topSong, topSong2: topSong2, topSong3: topSong3,
                   topSong4: topSong4, topSong5: topSong5,
+
+                  topSongID: topSongID, topSongID2: topSongID2, topSongID3: topSongID3,
+                  topSongID4: topSongID4, topSongID5: topSongID5,
 
                   topSongArtist: topSongArtist, topSongArtist2: topSongArtist2, 
                   topSongArtist3: topSongArtist3, topSongArtist4: topSongArtist4,
                   topSongArtist5: topSongArtist5,
 
-                  topSongPrev: topSongPrev, 
-                  topSongCover: topSongCover, topSongID: topSongID, 
-                  topArtistID: topArtistID, topArtistID2: topArtistID2 });
+                  topSongPrev: topSongPrev, topSongPrev2: topSongPrev2, topSongPrev3: topSongPrev3, topSongPrev4: topSongPrev4, topSongPrev5: topSongPrev5,
+                  topSongCover: topSongCover,
+                  topArtistID: topArtistID, topArtistID2: topArtistID2,  topArtistID3: topArtistID3,  topArtistID4: topArtistID4,  topArtistID5: topArtistID5 
+                });
               }
             });    
           });
