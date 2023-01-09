@@ -19,7 +19,7 @@
     "express-session": "^1.15.6",
     "express3-handlebars": "*",
     "firebase": "^5.0.3",
-    "firebase-admin": "^5.12.1",
+    "firebase-admin": "^11.4.1",
     "mongodb": "*",
     "mongoose": "*",
     "querystring": "~0.2.0",
